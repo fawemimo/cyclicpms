@@ -1,0 +1,72 @@
+/* TOPBAR  CSS */
+
+
+
+.topbar{
+    position: fixed;
+    top: 0;   
+    width: 100%;
+    margin-top: 0;
+    /* background: #333;     */
+    padding: 10px;
+    display: grid;
+    justify-items: center;
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    padding: 10px;
+}
+ .topbar .container{
+    color: white;
+    display: grid;
+   grid-template-columns: repeat(3,1fr);
+    margin-right: 110px;
+}
+.topbar .social {
+    margin-right: 30px;
+}
+.social ul {
+    color: #fff;
+    font-size: 20px;
+    margin-top: 0;
+    display: grid;
+    grid-template-columns: repeat(3,39px);
+    
+}
+.nav ul{
+    list-style-type: none;
+    display: grid;
+    justify-items: end;
+    align-items: center;
+    grid-template-columns: repeat(3,1fr);
+}
+.social ul a , .nav ul a {
+    color:#fff;
+    text-decoration: none;
+   
+}
+.nav ul button{
+    font-size: 20px;    
+    color:#fff;
+    margin-left: 3px;
+    background: tomato;
+    padding: 5px 21px;
+    margin-top: -6px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.nav ul button:hover{
+    background:#f9692f;
+    transform: scale(1.05);
+    transition: background ease-out .3s, transform .3s;
+}
+.topbar .nav{
+
+    text-align: center;
+    padding-top: 4px;
+
+}
+.topbar small {
+    margin-left: 56px;
+}
+/* END TOPBAR CSS  */

@@ -1,0 +1,32 @@
+{
+    "python.pythonPath": ".venv/bin/python",
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:project}/db.sqlite3",
+            "name": "akola",
+            "group": "team"
+        }
+    ],
+    "sqltools.useNodeRuntime": true,
+    "auto-close-tag.excludedTags": [
+    
+        "area",
+        "base",
+        "br",
+        "col",
+        "command",
+        "embed",
+        "hr",
+        "img",
+        "input",
+        "keygen",
+        "link",
+        "meta",
+        "param",
+        "source",
+        "track",
+        "wbr"
+    ]
+}

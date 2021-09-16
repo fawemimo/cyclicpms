@@ -1,0 +1,52 @@
+<header>
+</div>
+<a href="{% url 'home' %}" class="site-logo" aria-label="homepage">Cyclic<b>PMS.</b></a>
+<nav class="main-nav">
+  <ul class="nav__list">
+    <li class="nav__list-item"><a href="{% url 'home' %}" class="nav__link active">Home</a></li>
+    <li class="nav__list-item">
+      <a href="#about" class="nav__link">About</a>
+    </li>
+    <li class="nav__list-item">
+      <a href=" {% url 'contacts' %}" class="nav__link active">Contact</a>
+    </li>
+    <li class="nav__list-item">
+      <a href="#" class="nav__link">Services</a>
+    </li>
+    <li class="nav__list-item"><a href="#" class="nav__link active">Job Vacancy</a></li>
+    <li class="nav__list-item"><a href="{% url 'bloghome' %}" class="nav__link active">Blog</a></li>
+
+  </ul>
+</nav>
+<nav class="account">
+  <ul class="nav__list">
+      {% if user.is_authenticated %}
+          <li class="nav__list-item">
+              <a class="nav__link nav__link--btn" href="{% url 'accounts-logout' %}">Logout</a>
+          </li>
+          <li class="nav__list-item">
+            <a
+              class="nav__link nav__link--btn nav__link--btn--highlight"
+              href="{% url 'directors' %}"
+              >Dashboard</a
+            > 
+          </li>
+      {% else %}
+          <li class="nav__list-item">
+              <a class="nav__link nav__link--btn" href="{% url 'accounts-login' %}">Login</a>
+              
+          </li>
+
+          <li class="nav__list-item">
+              <a
+                class="nav__link nav__link--btn nav__link--btn--highlight"
+                href="#"
+                >Join</a
+              >
+            </li>
+      {% endif %}
+    
+  
+  </ul>
+</nav>
+</header>

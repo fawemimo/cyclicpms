@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% extends "shared/layout.html" %}
+{% load static %}
+
+{% load humanize %}
+{% load widget_tweaks %}
+{% block extrastyle %}
+  <link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock extrastyle %}
+    {% block title %}
+      Update Blog
+    {% endblock title %}
+    {% block body %}
+        <ul class="card card-primary card-outline">
+            
+            <div class="card-header">
+                <h1 class="card-title m-0">
+                  ADD BLOG POST
+                </h1>
+                <hr>
+            </div>  
+            <article>
+                <div class="user">
+                    <li>
+                        <div class="card-body">
+                            <form action="{% url 'post-create' %}" method="POST" class="card-text" enctype="multipart/form-data">
+                                {% csrf_token %}   
+                                {% include "partials/_alerts.html" %}
+                                <!-- <div class="title">
+                                    {{ form.title.error }}
+                                    {{ form.title.label_tag }}
+                                {{ form.title}}
+                                </div>
+
+                                <div class="content">
+                                    {{ form.content.error }}
+                                    {{ form.content.label_tag }}
+                                {{ form.title}}
+                                </div> -->
+                                <div class="form-blog">
+                                    {% if user.is_authenticated %}
+                                    <input type="hidden" name="author" id="id_author" value="{{ form.author.user }}">
+                                    {% endif %}
+                                    {{ form.errors }}
+                                    <!-- {{ form.content  | safe}} -->
+                                    {{ form.content.media }}
+                                </div>
+                                <div class="button">
+                                    <button type="submit"> Post</button>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                </div>
+            </article>
+        </ul>
+    
+    {% endblock body %}
+      
+    

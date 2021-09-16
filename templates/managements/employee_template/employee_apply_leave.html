@@ -1,0 +1,112 @@
+{% extends "shared/employee_dashboard.html" %}
+{% load static %}
+
+{% block title %}
+  Apply Leave
+{% endblock title %}
+
+{% block extrasyle %}
+<!-- <link rel="stylesheet" href="{% static 'css/blogs.css' %}"> -->
+{% endblock extrasyle %}
+{% block bodycontent %}
+<ul class="card card-primary card-outline">
+
+  <div class="card-header text-center">
+      <a href="{% url 'home' %}" class="h1"><b>Apply leave</b></a>
+      <hr>
+    </div>
+  
+    <article>
+      <li>
+        <div class="user">
+        
+            
+          <div class="contact-phone">
+            <span>
+              <code>
+                <small>
+
+               </small>
+              </code>
+            </span>
+             
+          </div>
+          
+            <address>
+              <p class="card-text">
+              
+            
+              </p>
+            </address>
+        
+        </div>
+          <div class="card-body">
+            <h1 class="card-title">
+
+                          
+            </h1>
+
+              <form action="{% url 'employee_apply_leave_save' %}" method="POST">
+                {% csrf_token %}
+                
+                <div class="form">
+                  <label >Leave Date:</label>
+                  <input type="date" name="leave_date" id="id_leave_date" class = "form-control" placeholder="leave date" required>
+                </div>
+
+                <div class="form">
+                    <label >Leave Reason:</label>
+                    <textarea name="leave_reason" id="id_leave_reason" placeholder="leave reason" class = "form-control" rows="6" required></textarea>
+                </div>
+
+                <button class="btn btn-primary btn-block mt-2" type="submit">Apply Leave</button>
+              </form>
+              
+            
+      </li>
+    </article>
+ 
+
+
+         <div class="table">
+            <table class="table">
+                <tr>
+                    <th>#</th>
+
+                    <th>Leave Date</th>
+                    <th>Leave Reason</th>
+                    <th>Leave Status</th>
+    
+    
+                </tr>
+    
+                {% for leave in leave_data %}
+                <tr>
+                    <td>
+                        {{ forloop.counter }}
+                    </td>
+
+                    <td>
+                        {{leave.leave_date }}
+                    </td>
+                    <td>
+                        {{ leave.leave_reason }}
+                    </td>
+                    <td>
+                        {% if leave.leave_status == 1 %}
+                          <span class="alert alert-success">Approved</span>
+    
+                        {% elif  leave.leave_status == 2 %}  
+                            <span class="alert alert-danger">Rejected</span>
+    
+                        {% else %}    
+                            <span class="alert alert-warning">Pending</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+    
+           </table>
+         </div>
+
+{% endblock bodycontent %}

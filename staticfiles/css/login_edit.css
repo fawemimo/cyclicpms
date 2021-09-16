@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica&family=Monoton&display=swap');
+
+.login-page, .register-page {
+        padding: 50vh 0;
+    /* background: #123 url(//unsplash.it/900); */
+    background-size: cover;
+    background-blend-mode: multiply;
+    color: #123;
+    text-align: center;
+    background: floralwhite;
+}
+
+.card {
+    background: inherit;
+}
+
+
+
+.login-box, .register-box {
+    width: 475px;
+}
+
+.button, input[type=submit], .submit-row input, a.button {
+    
+    margin-left: 0px;
+}
+
+.btn-block {
+    width: 333%;
+    margin-left: -5px;
+}
+
+input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].btn-block {
+    /* width: 100%; */
+    background-color: #007bff;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #222;
+    border-color: #222;
+    box-shadow: none;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #2e3033;
+    border-color: #2e3033;
+}
+
+
+.card-primary.card-outline {
+    border-top: 3px solid #222;
+}

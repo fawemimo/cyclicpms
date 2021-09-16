@@ -1,0 +1,355 @@
+@import url('https://https://fonts.google.com/specimen/Oswald?selection.family=Oswald:wght@300');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body{
+    /* background: rgba(9, 13, 211, 0.5); */
+    background: #fff;
+    font-family: 'Oswald' sans-serif;
+    /* background: inherit;
+    background-image: url(../img/unsplash.jpg);
+    min-height: 200px;
+    background-repeat: no-repeat;    
+    background-size: cover; */
+}
+.body{
+    
+    background-image: url(../img/unsplash.jpg);
+    min-height: 851px;
+    background-repeat: no-repeat;    
+    background-size: cover;
+}
+.nav-scroll{
+    background: #fff;
+    transition: background 250ms ease-in;
+    color: #111;
+}
+.nav-scroll .logo{
+    color: #111;
+}
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 100px;
+    z-index: 1000;
+    background: inherit;
+    transition: background 250ms ease-in;
+    position: fixed;
+}
+article, aside, footer, header, nav, section {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+header .logo{
+    position: relative;
+    font-size: 2em;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-decoration: none;
+
+}
+
+
+header .toggle ul{
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    place-content: space-between;
+    list-style: none;
+    color: #fff;
+    font-size: 1.3em;
+    margin-left: -287px;
+}
+
+header .toggle li{
+    justify-self: start;
+}
+header .toggle li:nth-child(7){
+    margin-left: 10px;
+}
+/* header .toggle li:nth-child(8){ */
+    /* border: 1px solid #fff; */
+    /* background: rgba(108, 249, 108, 0.961);
+    border-radius: 21px;
+    padding: 2px;
+    width: 127px;
+    text-align: center; */
+/* } */
+/* .ui.compact.menu {
+    display: -webkit-inline-box;
+    position: absolute;
+    right: 35%;
+    background: none;
+    color: #fff;
+    border: none;
+    border-radius: none;
+    box-shadow: none;
+} */
+
+
+ /* Dropdown Button */
+ .dropbtn {
+    
+    color: white;
+    /* padding: 16px;     */
+    border: none;
+    border: none;
+    background: none;
+    font-size: inherit;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    
+    display: inline-block;
+    position: absolute;
+    top: 38%;
+    right: 46.5%;
+  }
+
+  .dropdown .contact{
+      position: absolute;
+      top: 38%;
+      /* right: ; */
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    /* background-color: #b7ae9c; */
+    background-color: #fff;
+    width: 1500%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    position: absolute;
+    left: -387px;
+    top: 24px;
+    padding: 20px 10px;
+  }
+  .dropdown-content .display{
+    
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        place-content: space-between;
+        /* display: flex; */
+        place-content: space-between;
+    
+  }
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 19px 25px;
+    text-decoration: none;
+    display: block;
+  }
+  .display .display-content a{
+      color: grey;
+  }
+  .display .display-content h2{
+      color: grey;
+  }
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {display: grid;}
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  /* .dropdown:hover .dropbtn {background-color: #3e8e41;}  */
+
+
+
+.nav-scroll .toggle li a{
+    color: #111;
+}
+.nav-scroll .toggle li a{
+    border-bottom: 1px solid #111;
+    transition: border-bottom .2s;
+}
+header .toggle li a{
+    text-decoration: none;
+    color: #fff;
+    /* margin-left: -21px; */
+}
+
+header .toggle li a:hover{
+    border-bottom: 1px solid wheat;
+    transition: border-bottom .2s;
+
+}
+
+.banner{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.banner::before{
+    content: '';
+    position: relative;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+.banner img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.banner .videobox img{
+    opacity: 1;
+}
+.banner .textBox{
+    display: grid;
+    place-content: center;
+    margin-top: 306px;
+    text-align: start;
+    z-index: 2;
+    /* position: absolute; */
+    font-size: 2.3em;
+}
+
+/* .banner .textBox form{
+    margin-top: 30px;
+    display: block;
+    grid-template-rows: repeat(2,1fr);
+}
+
+.banner .textBox form input{
+    background: #fff;
+    border: none;
+    padding: 12px 50px 12px 50px;
+    width: 32%;
+    outline: none;
+    color: #333;
+    border-radius: 20px;
+}
+
+.banner .textBox form button[type="submit"]{  
+    color: grey;    
+    cursor: pointer; 
+    position: absolute;
+    top: 651px;
+    left: 561px;
+    font-size: 22px;
+    border: none;
+    margin-top: -27px;
+    text-align: center;
+}
+
+
+.banner .textBox form button[type="submit"]:hover{
+    background: rgb(94, 129, 247);
+    color: #fff;
+} */
+.textBox h6{
+    color: grey;
+}
+.ui.input {
+    width: 100%;
+}
+.banner .textBox h2{
+    color: grey;
+    font-size: 1em;
+}
+.banner hr{
+
+    width: 100%;
+    border-radius: 5px;
+
+}
+.banner .contact-phone{
+    color: grey;
+    letter-spacing: 3.5px;
+    margin-bottom: 22px;
+
+}
+.banner .textBox p{
+    color: grey;
+    /* font-size: 1.1em; */
+    margin: 5px 0 25px;
+}
+
+.banner .textBox a{
+    
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 1.1em;
+    
+    letter-spacing: 1px;
+    font-weight: 500;
+    border: 1px solid none;
+    border-radius: 8px;
+    padding: 2px;
+}
+
+.banner .textBox a:hover{
+    color: rgba(0, 0, 0,0.5);
+    background: #fff;
+}
+
+.banner .videobox{
+    position: relative;
+    /* background: #fff; */
+    margin-left: 40px;
+    width: 100%;
+    height: 400px;
+    z-index: 1;
+}
+
+.banner .sci{
+    position: absolute;
+    bottom: 20px;
+    letter-spacing: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner .sci li{
+    list-style: none;
+}
+
+.banner ,.sci li a{
+    display: inline-block;
+    margin-right: 15px;
+    margin-top: -877px;
+}
+.home-display{
+    background-color: #fff;
+}
+
+
+.socials{
+    position: fixed;
+}
+
+h1 {
+    min-height: 1rem;
+    font-size: 6rem;
+}

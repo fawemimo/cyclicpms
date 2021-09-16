@@ -1,0 +1,132 @@
+{% extends "shared/director_dashboard.html" %}
+{% load static %}
+{% block title %}
+  Add Category
+{% endblock title %}
+
+{% block breadcrumb %}
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+              <h4 class="page-title">Cyclic Payroll Management System | Director Dashboard</h4>
+                <div class="ms-auto text-end">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'directors' %}">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Add employee category</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+{% endblock breadcrumb %}
+    {% block container-fluid %}
+    <ul class="card card-primary card-outline">
+
+      <div class="card-header">
+        <h1 class="card-title m-0">
+          Add Employee Category
+        </h1>
+        <hr>
+      </div>  
+      
+        <article>
+          <li>
+            <div class="user">
+            
+                
+             
+              
+                <address>
+                  <p class="card-text">
+                  
+                
+                  </p>
+                </address>
+            
+            </div>
+              <div class="card-body">
+                <h1 class="card-title">
+    
+                              
+                </h1>
+                <form data-grades-url="{% url 'ajax_load_grades' %}" method="POST" id="categoryForm" novalidate>
+                  {% csrf_token %}
+                  <div class="card-body">
+                    <!-- <div class="form-group">
+                      <label>Subject Name </label>
+                      <input type="text" class="form-control" name="subject_name" placeholder="Enter Subject">
+                    </div> -->
+                     <div class="form-group">
+                      <label>Employee Name</label>
+                      <select class="form-control" name="employee">
+                        <option value="" class="text-muted"> choose employee </option>
+                          {% for employee in employee_obj %}
+                         
+                            <option value="{{ employee.id }}">{{ employee.user.first_name }} {{ employee.user.last_name }} {{ employee.user.last_name }}</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Level</label>
+                      <select class="form-control" name="level">
+                        <option value="" class="text-muted"> choose level </option>
+                          {% for level in levels %}
+                          
+                            <option value="{{ level.id }}">{{ level.level }}</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Grade</label>
+                      <select class="form-control" name="grade">
+                        <option value="" class="text-muted"> choose grade </option>
+                          {% for grade in grades %}
+                          
+                            <option value="{{ grade.id }}">{{ grade.grade }}</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+                  
+                  <button type="submit" class="btn btn-success">save</button>
+                  <a href="{% url 'add_category_list' %}" class="btn btn-danger">Cancel</a>
+              </form>
+                  
+                <hr>
+          </li>
+        </article>
+     
+        
+    
+
+    {% endblock container-fluid %}
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_level").change(function () {
+      var url = $("#categoryForm").attr("data-grades-url");  
+      var levelId = $(this).val();  
+
+      $.ajax({                      
+        url: url,                   
+        data: {
+          'level': levelId       
+        },
+        success: function (data) {   
+          $("#id_grade").html(data);
+        }
+      });
+
+    });
+  </script>
+</body>
+</html>

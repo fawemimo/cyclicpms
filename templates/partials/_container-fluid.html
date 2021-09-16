@@ -1,0 +1,227 @@
+  {% load static %}
+  <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Sales Cards  -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-cyan text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-view-dashboard"></i></h1>
+                                <h6 class="text-white">Director Dashboard</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-4 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-success text-center">
+                                <a href="{% url 'bloghome' %}">
+                                    <h1 class="font-light text-white"><i class="mdi mdi-chart-areaspline"></i></h1>
+                                <h6 class="text-white">Blogs</h6>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-warning text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-collage"></i></h1>
+                                <h6 class="text-white">All Employee</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-danger text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-border-outside"></i></h1>
+                                <h6 class="text-white">All Admin</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-info text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-arrow-all"></i></h1>
+                                <h6 class="text-white">Employee Attendance</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-4 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-danger text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-receipt"></i></h1>
+                                <h6 class="text-white">Admin Attendance</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-info text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-relative-scale"></i></h1>
+                                <h6 class="text-white">View FeedBack</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-cyan text-center">
+                                <h1 class="font-light text-white"><i class="mdi mdi-pencil"></i></h1>
+                                <h6 class="text-white">View Reply </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-success text-center">
+                                <h1 class="font-light text-white"><a href="{% url 'add-employee' %}" class="sidebar-link">
+                                    <i class="fa fa-plus mb-1 "></i></h1>
+                                <h6 class="text-white">Add Employee</h6>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-2 col-xlg-3">
+                        <div class="card card-hover">
+                            <div class="box bg-warning text-center">
+                                <h1 class="font-light text-white"><i class="fa fa-plus mb-1 "></i></h1>
+                                <h6 class="text-white">Add Admin</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- Sales chart -->
+                <!-- ============================================================== -->
+
+                <!-- ============================================================== -->
+                <!-- Sales chart -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Recent comment and chats -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Latest Blogs</h4>
+                            </div>
+                            <div class="comment-widgets scrollable">
+                                <!-- Comment Row -->
+                                {% for blog in blogs %}
+                                <div class="d-flex flex-row comment-row mt-0">
+
+<div class="p-2"><img src="{% static 'assets/images/users/1.jpg' %}" alt="user" width="50"
+                                            class="rounded-circle"></div>
+                                            <div>
+
+                                            </div>
+                                    <div class="comment-text w-100">
+                                        <h6 class="font-medium text-muted">Author: {{ blog.author }}</h6>
+
+                                        <h6 class="font-medium">{{ blog.title }}</h6>
+                                        <span class="mb-3 d-block">{{ blog.content | safe }}
+                                            </span>
+
+
+
+
+                                        <div class="comment-footer">
+                                            <small class="text-muted float-end"><i class="far fa-calendar-check"></i>  {{ blog.date_posted | date:"F d, Y"}}</small>
+
+                                            <a href="{% url 'post_update' blog.id %}">
+                                                <button type="button" class="btn btn-cyan btn-sm text-white">
+                                                Edit</button></a>
+                                            <button type="button" class="btn btn-success btn-sm text-white">Publish</button>
+                                            <a href="{% url 'post-delete' blog.id %}">
+                                            <button type="button" class="btn btn-danger btn-sm text-white">Delete</button></a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                {% endfor %}
+                                <!-- Comment Row -->
+                               
+                                <!-- Comment Row -->
+                                
+                            </div>
+                        </div>
+                        <!-- Card -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">To Do List</h4>
+                                <div class="todo-widget scrollable" style="height:450px;">
+                                    <ul class="list-task todo-list list-group mb-0" data-role="tasklist">
+                                        <li class="list-group-item todo-item" data-role="task">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="customCheck">
+                                                <label class="form-check-label w-100 mb-0 todo-label" for="customCheck">
+                                                    <span class="todo-desc fw-normal">Lorem Ipsum is simply dummy text of the
+                                                        printing and typesetting industry.</span> <span
+                                                        class="badge rounded-pill bg-danger float-end">Today</span>
+                                                </label>
+                                            </div>
+                                            <ul class="list-style-none assignedto">
+                                                <li class="assignee"><img class="rounded-circle" width="40"
+                                                        src="{% static 'assets/images/users/1.jpg' %}" alt="user"
+                                                        data-toggle="tooltip" data-placement="top" title=""
+                                                        data-original-title="Steave"></li>
+                                                <li class="assignee"><img class="rounded-circle" width="40"
+                                                        src="{% static 'assets/images/users/2.jpg' %}" alt="user"
+                                                        data-toggle="tooltip" data-placement="top" title=""
+                                                        data-original-title="Jessica"></li>
+                                                <li class="assignee"><img class="rounded-circle" width="40"
+                                                        src="{% static 'assets/images/users/3.jpg' %}" alt="user"
+                                                        data-toggle="tooltip" data-placement="top" title=""
+                                                        data-original-title="Priyanka"></li>
+                                                <li class="assignee"><img class="rounded-circle" width="40"
+                                                        src="{% static 'assets/images/users/4.jpg' %}" alt="user"
+                                                        data-toggle="tooltip" data-placement="top" title=""
+                                                        data-original-title="Selina"></li>
+                                            </ul>
+                                        </li>
+                                    </ul>    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card -->
+                        <div class="card">
+                            <div class="card-body">
+                                
+                            </div>
+                        </div>
+                        <!-- card new -->
+                        
+
+                    <div class="col-lg-6">
+                        <!-- Card -->
+                        <i class="fas fa-paper-plane"></i>
+                        <div class="card">
+                            <div class="card-body">
+                               
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card -->
+                       
+                        <!-- accoridan part -->
+                        
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->

@@ -1,0 +1,222 @@
+{% extends "shared/director_dashboard.html" %}
+
+{% load static %}
+{% block title %}
+  Employee Apply for Leave
+{% endblock title %}
+
+
+{% block extrstyle %}
+       <!-- Google Font: Source Sans Pro -->
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+       <!-- Font Awesome -->
+       <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+       <!-- Theme style -->
+       <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+       <!-- custom styles  -->
+       <link rel="stylesheet" href="{% static 'css/manage-employee.css' %}">
+{% endblock extrstyle %}
+
+
+{% block breadcrumb %}
+<div class="page-wrapper">
+  <!-- ============================================================== -->
+  <!-- Bread crumb and right sidebar toggle -->
+  <!-- ============================================================== -->
+  <div class="page-breadcrumb">
+      <div class="row">
+          <div class="col-12 d-flex no-block align-items-center">
+            <h4 class="page-title">Cyclic Payroll Management System | Director Dashboard</h4>
+              <div class="ms-auto text-end">
+                  <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                          <li class="breadcrumb-item"><a href="{% url 'directors' %}">Dashboard</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">Employee Leave</li>
+                      </ol>
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Bread crumb and right sidebar toggle -->
+  <!-- ============================================================== -->
+{% endblock breadcrumb %}
+
+{% block container-fluid %}
+
+<section>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"> Employee Leave</h3>
+
+          <div class="card-tools">
+
+
+
+          </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0">
+           <!-- =========================================
+                                  Alerts message
+                        ========================================= -->
+
+                        {% include "partials/_alerts.html" %}
+                          <!-- =========================================
+                                  Alerts message
+                        ========================================= -->
+
+          <table class="table table-hover text-nowrap">
+            <thead>
+              <tr>
+                <th>#</th>
+                
+                <th>Employee Name</th>
+                <th>Leave Date</th>
+                <th>Leave Message</th>
+                <th>Apply On</th>
+                <th>Action</th>
+                <!-- <th>Actions</th> -->
+              </tr>
+            </thead>
+            <tbody>
+             {% for leave in leaves %}
+
+             <tr>
+                <td>{{ forloop.counter }}</td>
+                
+                <td>{{ leave.employee.user.first_name }} {{ leave.employee.user.last_name }} {{ leave.employee.user.other_name }}</td>
+                <td>{{ leave.leave_date }}</td>
+                <td>{{ leave.leave_reason }}</td>
+                <td>{{ leave.created_at }}</td>
+                <td>{% if leave.leave_status == 0 %}
+                    <a href="{% url 'employee_approve_leave' leave_id=leave.id %}" class="btn btn-success"  >Approve </a>
+                     <a href="{% url 'employee_disapprove_leave' leave_id=leave.id %}"" class="btn btn-danger"  >Disapprove </a>
+                {% elif  leave.leave_status == 1 %}
+                  <button class="btn btn-warning" disabled="disabled" data-toggle="modal" data-target="#reply_modal" >Approved </button>
+                {% else %}
+                <button class="btn btn-danger" disabled="disabled"  data-toggle="modal" data-target="#reply_modal" >Disapprove </button>
+                {% endif %}</td>
+
+
+                <td>
+
+              </tr>
+
+             {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+  </div>
+
+  <nav class="arial-label">
+    {% if leaves.has_other_pages %}
+    <ul class="pagination">
+         {% if leaves.has_previous %}
+             <li class="page-item">
+                 <a href="?page={{ leaves.previous_page_number }}" class="page-link active">
+                     &laquo; Previous
+                 </a>
+             </li>
+         {% else %}
+             <li class="page-item">
+                 <a  class="page-link active">
+                     &laquo; Previous
+                 </a>
+             </li>
+
+         {% endif %}
+         {% for i in leaves.paginator.page_range  %}
+             {% if leaves.number == i %}
+                 <li class="page-item">
+                     <a class="page-link active">
+                         {{ i }}
+                     </a>
+                 </li>
+             {% else %}
+                 <li class="page-item">
+                     <a href="?page={{ i }}" class="page-link active">
+                         {{ i }}
+                     </a>
+                 </li>
+
+             {% endif %}
+
+         {% endfor %}
+
+         {% if leaves.has_next %}
+             <li class="page-item">
+                 <a href="?page={{ leaves.next_page_number }}" class="page-link active">
+                     Next  &raquo;
+                 </a>
+             </li>
+         {% else %}
+             <li class="page-item">
+                 <a  class="page-link active">
+                     Next  &raquo;
+                 </a>
+             </li>
+
+         {% endif %}
+
+     </ul>
+
+    {% endif %}
+
+
+
+
+</nav>
+
+</section>
+
+ <!-- Modal -->
+ <div class="modal fade" id="reply_modal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Reply</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Reply To <span id="reply_name"></span></p>
+          <input type="hidden"  id="reply_id" name="reply_id">
+          <textarea class = "form-control" rows="5"  id="reply_message" ></textarea>
+          <button type="submit" id="reply_btn" class="btn btn-primary">Reply</button>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock container-fluid %}
+
+
+{% block scripts %}
+      <!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{% static 'dist/js/demo.js' %}"></script>
+
+<script>
+
+</script>
+{% endblock scripts %}

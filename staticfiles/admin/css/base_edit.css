@@ -1,0 +1,69 @@
+#header{
+    
+    background: #f4f4f4;
+    box-shadow: 0 3px 20px rgb(0 0 0 / 20%);
+    color: #123;
+    height: 10vh;
+    padding: 50px;
+}
+
+#header b{
+    color: #123;
+    /* font-size: 1.5em */
+    font-size: 51px;
+}
+#header a {
+    color: #123;
+}
+#header a:link, #header a:visited {
+    color: #123;
+}
+
+#user-tools a:focus, #user-tools a:hover {
+    text-decoration: none;
+    border-color: #007bff;
+    color: #007bff;
+}
+#user-tools a {
+    border-bottom: #123;
+}
+
+h1{
+    color: #666;
+}
+
+#user-tools a:focus, #user-tools a:hover {
+    text-decoration: none;
+    border-color: #123;
+    color: #123;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    caption-side: top;
+    background: #123;
+    color: white;
+}
+
+a:link, a:visited {
+    color: #123;
+    text-decoration: none;
+}
+
+div.breadcrumbs {
+    background: #007bff;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #007bff;
+   
+}
+
+.submit-row a.deletelink {
+    display: block;
+    background: #ba2121;
+    border-radius: 4px;
+    padding: 10px 15px;
+    height: 38px;
+    line-height: 15px;
+    color: #fff;
+}
