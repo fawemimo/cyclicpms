@@ -1,0 +1,101 @@
+{% extends "shared/form.html" %}
+{% load static %}
+
+<img src="{% static 'images/form-img.jpg' %}" alt="">
+{% block form %}
+
+    
+    <form action="{% url 'bankdetail' %}" method="POST">
+                   
+        {% csrf_token %}
+        
+        <!-- /.row -->
+        <div class="row">
+        <div class="col-md-12">
+        <div class="card card-default">
+          {% include "partials/_card-title.html" %}
+          
+          {% include "partials/_alerts.html" %}
+          <div class="card-body p-0">
+            <div class="bs-stepper">
+              <div class="bs-stepper-header" role="tablist">
+                <!-- your steps here -->
+                <div class="step" data-target="#logins-part">
+                  <button type="button" class="step-trigger" role="tab" aria-controls="logins-part" id="logins-part-trigger">
+                    <span class="bs-stepper-circle">1</span>
+                    <span class="bs-stepper-label">Account Details</span>
+                  </button>
+                </div>
+                
+                <div class="line"></div>
+                <div class="step" data-target="#information-part">
+                  <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
+                    <span class="bs-stepper-circle">2</span>
+                    <span class="bs-stepper-label"> Bank Info</span>
+                  </button>
+                </div>
+              </div>
+              <div class="bs-stepper-content">
+                <!-- your steps content here -->
+                <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
+        
+                  <!-- =========================================
+                            Alerts message 
+                  ========================================= -->
+        
+                  
+                    <!-- =========================================
+                            Alerts message 
+                  ========================================= -->
+               {% if user.is_authenticated %}
+               <input type="hidden" name="user_id" value="{{ user.id }}">
+               <div class="form-group">
+                <label for="first_name">Full name</label>
+                <input type="text" name="full_name" id="first_name" class="form-control" value="{{ user.first_name }}  {{ user.last_name }}  {{ user.other_name }}" />
+                
+                </div>
+
+                {% else %}
+                <input type="hidden" name="user_id" value="0">
+               {% endif %}
+            <div class="form-group">
+                <label for="bank_name">Bank name</label>
+                {{ form.bank_name }}
+            </div>
+
+            <div class="form-group">
+                <label for="bvn">Your BVN</label>
+                {{ form.bvn }}
+            </div>
+            <button class="btn btn-primary" onclick="stepper.next()">Next</button>
+
+            </div>
+
+            <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
+
+            <div class="form-group">
+                <label for="account_number">Account Number</label>
+                {{ form.account_number }}
+            </div>
+            <div class="form-group">
+                <label for="sort_code">Bank sort code</label>
+                {{ form.sort_code }}
+            </div>
+            
+
+            <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.card-body -->
+   
+  </div>
+  <!-- /.card -->
+</div>
+</div>
+
+</form>
+        
+      {% endblock form %}

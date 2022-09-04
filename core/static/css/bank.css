@@ -1,0 +1,22 @@
+@import url('https://https://fonts.google.com/specimen/Oswald?selection.family=Oswald:wght@300');
+.guidelines{
+    color: red;
+    position: absolute;
+    top: 50%;
+    /* background: rgba(243, 240, 240, 0.442); */
+    left: 116px;
+    padding: 30px;
+    text-align: center;
+}
+
+.guidelines-text{
+    padding: 30px;
+    
+}
+.guidelines-text p, h3 {
+    font-size: large;
+    color:  rgb(94, 129, 247);
+}
+.body-background{
+    background: rgba(243, 240, 240, 0.442); 
+}

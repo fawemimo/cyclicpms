@@ -1,0 +1,41 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block title %}
+CyclicPMS. | Administration Point
+
+
+
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">
+    <b>
+        CyclicPMS.
+    </b>
+</a></h1>
+{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/login.css' %}" />
+ <!-- Google Font: Source Sans Pro -->
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+ <!-- Font Awesome -->
+ <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+ <!-- icheck bootstrap -->
+ <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+ <!-- Theme style -->
+ <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+ <link rel="stylesheet" href="{% static 'css/main.css' %} "/>
+ <link rel="stylesheet" href="{% static 'css/login_edit.css' %} "/>
+ <link rel="stylesheet" href="{% static 'admin/css/base_edit.css' %} "/>
+
+{% endblock %}
+
+
+
+{% block nav-global %}{% endblock %}
+
+{% block footer %}
+
+
+{% endblock %}

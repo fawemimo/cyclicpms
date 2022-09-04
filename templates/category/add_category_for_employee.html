@@ -1,0 +1,286 @@
+{% extends "shared/director_dashboard.html" %}
+
+{% load static %}
+
+{% load humanize %}
+
+    {% block title %}
+     Add Category
+    {% endblock title %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+<link rel="stylesheet" href="{% static 'css/add_employee.css' %}">
+{% endblock extrastyle %}
+
+
+{% block breadcrumb %}
+<div class="page-wrapper">
+  <!-- ============================================================== -->
+  <!-- Bread crumb and right sidebar toggle -->
+  <!-- ============================================================== -->
+  <div class="page-breadcrumb">
+      <div class="row">
+          <div class="col-12 d-flex no-block align-items-center">
+            <h4 class="page-title">Cyclic Payroll Management System | Director Dashboard</h4>
+              <div class="ms-auto text-end">
+                  <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                          <li class="breadcrumb-item"><a href="{% url 'directors' %}">Dashboard</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">Add Employee Category</li>
+                      </ol>
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Bread crumb and right sidebar toggle -->
+  <!-- ============================================================== -->
+{% endblock breadcrumb %}
+{% block container-fluid %}
+
+<section>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+             
+                Add Employee Category
+                </a>    
+            </h3>
+    
+            <div class="card-tools">
+                <form action="{% url 'manage_admin' %}" method="POST">
+                    {% csrf_token %}
+  
+                    <div class="input-group input-group-sm" style="width: 500px;">
+                      
+                      
+                      
+                      {{ form.department }}
+                      {{ form.admin_unique_id}}
+          
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-default">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                </form>
+             
+            </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body table-responsive p-0">
+             <!-- =========================================
+                                    Alerts message 
+                          ========================================= -->
+  
+  
+                            <!-- =========================================
+                                    Alerts message 
+                          ========================================= -->
+  
+            <table class="table table-hover text-nowrap">
+                <thead>
+                    <th>Employee Name</th>
+                    <th>Department</th>
+                    <th>Position</th>
+                    <th>Level</th>
+                    <th>Grade</th>
+                    <th>Step</th>
+                    
+                    <th>Leave allocation days</th>
+                    <th>Actions</th>
+            
+                </thead>
+                <tbody>
+                    {% for addcategory in category %}
+                     <tr>
+
+                        <td>
+                            {{ addcategory.employee.user.first_name }}
+                        </td>
+                        <td>
+                            {{ addcategory.department.name }}
+                        </td>
+                        
+                        <td>
+                            {{ addcategory.position.name }}
+                        </td>
+
+                         <td>
+                             {{ addcategory.level.name }}
+                         </td>
+                         <td>
+                             {{ addcategory.grade.name }}
+                         </td>
+                         <td>
+                             {{ addcategory.step.name }}
+                         </td>
+
+                         <td>
+                            {{ addcategory.leave.days }}
+                        </td>
+                        <td>
+                            <td><a href="{% url 'update_category' addcategory.id %} " class="btn btn-success"> Update</a>
+                                <a href=" " class="btn btn-danger"> Delete</a>
+                                </td>
+                        </td>
+                        
+                        
+                            
+                        
+                     </tr>
+                     {% empty %}
+                     <tr>
+                         <td>
+                             No category added now
+                                 Add employee category
+                             </a>
+                         </td>
+                     </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+    </div> 
+    
+     <!-- Modal -->
+  <div class="modal fade" id="reply_modal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Reply</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        </div>
+        <div class="modal-body">
+           
+           
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+    <!-- /.content -->
+  
+    <nav class="arial-label">
+        <div>
+            <div class="pagination">
+                {% if is_paginated %}
+              {% if page_obj.has_previous %}
+                <a href="?page=1" class="page-link">First &raquo; </a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">Previous &raquo; </a>
+              {% endif %}
+            
+              {% for num in page_obj.paginator.page_range %}
+            
+                {% if page_obj.number %}
+                  <a href="?page={{ num }} " class="page-link"> {{ num }}</a>
+            
+                  {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            
+                      <a href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+                
+              {% endfor %}
+            
+              {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="page-link">Next &raquo; </a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="page-link">
+                  Last &raquo; 
+                </a>
+              {% endif %}
+            
+            {% endif %}  
+              </div>
+            </ul>
+        </div>
+      {% if admins.has_other_pages %}
+      <ul class="pagination">  
+           {% if admins.has_previous %}
+               <li class="page-item">
+                   <a href="?page={{ admins.previous_page_number }}" class="page-link">
+                       &laquo; Previous   
+                   </a>
+               </li>
+           {% else %} 
+               <li class="page-item">
+                   <a  class="page-link">
+                       &laquo; Previous
+                   </a>
+               </li>
+  
+           {% endif %}
+           {% for i in admins.paginator.page_range  %}
+               {% if admins.number == i %}
+                   <li class="page-item">
+                       <a class="page-link">
+                           {{ i }}
+                       </a>
+                   </li>
+               {% else %}    
+                   <li class="page-item">
+                       <a href="?page={{ i }}" class="page-link">
+                           {{ i }}
+                       </a>
+                   </li>
+                 
+               {% endif %}
+             
+           {% endfor %}
+  
+           {% if admins.has_next %}
+               <li class="page-item">
+                   <a href="?page={{ admins.next_page_number }}" class="page-link">
+                       Next  &raquo; 
+                   </a>
+               </li>
+           {% else %}
+               <li class="page-item">
+                   <a  class="page-link">
+                       Next  &raquo;
+                   </a>
+               </li>
+  
+           {% endif %}
+  
+       </ul>
+      
+      {% endif %}
+     
+          
+          
+   
+  </nav>
+   
+  </section>
+
+
+
+
+                  
+{% endblock container-fluid %}
+   
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+<script src="{% static 'js/semantic.js' %}"></script>
+
+
+{% endblock scripts %}
+  

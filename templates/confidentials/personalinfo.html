@@ -1,0 +1,157 @@
+{% extends "shared/form.html" %}
+{% load static %}
+    
+ 
+
+{% block form %}
+  
+<form action="{% url 'personalinfo' %}" method="POST">
+                   
+  {% csrf_token %}
+
+  <!-- /.row -->
+  <div class="row">
+  <div class="col-md-12">
+  <div class="card card-default">
+    {% include "partials/_card-title.html" %}
+    
+    {% include "partials/_alerts.html" %}
+    <div class="card-body p-0">
+      <div class="bs-stepper">
+        <div class="bs-stepper-header" role="tablist">
+          <!-- your steps here -->
+          <div class="step" data-target="#logins-part">
+            <button type="button" class="step-trigger" role="tab" aria-controls="logins-part" id="logins-part-trigger">
+              <span class="bs-stepper-circle">1</span>
+              <span class="bs-stepper-label">Personal</span>
+            </button>
+          </div>
+          
+          <div class="line"></div>
+          <div class="step" data-target="#information-part">
+            <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
+              <span class="bs-stepper-circle">2</span>
+              <span class="bs-stepper-label"> information</span>
+            </button>
+          </div>
+        </div>
+        <div class="bs-stepper-content">
+          <!-- your steps content here -->
+          <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
+
+            {% if user.is_authenticated %}
+
+                
+            <div class="form-group">
+                
+                <input type="hidden" class="form-control" name="user_id" value="{{ user.id }}">
+            </div>
+            <div class="form-group">
+                <label for="id_full_name" > Full name</label>
+                  <input type="text" class="form-control" placeholder="full name" name="full_name" id="id_full_name" value="{{ user.first_name }} {{ user.last_name }} {{ user.other_name }}" >
+            </div>
+            
+            <div class="form-group">
+                <label >Date employed </label>
+                <input type="datetime"   class="form-control" name="employment_date" placeholder="date employed" required value="{{ user.date_joined }}">
+            </div>
+
+            <div class="form-group">
+                <label for="id_phone_number" > Phone number</label>
+                  <input type="tel" class="form-control" placeholder="fphone number " name="phone_number" id="id_phone_numbere" value="{{ user.phone_number }}">
+            </div>
+
+
+
+              
+            {% endif %}
+
+            <div class="form-group">
+                <label for="id_phone_number_2" > Phone number 2</label>
+                  <input type="tel" class="form-control" placeholder="phone number 2" name="phone_number_2" id="id_phone_number_2">
+            </div>
+
+            <div class="form-group">
+                <label >Contact Address </label>
+                <input type="text"   class="form-control" name="contact_address" placeholder="contact address" required value="{{ user.contact_address }}">
+            </div>
+            
+            <div class="form-group">
+              {% if  contact_verify == 1 %}
+                <label for="">Approved</label>
+              {% elif  contact_verify == 2 %}  
+              <label for="">Rejected</label>
+              {% else %}
+              <label for="">Pending... </label>
+              {% endif %}
+                
+                
+            </div>
+            
+            <button class="btn btn-primary" onclick="stepper.next()">Next</button>
+          </div>
+          <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
+            <div class="form-group">
+                <label > D.O.B</label>
+                <input type="datetime"   class="form-control" name="dob" placeholder="date of birth" required>
+            </div>
+            <div class="form-group">
+                <label > D.O.B verify</label>
+                <input type="number"   class="form-control" name="dob_verify" >
+            </div>
+            <div class="form-group">
+                <label > Parmanent home address</label>
+                <input type="text"   class="form-control" name="parmanent_home_address" placeholder="enter parmanent home address" required>
+            </div>
+            
+            
+            
+            <div class="form-group">
+
+              {% if  parmanent_address_verify == 1 %}
+              <label for="">Approved</label>
+            {% elif  parmanent_address_verify == 2 %}  
+            <label for="">Rejected</label>
+            {% else %}
+            <label for="">Pending... </label>
+            {% endif %}
+               
+            </div>
+            <div class="form-group">
+                <label> Pension house</label>
+                <input type="text"   class="form-control" name="pension_house" placeholder="enter pension house" required>
+            </div>
+        
+            <div class="form-group">
+                <label > pension number</label>
+                <input type="text"   class="form-control" name="pension_number" placeholder="enter pension number" required>
+            </div> 
+            <div class="form-group">
+                <label >PAYEE_ID</label>
+                <input type="text"   class="form-control" name="PAYEE_ID" placeholder="enter payee ID" required>
+            </div> 
+
+            <div class="form-group">
+                <label > NHF_ID</label>
+                <input type="text"   class="form-control" name="NHF_ID" placeholder="NHF ID" required>
+            </div> 
+            
+            
+            
+            <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
+            <button type="submit" class="btn btn-primary">Save Info</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.card-body -->
+    
+  </div>
+  <!-- /.card -->
+  </div>
+  </div>
+  
+</form>
+
+{% endblock form %}
+                 

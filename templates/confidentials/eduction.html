@@ -1,0 +1,162 @@
+{% extends "shared/form.html" %}
+{% load static %}
+
+
+
+
+{% block form %}
+
+
+
+<form action="{% url 'education' %}" method="POST">
+                   
+    {% csrf_token %}
+    
+    <!-- /.row -->
+    <div class="row">
+    <div class="col-md-12">
+    <div class="card card-default">
+      {% include "partials/_card-title.html" %}
+      
+      {% include "partials/_alerts.html" %}
+      <div class="card-body p-0">
+        <div class="bs-stepper">
+          <div class="bs-stepper-header" role="tablist">
+            <!-- your steps here -->
+            <div class="step" data-target="#logins-part">
+              <button type="button" class="step-trigger" role="tab" aria-controls="logins-part" id="logins-part-trigger">
+                <span class="bs-stepper-circle">1</span>
+                <span class="bs-stepper-label">Institution</span>
+              </button>
+            </div>
+            
+            <div class="line"></div>
+            <div class="step" data-target="#information-part">
+              <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
+                <span class="bs-stepper-circle">2</span>
+                <span class="bs-stepper-label"> Certification</span>
+              </button>
+            </div>
+          </div>
+          <div class="bs-stepper-content">
+            <!-- your steps content here -->
+            <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
+    
+           {% if user.is_authenticated %}
+           <input type="hidden" name="user_id" value="{{ user.id }}">
+           <div class="form-group">
+            <label for="first_name">Full name</label>
+            <input type="text" name="full_name" id="first_name" class="form-control" value="{{ user.first_name }}  {{ user.last_name }}  {{ user.other_name }}" />
+            
+            </div>
+
+            {% else %}
+            <input type="hidden" name="user_id" value="0">
+           {% endif %}
+        <div class="form-group">
+            <label >Institution</label>
+            {{ form.institution }}
+        </div>
+
+        <div class="form-group">
+            <label for="date_from"> Date from</label>
+            {{ form.date_from }}
+        </div>
+        <div class="form-group">
+            <label for="date_to">Date to</label>
+            {{ form.date_to }}
+        </div>
+
+        <div class="form-group">
+            <label for="date_current">Date current</label>
+            {{ form.date_current }}
+        </div>
+
+        <div class="form-group">
+            <label for="degree">Degree</label>
+            {{ form.degree }}
+        </div>
+
+        <div class="form-group">
+          {% if  form.degree_authenticate == 1 %}
+          <label for="degree_authenticate">Approved</label>
+        {% elif  form.degree_authenticate == 2 %}  
+        <label for="degree_authenticate">Rejected</label>
+        {% else %}
+        <label for="nysc_authenticate">Pending... </label>
+        {% endif %}
+           
+        </div>
+
+        
+
+        <div class="form-group">
+            <label for="course">Course</label>
+            {{ form.course }}
+        </div>
+
+        <button class="btn btn-primary" onclick="stepper.next()">Next</button>
+
+        </div>
+
+        <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
+
+            <div class="form-group">
+                <label for="nysc_current">NYSC Current</label>
+                {{ form.nysc_current }}
+            </div>
+
+            <div class="form-group">
+                <label for="nysc_ongoing">NYSC ongoing</label>
+                {{ form.nysc_ongoing }}
+            </div>
+
+            <div class="form-group">
+              {% if  form.nysc_authenticate == 1 %}
+              <label for="nysc_authenticate">Approved</label>
+            {% elif  form.nysc_authenticate == 2 %}  
+            <label for="nysc_authenticate">Rejected</label>
+            {% else %}
+            <label for="nysc_authenticate">Pending... </label>
+            {% endif %}
+               
+            </div>
+
+            
+
+            <div class="form-group">
+                <label for="members_body">Members body</label>
+                {{ form.members_body }}
+            </div>
+
+            <div class="form-group">
+                <label for="membership_number">Membership number</label>
+                {{ form.membership_number }}
+            </div>
+
+            <div class="form-group">
+                <label for="membership_class">
+                    Membership class
+                </label>
+                {{ form.membership_class }}
+            </div>
+        
+
+        <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.card-body -->
+
+</div>
+<!-- /.card -->
+</div>
+</div>
+
+</form>
+
+
+        
+{% endblock form %}

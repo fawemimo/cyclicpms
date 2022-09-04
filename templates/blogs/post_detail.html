@@ -1,0 +1,79 @@
+{% extends "shared/layout.html" %}
+{% load static %}
+
+{% load humanize %}
+{% load widget_tweaks %}
+{% block title %}
+  {{ user.first_name }}
+{% endblock title %}
+{% block extrastyle %}
+  <link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock extrastyle %}
+
+
+{% block body %}
+
+    
+<ul class="card card-primary card-outline">
+
+  <div class="card-header">
+    <h1 class="card-title m-0">
+      BLOG
+    </h1>
+   
+  </div>  
+  <article>
+    <li>
+      <div class="user">
+              
+                  
+              
+        <img src="{{ object.author.profile.image.url }}" alt=""style="border-radius: 50%; width:100px; height:auto;">
+        
+          <p class="card-text">
+            <b><a href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+              </b><br>
+              <b><i class="far fa-calendar-check"></i></b><small>{{ post.date_posted | date:"F d, Y"}}</small>
+
+            {% if object.author == user %}
+            <a href="{% url 'post_update' object.id %}" class="btn btn-success"> 
+              Update 
+            </a>
+
+            <a href="{% url 'post-delete' object.id %}" class="btn btn-danger"> 
+              Delete
+            </a>
+            
+          {% endif %}
+        
+              
+          </p>
+
+          <div class="card-body">
+            <h1 class="card-title">
+                <a href="{% url 'post-detail' post.id %}" class="link">
+                  {{ object.title | safe }}
+                </a>               
+            </h1>
+
+            
+            <p class="card-text">
+              {{ object.content | safe }}
+            </p>
+            
+         
+
+            
+
+      
+      </div>
+    </li>
+  </article>
+
+
+</ul>
+  
+{% endblock body %}
+  
+
+ 

@@ -1,0 +1,191 @@
+{% extends "shared/admin_dashboard.html" %}
+{% load static %}
+
+{% block title %}
+  Apply Leave
+{% endblock title %}
+
+{% block extrasyle %}
+<!-- <link rel="stylesheet" href="{% static 'css/blogs.css' %}"> -->
+{% endblock extrasyle %}
+{% block bodycontent %}
+<ul class="card card-primary card-outline">
+
+  <div class="card-header text-center">
+      <a href="{% url 'home' %}" class="h1"><b>Apply leave</b></a>
+      <hr>
+    </div>
+  
+    <article>
+      <li>
+        <div class="user">
+        
+            
+          <div class="contact-phone">
+            <span>
+              <code>
+                <small>
+
+               </small>
+              </code>
+            </span>
+             
+          </div>
+          
+            <address>
+              <p class="card-text">
+              
+            
+              </p>
+            </address>
+        
+        </div>
+          <div class="card-body">
+            <h1 class="card-title">
+
+                          
+            </h1>
+
+              <form action="{% url 'admin_apply_leave_save' %}" method="POST">
+                {% csrf_token %}
+                
+                <div class="form">
+                  <label >Leave Apply on:</label>
+                  <input type="date" name="leave_date" id="id_leave_date" class = "form-control" placeholder="leave date" required>
+                </div>
+
+                <div class="form">
+                    <label >Leave Start From:</label>
+                    <input type="date" name="leave_start" id="id_leave_start" class = "form-control" placeholder="leave start from" required>
+                  </div>
+
+                  <div class="form">
+                    <label >Leave End At:</label>
+                    <input type="date" name="leave_end" id="id_leave_end" class = "form-control" placeholder="leave end at" required>
+                  </div>
+
+                <div class="form">
+                    <label >Leave Reason:</label>
+                    <textarea name="leave_reason" id="id_leave_reason" placeholder="leave reason" class = "form-control" rows="6" required></textarea>
+                </div>
+
+                <button class="btn btn-primary btn-block mt-2" type="submit">Apply Leave</button>
+              </form>
+              
+            
+      </li>
+    </article>
+ 
+
+
+         <div class="table">
+            <table class="table">
+                <tr>
+                    <th>#</th>
+
+                    <th>Leave Apply on</th>
+                    <th>Leave Start</th>
+                    <th>Leave End</th>
+                    <th>Leave Reason</th>
+                    <th>Leave Status</th>
+    
+    
+                </tr>
+                
+                {% for leave in leave_data %}
+                <tr>
+                    <td>
+                        {{ forloop.counter }}
+                    </td>
+
+                    <td>
+                        {{leave.leave_date }}
+                    </td>
+
+                    <td>
+                        {{leave.leave_start }}
+                    </td>
+
+                    <td>
+                        {{leave.leave_end }}
+                    </td>
+                    <td>
+                        {{ leave.leave_reason }}
+                    </td>
+                    <td>
+                        {% if leave.leave_status == 1 %}
+                          <span class="alert alert-success">Approved</span>
+    
+                        {% elif  leave.leave_status == 2 %}  
+                            <span class="alert alert-danger">Rejected</span>
+    
+                        {% else %}    
+                            <span class="alert alert-warning">Pending</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+    
+           </table>
+
+           <nav class="arial-label">
+            {% if leave_data.has_other_pages %}
+            <ul class="pagination">  
+                 {% if leave_data.has_previous %}
+                     <li class="page-item">
+                         <a href="?page={{ leave_data.previous_page_number }}" class="page-link">
+                             &laquo; Previous   
+                         </a>
+                     </li>
+                 {% else %} 
+                     <li class="page-item">
+                         <a  class="page-link">
+                             &laquo; Previous
+                         </a>
+                     </li>
+        
+                 {% endif %}
+                 {% for i in leave_data.paginator.page_range  %}
+                     {% if leave_data.number == i %}
+                         <li class="page-item">
+                             <a class="page-link">
+                                 {{ i }}
+                             </a>
+                         </li>
+                     {% else %}    
+                         <li class="page-item">
+                             <a href="?page={{ i }}" class="page-link">
+                                 {{ i }}
+                             </a>
+                         </li>
+                       
+                     {% endif %}
+                   
+                 {% endfor %}
+        
+                 {% if leave_data.has_next %}
+                     <li class="page-item">
+                         <a href="?page={{ leave_data.next_page_number }}" class="page-link">
+                             Next  &raquo; 
+                         </a>
+                     </li>
+                 {% else %}
+                     <li class="page-item">
+                         <a  class="page-link">
+                             Next  &raquo;
+                         </a>
+                     </li>
+        
+                 {% endif %}
+        
+             </ul>
+            
+            {% endif %}
+           
+                
+                
+         
+        </nav>
+         </div>
+
+{% endblock bodycontent %}

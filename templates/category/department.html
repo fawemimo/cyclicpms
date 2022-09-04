@@ -1,0 +1,90 @@
+{% extends 'shared/director_dashboard.html' %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block container-fluid %}
+<div class="container">
+    <h1>Setup Your Dashboard</h1>
+    <div class="row">
+      <div class="col-md-4 ">
+        <h3>ADD DEPARTMENT</h3>
+        <form id="addUser" action="{% url 'create_department_save' %}" method="POST">
+          {% csrf_token %}
+          {% if user.is_authenticated %}
+
+          <div class="form-group">
+            
+            <input type="hidden" class="form-control" name="director" id="id_director" autocomplete="off" value="{{ user.id }}">
+        </div>
+            
+          {% endif %}
+          <div class="form-group">
+            <input class="form-control" type="text" name="name" placeholder="Department" required>
+          </div>
+          
+          <button class="btn btn-primary form-control" type="submit">SUBMIT</button>
+        </form>
+      </div>
+      <div class="col-md-8">
+        <h3>DEPARTMENT</h3>
+        <table id="userTable" class="table table-striped">
+          <tr>
+            <th>Name</th>
+            <th>Actions</th>
+           
+          </tr>
+          {% if departments %}
+          {% for department in departments %}
+          <tr id="user">
+              <td class="userName" name="name">{{ department.name }}</td>
+              
+              <td align="center">
+                  <button class="btn btn-success form-control"  data-toggle="modal" data-target="#myModal">EDIT</button>
+              </td>
+              <td align="center">
+                  <button class="btn btn-danger form-control" >DELETE</button>
+              </td>
+          </tr>
+
+          <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="myModalLabel">Update department</h4>
+        </div>
+        <form action="{% url 'update_department_save'  %}" method="POST">
+          {% csrf_token %}
+        <div class="modal-body">
+            {% if user.is_aithenticated %}
+            <input class="form-control" type="hidden" name="director" value="{{ user.id }}">
+            {% endif %}
+            <label for="name">Name:</label>
+            <input class="form-control" type="text" name="name" value="{{ department.name }}">
+            <input type="hidden" name="department_id" value="{{ department.id }}">
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" >Save changes</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+          {% endfor %}
+          {% else %}
+            No Departments
+          {% endif %}
+        </table>
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}
+{% block javascript %}
+
+
+{% endblock javascript %}

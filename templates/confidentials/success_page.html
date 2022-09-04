@@ -1,0 +1,15 @@
+{% extends "shared/form.html" %}
+{% load static %}
+ 
+{% block form %}
+<form action="">
+    <div class="success-page">
+        <img  src="http://share.ashiknesin.com/green-checkmark.png" class="center" alt="" />
+       <h2>Forms Submitted Successful !</h2>
+       <p>Hi, {{ user.first_name }} {{ user.last_name }} {{ user.other_name }} we will sent an email to you as soon as your crendentials has been approved</p>
+       <a href="{% url 'home' %}" class="btn-view-orders">Home</a>
+       
+     </div>
+     </div>
+</form>
+{% endblock form %}

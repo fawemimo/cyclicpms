@@ -1,0 +1,116 @@
+{% extends 'shared/director_dashboard.html' %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block container-fluid %}
+<div class="container">
+    <h1>Setup Your Dashboard</h1>
+    <div class="row">
+      <div class="col-md-4 ">
+        <h3>ADD STEP</h3>
+        <form id="addUser" action="{% url 'create_step' %}" method="POST">
+          {% csrf_token %}
+          {% if user.is_authenticated %}
+          <input type="hidden" name="director" value="{{ user.id }}">
+        {% endif %} 
+          <div class="form-group">
+              <label for="">Name:</label>
+            <input class="form-control" type="text" name="name" placeholder="step" required>
+          </div>
+
+          <div class="form-group">
+              <label for="">Grade:</label>
+            <select name="grade" id="" class="form-control">
+                <option value="0">-------</option>
+                {% for grade in grades %}
+                <option value="{{ grade.id }}" class="form-control"> {{ grade.name }}</option>
+                {% endfor %}
+            </select>
+          </div>
+          
+          <button class="btn btn-primary form-control" type="submit">SUBMIT</button>
+        </form>
+      </div>
+      <div class="col-md-8">
+        <h3>GRADE</h3>
+        <table id="userTable" class="table table-striped">
+          <tr>
+            <th>Step</th>
+            <th>Grade</th>
+            <th>Level</th>
+            <th>Actions</th>
+           
+          </tr>
+          {% if steps %}
+          {% for step in steps %}
+          <tr id="user-{{step.id}}">
+              <td class="userName userData" name="name">{{step.name}}</td>
+              <td class="userName userData" name="name">{{step.grade.name}}</td>
+              <td class="userName userData" name="name">{{step.grade.level}}</td>
+              
+              <td align="center">
+                  <button class="btn btn-success form-control" data-toggle="modal" data-target="#myModal">EDIT</button>
+                 
+              </td>
+              <td align="center">
+                  <button class="btn btn-danger form-control">DELETE</button>
+              </td>
+          </tr>
+
+           <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="myModalLabel">Update step</h4>
+        </div>
+        <form id="updateUser" action="" method="POST">
+          {% csrf_token %}
+        <div class="modal-body">
+            <input class="form-control" id="form-id" type="hidden" name="formId"/>
+            <label for="name">Name:</label>
+            <input class="form-control" id="form-name" type="text" name="formName" value="{{ grade.name }}"/>
+            <label for="">Level:</label>
+            <select name="level" id="" class="form-control">
+                <option value="0">-------</option>
+                {% for level in levels %}
+                <option value="{{ level.id }}" class="form-control"> {{ level.name }}</option>
+                {% endfor %}
+            </select>
+            
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" >Save changes</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+          {% endfor %}
+          {% else %}
+            No step added...
+          {% endif %}
+        </table>
+      </div>
+    </div>
+  </div>
+ 
+{% endblock %}
+{% block javascript %}
+<script>
+// Create Django Ajax Call
+
+
+
+
+
+
+
+
+
+</script>
+{% endblock javascript %}

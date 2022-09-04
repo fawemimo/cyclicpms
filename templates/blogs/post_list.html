@@ -1,0 +1,118 @@
+{% extends "shared/layout.html" %}
+{% load static %}
+
+{% load humanize %}
+{% load widget_tweaks %}
+{% block extrastyle %}
+  <link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock extrastyle %}
+
+{% block title %}
+  Blogs List
+{% endblock title %}
+  {% block body %}
+
+
+
+      <ul class="card card-primary card-outline">
+
+        <div class="card-header">
+          <h1 class="card-title m-0">
+            BLOG
+          </h1>
+          
+        </div>
+        {% if posts %}
+          
+         
+        {% for post in posts  %}
+          <article>
+            <li class="articles">
+
+             <ul>
+               <li>
+                <div class="user">
+              
+                  
+              
+                  <img src="{{ post.author.profile.image.url }}" alt="user profile"style="border-radius: 50%; width:100px; height:auto;">
+                  
+                    <address>
+                      <p class="card-text">
+                        <b><a href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+                          </b><br>
+                        <b><i class="far fa-calendar-check"></i> </b><small>{{ post.date_posted | date:"F d, Y"}}</small>
+                    
+                    
+                      </p>
+                    </address>
+                
+                </div>
+               </li>
+               <li>
+                <div class="side-content">
+                  <div class="card-body">
+                    <h1 class="card-title" id="title">
+                        <a href="{% url 'post-detail' post.id %}" class="link">
+                          {{ post.title }}
+                        </a>               
+                    </h1>
+                  </div>
+                    <div class="posts-content">
+                      <p class="card-text">
+                        {{ post.content|slice:'1000' | safe }}
+                      </p>
+                    </div>
+                </div>
+               </li>
+             </ul>
+                
+                  
+                 
+            </li>
+          </article>
+        {% endfor %}
+        
+        {% else %}
+        <div class="posts-content">
+          <p class="card-text">
+           No blog post added...
+          </p>
+        </div>
+        {% endif %}
+        <div class="pagination">
+          {% if is_paginated %}
+        {% if page_obj.has_previous %}
+          <a href="?page=1">First</a>
+          <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+      
+        {% for num in page_obj.paginator.page_range %}
+      
+          {% if page_obj.number %}
+            <a href="?page={{ num }}"> {{ num }}</a>
+      
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+      
+                <a href="?page={{ num }}">{{ num }}</a>
+          {% endif %}
+          
+        {% endfor %}
+      
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">Next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">
+            Last
+          </a>
+        {% endif %}
+      
+      {% endif %}  
+        </div>
+      </ul>
+  
+  
+
+  
+
+
+  {% endblock body %}

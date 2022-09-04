@@ -1,0 +1,19 @@
+@import url('https://https://fonts.google.com/specimen/Oswald?selection.family=Oswald:wght@300');
+body{
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+}
+#header{
+    position: relative;
+    font-size: 1.5em;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-decoration: none
+    
+}
+#branding h1 {
+    color: #fff;
+    font-size: 2em;
+}

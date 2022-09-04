@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyclicPMS. | {{ user.first_name }} {{ user.last_name }}</title>
+  <link rel="icon" href="{% static 'img/abcicon.png' %}" sizes="16x16">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="{% static 'plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css' %}">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{% static 'plugins/select2/css/select2.min.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css' %}">
+  <!-- Bootstrap4 Duallistbox -->
+  <link rel="stylesheet" href="{% static 'plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css' %}">
+  <!-- BS Stepper -->
+  <link rel="stylesheet" href="{% static 'plugins/bs-stepper/css/bs-stepper.min.css' %}">
+  <!-- dropzonejs -->
+  <link rel="stylesheet" href="{% static 'plugins/dropzone/min/dropzone.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+
+  <!-- custom style  -->
+  <link rel="stylesheet" href="{% static 'css/add_employee.css' %}">
+  <!-- Ionic icon  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Success CSS  -->
+  <link rel="stylesheet" href="{% static 'css/success.css' %}">
+</head>
+
+<body>
+
+  {% block form %}
+
+
+
+  {% endblock form %}
+
+
+
+
+
+
+  <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+  <!-- Bootstrap 4 -->
+  <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- Select2 -->
+  <script src="{% static 'plugins/select2/js/select2.full.min.js' %}"></script>
+  <!-- Bootstrap4 Duallistbox -->
+  <script src="{% static 'plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js' %}"></script>
+  <!-- InputMask -->
+  <script src="{% static 'plugins/moment/moment.min.js' %}"></script>
+  <script src="{% static 'plugins/inputmask/jquery.inputmask.min.js' %}"></script>
+  <!-- date-range-picker -->
+  <script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
+  <!-- bootstrap color picker -->
+  <script src="{% static 'plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js' %}"></script>
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+  <!-- Bootstrap Switch -->
+  <script src="{% static 'plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}"></script>
+  <!-- BS-Stepper -->
+  <script src="{% static 'plugins/bs-stepper/js/bs-stepper.min.js' %}"></script>
+  <!-- dropzonejs -->
+  <script src="{% static 'plugins/dropzone/min/dropzone.min.js' %}"></script>
+  <!-- AdminLTE App -->
+  <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+  <!-- JS FOR FILE UPLOAD  -->
+  <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="{% static 'dist/js/demo.js' %}"></script>
+  <!-- Page specific script -->
+  <script src="{% static 'js/add_employee.js' %}"></script>
+  {% block script %}
+
+  {% endblock script %}
+
+</body>
+
+</html>

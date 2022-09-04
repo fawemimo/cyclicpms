@@ -1,0 +1,112 @@
+<script>
+// Create Django Ajax Call
+$("form#addUser").submit(function() {
+    var nameInput = $('input[name="name"]').val().trim();
+   
+    if (nameInput) {
+        // Create Ajax Call
+        $.ajax({
+            url: '{% url "crud_ajax_create" %}',
+            data: {
+                'name': nameInput,
+               
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.department) {
+                  appendToUsrTable(data.department);
+                }
+            }
+        });
+      } else {
+        alert("All fields must have a valid value.");
+    }
+    $('form#addUser').trigger("reset");
+    return false;
+});
+function appendToUsrTable(department) {
+  $("#userTable > tbody:last-child").append(`
+        <tr id="user-${department.id}">
+            <td class="userName" name="name">${department.name}</td>
+            
+            '<td align="center">
+                <button class="btn btn-success form-control" onClick="editUser(${department.id})" data-toggle="modal" data-target="#myModal")">EDIT</button>
+            </td>
+            <td align="center">
+                <button class="btn btn-danger form-control" onClick="deleteUser(${department.id})">DELETE</button>
+            </td>
+        </tr>
+    `);
+
+
+}
+
+
+
+// Create Django Ajax Call
+$("form#updateUser").submit(function() {
+    var idInput = $('input[name="formId"]').val().trim();
+    var nameInput = $('input[name="formName"]').val().trim();
+    
+    if (nameInput) {
+        // Create Ajax Call
+        $.ajax({
+            url: '{% url "crud_ajax_update" %}',
+            data: {
+                'id': idInput,
+                'name': nameInput,
+               
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.department) {
+                  updateToUserTabel(data.department);
+                }
+            }
+        });
+       } else {
+        alert("All fields must have a valid value.");
+    }
+    $('form#updateUser').trigger("reset");
+    $('#myModal').modal('hide');
+    return false;
+});
+
+// Update Django Ajax Call
+function editUser(id) {
+  if (id) {
+    tr_id = "#user-" + id;
+    name = $(tr_id).find(".userName").text();
+    
+    $('#form-id').val(id);
+    $('#form-name').val(name);
+    
+  }
+}
+function updateToUserTabel(department){
+    $("#userTable #user-" + department.id).children(".userData").each(function() {
+        var attr = $(this).attr("name");
+        if (attr == "name") {
+          $(this).text(department.name);
+        } 
+      });
+}
+
+// Delete Django Ajax Call
+function deleteUser(id) {
+    var action = confirm("Are you sure you want to delete this department?");
+    if (action != false) {
+      $.ajax({
+          url: '{% url "crud_ajax_delete" %}',
+          data: {
+              'id': id,
+          },
+          dataType: 'json',
+          success: function (data) {
+              if (data.deleted) {
+                $("#userTable #user-" + id).remove();
+              }
+          }
+      });
+    }
+  }

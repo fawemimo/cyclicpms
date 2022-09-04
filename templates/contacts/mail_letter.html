@@ -1,0 +1,71 @@
+{% extends "shared/layout.html" %}
+{% load static %}
+
+{% block title %}
+  Contact
+{% endblock title %}
+
+
+{% block extrastyle %}
+  <link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock extrastyle %}
+
+{% block body %}
+<ul class="card card-primary card-outline">
+
+  <div class="card-header">
+    <h1 class="card-title m-0">
+      Email Subscriptions
+    </h1>
+    <hr>
+  </div>  
+  
+    <article>
+      <li>
+        <div class="user">
+        
+            
+          <div class="contact-phone">
+            <span>
+              <code>
+                <small>
+                  <small id="sales">
+                   Sales Equiry:
+                  </small> +234 80 583 677 68 | cyclicPMS@gmail.com
+               </small>
+              </code>
+            </span>
+             
+          </div>
+          
+            <address>
+              <p class="card-text">
+              
+            
+              </p>
+            </address>
+        
+        </div>
+          <div class="card-body">
+            <h1 class="card-title">
+
+                          
+            </h1>
+              <form action="{% url 'contacts-mail' %}" method="POST">
+                {% csrf_token %}
+                
+                <div class="form">
+                    {% include "partials/_alerts.html" %}
+                    {{ form.errors }}
+                    {{ form | safe}}
+                </div>
+
+                <button type="submit">Send</button>
+              </form>
+              
+            <hr>
+      </li>
+    </article>
+ 
+
+{% endblock body %}

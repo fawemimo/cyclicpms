@@ -1,0 +1,205 @@
+{% extends "shared/director_dashboard.html" %}
+{% load static %}
+
+{% block container-fluid %}
+ <div id="alert-box" style="width: 50%; margin-left:494px; position: absolute; top: 119px"></div> 
+<form action="" id="car-form" method="POST" style="width:50%; margin-left: 500px; margin-top: 123px;">
+    {% csrf_token %}
+
+    <div class="card-header">
+        <h3 class="card-title">Set Category </h3>
+      </div>
+                    
+<!-- Department  -->
+<!-- <div class="ui selection dropdown" id="cars">
+    <input type="hidden" name="car">
+    <i class="dropdown icon"></i>
+    <div class="default text" id="car-text">Choose a Department</div>
+    <div class="menu" id="cars-data-box">
+      
+    </div>
+</div> -->
+
+<!-- Department  -->
+<div class="form-group">
+    <label for="">Department:</label>
+<div class="ui selection form-control dropdown" id="departments">
+    <input type="hidden" name="department">
+    <i class="dropdown icon"></i>
+    <div class="default text" id="department-text">Choose a Department</div>
+    
+    <div class="menu" id="departments-data-box">
+    
+    </div>
+</div>
+</div>
+       
+   <div class="form-group">
+         <!-- position  -->
+     <label for="">Position:</label>
+     <div class="ui selection form-control dropdown" id="positions">
+        <input type="hidden" name="position">
+        <i class="dropdown icon"></i>
+        <div class="default text" id="position-text">Choose a position</div>
+        <div class="menu" id="positions-data-box">
+          
+        </div>
+    </div>
+   </div>
+
+<!-- Level  -->
+<div class="form-group">
+    <label for="">Level:</label>
+    <div class="ui selection form-control dropdown" id="levels">
+        <input type="hidden" name="level">
+        <i class="dropdown icon"></i>
+        <div class="default text" id="level-text">Choose a level</div>
+        <div class="menu" id="levels-data-box">
+          
+        </div>
+    </div>
+</div>
+<!-- Grade  -->
+<div class="form-group">
+    <label for="">Grade:</label>
+    <div class="ui selection form-control dropdown" id="grades">
+        <input type="hidden" name="grade">
+        <i class="dropdown icon"></i>
+        <div class="default text" id="grade-text">Choose a grade</div>
+        <div class="menu" id="grades-data-box">
+            
+        </div>
+    </div>  
+</div>
+
+   <!-- step  -->
+   <div class="form-group">
+    <label >Step:</label>
+    <div class="ui selection form-control dropdown" id="steps">
+     <input type="hidden" name="step">
+     <i class="dropdown icon"></i>
+     <div class="default text" id="step-text">Choose a step</div>
+     <div class="menu" id="steps-data-box">
+         
+     </div>
+ </div>  
+   </div>
+
+ <!-- leave days  -->
+ <div class="form-group">
+    <label for="">Leave Allocation Days:</label>
+    <div class="ui selection form-control dropdown" id="leaves">
+       <input type="hidden" name="days">
+       <i class="dropdown icon"></i>
+       <div class="default text" id="leave-text">Choose a leave days</div>
+       <div class="menu" id="leaves-data-box">
+           
+       </div>
+   </div>  
+ </div>
+
+    <div id="btn-box" class="not-visible">
+        <button type="submit" class="ui primary button ">
+            set category
+        </button>
+    </div>
+
+
+
+</form>
+
+<!-- ======================================================================== -->
+
+<!-- ======================================================================== -->
+
+
+
+<!-- ======================================================================== -->
+
+
+<!-- ======================================================================== -->
+
+{% endblock container-fluid %}
+
+<!-- <div>
+    <form action="" id="car-form">
+        {% csrf_token %}
+    
+        <div class="ui selection dropdown" id="cars">
+            <input type="hidden" name="car">
+            <i class="dropdown icon"></i>
+            <div class="default text">Choose a level</div>
+            <div class="menu" id="cars-data-box">
+                <!-- {% for level in qs2 %}
+                <div class="item" data-value="{{ level }}">{{ level.name }}</div>
+                {% endfor %} -->
+            <!-- </div>
+          </div>
+    </form>
+</div>
+
+<div class="ui left icon input">
+    <input type="number" placeholder="hourly pay rate" id="hourly_pay_rate" name="hourly_pay_rate" class="">
+    <i class="hourglass outline icon"></i>
+</div>  
+
+<div class="ui left icon input">
+    <input type="number" placeholder="overtime hours" id="overtime_hours" name="overtime_hours" class="">
+    <i class="clock icon"></i>
+</div>  
+
+<div class="ui left icon input">
+    <input type="number" placeholder="overtime multiplier" id="overtime_multiplier" name="overtime_multiplier" class="">
+    <i class="times circle icon"></i>
+</div>  
+
+<div class="ui left icon input">
+    <input type="text" placeholder="leave allocation days" name="leave_allocation_days" id="leave_allocation_days" class="">
+    <i class="paper plane outline icon"></i>
+</div>  
+
+<div class="ui left icon input">
+    <input type="hidden" placeholder="annual gross pay" name="annual_gross_pay" id="annual_gross_pay" class="">
+    <i class="money bill alternate outline icon"></i>
+</div>  enu" id="departments-data-box">
+  
+</div>
+</div> -->
+
+  <!-- <div class="ui left icon input">
+        <input type="number" placeholder="total hours work" id="hours_worked" name="hours_worked" class="">
+        <i class="clock outline icon"></i>
+    </div> -->
+
+    <!-- <div class="ui left icon i # self.hours_worked = 0 
+        # self.hourly_pay_rate = 0
+        # self.overtime_multiplier = 0
+        # self.overtime_hours = 0nput">
+        <input type="number" placeholder="hourly pay rate" id="hourly_pay_rate" name="hourly_pay_rate" class="">
+        <i class="hourglass outline icon"></i>
+    </div>  
+
+    <div class="ui left icon input">
+        <input type="number" placeholder="overtime hours" id="overtime_hours" name="overtime_hours" class="">
+        <i class="clock icon"></i>
+    </div>  
+
+    <div class="ui left icon input">
+        <input type="number" placeholder="overtime multiplier" id="overtime_multiplier" name="overtime_multiplier" class="">
+        <i class="times circle icon"></i>
+    </div>  
+
+    <div class="ui left icon input">
+        <input type="text" placeholder="leave allocation days" name="leave_allocation_days" id="leave_allocation_days" class="">
+        <i class="paper plane outline icon"></i>
+    </div>  
+
+    <div class="ui left icon input">
+        <input type="hidden" placeholder="annual gross pay" name="annual_gross_pay" id="annual_gross_pay" class="">
+        <i class="money bill alternate outline icon"></i>
+    </div>   --> -->
+
+    <!-- <div class="m  <!-- <div class="ui left icon input">
+        <input type="number" placeholder="total hours work" id="hours_worked" name="hours_worked" class="">
+        <i class="clock outline icon"></i>
+    </div> --> -->

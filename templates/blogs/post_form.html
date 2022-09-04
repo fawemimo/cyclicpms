@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends "shared/layout.html" %}
+{% load static %}
+
+{% load humanize %}
+{% load widget_tweaks %}
+{% block title %}
+  {{ user.first_name }}
+{% endblock title %}
+{% block extrastyle %}
+  <link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock extrastyle %}
+    {% block body %}
+        <ul class="card card-primary card-outline">
+            
+            <div class="card-header">
+                <h1 class="card-title m-0">
+                  ADD BLOG POST
+                </h1>
+                
+            </div>  
+            <article>
+                <div class="user">
+                    <li>
+                        <div class="card-body">
+                            <form action="{% url 'post-create' %}" method="POST" class="card-text" enctype="multipart/form-data">
+                                {% csrf_token %}   
+                                {% include "partials/_alerts.html" %}
+                               
+                                <div class="form-blog">
+                                    {% if user.is_authenticated %}
+                                    <input type="hidden" name="author" id="id_author" value="{{ form.author.user }}">
+                                    {% endif %}
+                                    
+                                    <!-- {{ form.content  | safe}} -->
+                                    {{ form }}
+                                </div>
+                                <div class="button">
+                                    <button type="submit"> Post</button>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                </div>
+            </article>
+        </ul>
+    {% endblock body %}
+      
+    

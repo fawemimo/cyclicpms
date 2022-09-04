@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    <h1>
+        This is the profile page
+    </h1>
+     <img src="{{ profile.image.url }}" alt="{{ profile.image }}">
+    
+    <form action="{% url 'accounts-profile' %}" method="POST" role="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+            <input type="hidden" name="user_id" value="{{ form.user.id }} ">
+             {{ form.image }}        
+             {{ form.date_updated }}
+             <button type="submit">save profile</button>
+        {% endif %}
+        
+    </form>
+</body>
+</html>

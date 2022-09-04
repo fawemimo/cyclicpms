@@ -1,0 +1,189 @@
+{% extends "shared/employee_dashboard.html" %}
+
+{% load static %}
+{% block title %}
+  Employee Notification
+{% endblock title %}
+
+
+{% block extrstyle %}
+       <!-- Google Font: Source Sans Pro -->
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+       <!-- Font Awesome -->
+       <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+       <!-- Theme style -->
+       <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+       <!-- custom styles  -->
+       <link rel="stylesheet" href="{% static 'css/manage-employee.css' %}">
+{% endblock extrstyle %}
+
+
+{% block breadcrumb %}
+<div class="page-wrapper">
+  <!-- ============================================================== -->
+  <!-- Bread crumb and right sidebar toggle -->
+  <!-- ============================================================== -->
+  <div class="page-breadcrumb">
+      <div class="row">
+          <div class="col-12 d-flex no-block align-items-center">
+            <h4 class="page-title">Cyclic Payroll Management System | Director Dashboard</h4>
+              <div class="ms-auto text-end">
+                  <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                          <li class="breadcrumb-item"><a href="{% url 'directors' %}">Dashboard</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">Employee Notification</li>
+                      </ol>
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Bread crumb and right sidebar toggle -->
+  <!-- ============================================================== -->
+{% endblock breadcrumb %}
+
+{% block bodycontent %}
+
+<section>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Employee Notification</h3>
+
+          <div class="card-tools">
+
+            <form action="{% url 'manage-employee' %}" method="POST">
+              {% csrf_token %}
+              <div class="input-group input-group-sm" style="width: 500px;">
+
+                {{ form.department }}
+                {{ form.employee_unique_id }}
+                <!-- <input type="text" name="table_search" class="form-control float-right" placeholder="Search"> -->
+
+                <div class="input-group-append">
+
+                  <button type="submit" class="btn btn-default" value="Search">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0">
+           <!-- =========================================
+                                  Alerts message
+                        ========================================= -->
+
+                        {% include "partials/_alerts.html" %}
+                          <!-- =========================================
+                                  Alerts message
+                        ========================================= -->
+
+          <table class="table table-hover text-nowrap">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Notifications</th>
+              </tr>
+            </thead>
+            <tbody>
+             {% for notification in notifications %}
+
+             <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ notification.message }}</td>
+
+
+              </tr>
+
+             {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+  </div>
+
+  <nav class="arial-label">
+    {% if notifications.has_other_pages %}
+    <ul class="pagination">
+         {% if notifications.has_previous %}
+             <li class="page-item">
+                 <a href="?page={{ notifications.previous_page_number }}" class="page-link">
+                     &laquo; Previous
+                 </a>
+             </li>
+         {% else %}
+             <li class="page-item">
+                 <a  class="page-link">
+                     &laquo; Previous
+                 </a>
+             </li>
+
+         {% endif %}
+         {% for i in notifications.paginator.page_range  %}
+             {% if notifications.number == i %}
+                 <li class="page-item">
+                     <a class="page-link">
+                         {{ i }}
+                     </a>
+                 </li>
+             {% else %}
+                 <li class="page-item">
+                     <a href="?page={{ i }}" class="page-link">
+                         {{ i }}
+                     </a>
+                 </li>
+
+             {% endif %}
+
+         {% endfor %}
+
+         {% if notifications.has_next %}
+             <li class="page-item">
+                 <a href="?page={{ notifications.next_page_number }}" class="page-link">
+                     Next  &raquo;
+                 </a>
+             </li>
+         {% else %}
+             <li class="page-item">
+                 <a  class="page-link">
+                     Next  &raquo;
+                 </a>
+             </li>
+
+         {% endif %}
+
+     </ul>
+
+    {% endif %}
+
+
+
+
+</nav>
+
+</section>
+{% endblock bodycontent %}
+
+
+{% block scripts %}
+      <!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{% static 'dist/js/demo.js' %}"></script>
+
+{% endblock scripts %}

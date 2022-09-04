@@ -1,0 +1,1241 @@
+@charset "UTF-8";
+/*!
+ *  Weather Icons 2.0
+ *  Updated August 1, 2015
+ *  Weather themed icons for Bootstrap
+ *  Author - Erik Flowers - erik@helloerik.com
+ *  Email: erik@helloerik.com
+ *  Twitter: http://twitter.com/Erik_UX
+ *  ------------------------------------------------------------------------------
+ *  Maintained at http://erikflowers.github.io/weather-icons
+ *
+ *  License
+ *  ------------------------------------------------------------------------------
+ *  - Font licensed under SIL OFL 1.1 -
+ *    http://scripts.sil.org/OFL
+ *  - CSS, LESS and SCSS are licensed under MIT License -
+ *    http://opensource.org/licenses/mit-license.html
+ *  - Documentation licensed under CC BY 3.0 -
+ *    http://creativecommons.org/licenses/by/3.0/
+ *  - Inspired by and works great as a companion with Font Awesome
+ *    "Font Awesome by Dave Gandy - http://fontawesome.io"
+ */
+@font-face {
+  font-family: "weathericons";
+  src: url("../font/weathericons-regular-webfont.eot");
+  src: url("../font/weathericons-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../font/weathericons-regular-webfont.woff2") format("woff2"), url("../font/weathericons-regular-webfont.woff") format("woff"), url("../font/weathericons-regular-webfont.ttf") format("truetype"), url("../font/weathericons-regular-webfont.svg#weather_iconsregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.wi {
+  display: inline-block;
+  font-family: "weathericons";
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wi-fw {
+  width: 1.4em;
+  text-align: center;
+}
+
+.wi-rotate-90 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.wi-rotate-180 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.wi-rotate-270 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -webkit-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+
+.wi-flip-horizontal {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+  -webkit-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+
+.wi-flip-vertical {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
+
+.wi-day-sunny:before {
+  content: "пЂЌ";
+}
+
+.wi-day-cloudy:before {
+  content: "пЂ‚";
+}
+
+.wi-day-cloudy-gusts:before {
+  content: "пЂЂ";
+}
+
+.wi-day-cloudy-windy:before {
+  content: "пЂЃ";
+}
+
+.wi-day-fog:before {
+  content: "пЂѓ";
+}
+
+.wi-day-hail:before {
+  content: "пЂ„";
+}
+
+.wi-day-haze:before {
+  content: "п‚¶";
+}
+
+.wi-day-lightning:before {
+  content: "пЂ…";
+}
+
+.wi-day-rain:before {
+  content: "пЂ€";
+}
+
+.wi-day-rain-mix:before {
+  content: "пЂ†";
+}
+
+.wi-day-rain-wind:before {
+  content: "пЂ‡";
+}
+
+.wi-day-showers:before {
+  content: "пЂ‰";
+}
+
+.wi-day-sleet:before {
+  content: "п‚І";
+}
+
+.wi-day-sleet-storm:before {
+  content: "пЃЁ";
+}
+
+.wi-day-snow:before {
+  content: "пЂЉ";
+}
+
+.wi-day-snow-thunderstorm:before {
+  content: "пЃ«";
+}
+
+.wi-day-snow-wind:before {
+  content: "пЃҐ";
+}
+
+.wi-day-sprinkle:before {
+  content: "пЂ‹";
+}
+
+.wi-day-storm-showers:before {
+  content: "пЂЋ";
+}
+
+.wi-day-sunny-overcast:before {
+  content: "пЂЊ";
+}
+
+.wi-day-thunderstorm:before {
+  content: "пЂђ";
+}
+
+.wi-day-windy:before {
+  content: "п‚…";
+}
+
+.wi-solar-eclipse:before {
+  content: "пЃ®";
+}
+
+.wi-hot:before {
+  content: "пЃІ";
+}
+
+.wi-day-cloudy-high:before {
+  content: "пЃЅ";
+}
+
+.wi-day-light-wind:before {
+  content: "пѓ„";
+}
+
+.wi-night-clear:before {
+  content: "пЂ®";
+}
+
+.wi-night-alt-cloudy:before {
+  content: "п‚†";
+}
+
+.wi-night-alt-cloudy-gusts:before {
+  content: "пЂў";
+}
+
+.wi-night-alt-cloudy-windy:before {
+  content: "пЂЈ";
+}
+
+.wi-night-alt-hail:before {
+  content: "пЂ¤";
+}
+
+.wi-night-alt-lightning:before {
+  content: "пЂҐ";
+}
+
+.wi-night-alt-rain:before {
+  content: "пЂЁ";
+}
+
+.wi-night-alt-rain-mix:before {
+  content: "пЂ¦";
+}
+
+.wi-night-alt-rain-wind:before {
+  content: "пЂ§";
+}
+
+.wi-night-alt-showers:before {
+  content: "пЂ©";
+}
+
+.wi-night-alt-sleet:before {
+  content: "п‚ґ";
+}
+
+.wi-night-alt-sleet-storm:before {
+  content: "пЃЄ";
+}
+
+.wi-night-alt-snow:before {
+  content: "пЂЄ";
+}
+
+.wi-night-alt-snow-thunderstorm:before {
+  content: "пЃ­";
+}
+
+.wi-night-alt-snow-wind:before {
+  content: "пЃ§";
+}
+
+.wi-night-alt-sprinkle:before {
+  content: "пЂ«";
+}
+
+.wi-night-alt-storm-showers:before {
+  content: "пЂ¬";
+}
+
+.wi-night-alt-thunderstorm:before {
+  content: "пЂ­";
+}
+
+.wi-night-cloudy:before {
+  content: "пЂ±";
+}
+
+.wi-night-cloudy-gusts:before {
+  content: "пЂЇ";
+}
+
+.wi-night-cloudy-windy:before {
+  content: "пЂ°";
+}
+
+.wi-night-fog:before {
+  content: "пЃЉ";
+}
+
+.wi-night-hail:before {
+  content: "пЂІ";
+}
+
+.wi-night-lightning:before {
+  content: "пЂі";
+}
+
+.wi-night-partly-cloudy:before {
+  content: "п‚ѓ";
+}
+
+.wi-night-rain:before {
+  content: "пЂ¶";
+}
+
+.wi-night-rain-mix:before {
+  content: "пЂґ";
+}
+
+.wi-night-rain-wind:before {
+  content: "пЂµ";
+}
+
+.wi-night-showers:before {
+  content: "пЂ·";
+}
+
+.wi-night-sleet:before {
+  content: "п‚і";
+}
+
+.wi-night-sleet-storm:before {
+  content: "пЃ©";
+}
+
+.wi-night-snow:before {
+  content: "пЂё";
+}
+
+.wi-night-snow-thunderstorm:before {
+  content: "пЃ¬";
+}
+
+.wi-night-snow-wind:before {
+  content: "пЃ¦";
+}
+
+.wi-night-sprinkle:before {
+  content: "пЂ№";
+}
+
+.wi-night-storm-showers:before {
+  content: "пЂє";
+}
+
+.wi-night-thunderstorm:before {
+  content: "пЂ»";
+}
+
+.wi-lunar-eclipse:before {
+  content: "пЃ°";
+}
+
+.wi-stars:before {
+  content: "пЃ·";
+}
+
+.wi-storm-showers:before {
+  content: "пЂќ";
+}
+
+.wi-thunderstorm:before {
+  content: "пЂћ";
+}
+
+.wi-night-alt-cloudy-high:before {
+  content: "пЃѕ";
+}
+
+.wi-night-cloudy-high:before {
+  content: "п‚Ђ";
+}
+
+.wi-night-alt-partly-cloudy:before {
+  content: "п‚Ѓ";
+}
+
+.wi-cloud:before {
+  content: "пЃЃ";
+}
+
+.wi-cloudy:before {
+  content: "пЂ“";
+}
+
+.wi-cloudy-gusts:before {
+  content: "пЂ‘";
+}
+
+.wi-cloudy-windy:before {
+  content: "пЂ’";
+}
+
+.wi-fog:before {
+  content: "пЂ”";
+}
+
+.wi-hail:before {
+  content: "пЂ•";
+}
+
+.wi-rain:before {
+  content: "пЂ™";
+}
+
+.wi-rain-mix:before {
+  content: "пЂ—";
+}
+
+.wi-rain-wind:before {
+  content: "пЂ";
+}
+
+.wi-showers:before {
+  content: "пЂљ";
+}
+
+.wi-sleet:before {
+  content: "п‚µ";
+}
+
+.wi-snow:before {
+  content: "пЂ›";
+}
+
+.wi-sprinkle:before {
+  content: "пЂњ";
+}
+
+.wi-storm-showers:before {
+  content: "пЂќ";
+}
+
+.wi-thunderstorm:before {
+  content: "пЂћ";
+}
+
+.wi-snow-wind:before {
+  content: "пЃ¤";
+}
+
+.wi-snow:before {
+  content: "пЂ›";
+}
+
+.wi-smog:before {
+  content: "пЃґ";
+}
+
+.wi-smoke:before {
+  content: "пЃў";
+}
+
+.wi-lightning:before {
+  content: "пЂ–";
+}
+
+.wi-raindrops:before {
+  content: "пЃЋ";
+}
+
+.wi-raindrop:before {
+  content: "пЃё";
+}
+
+.wi-dust:before {
+  content: "пЃЈ";
+}
+
+.wi-snowflake-cold:before {
+  content: "пЃ¶";
+}
+
+.wi-windy:before {
+  content: "пЂЎ";
+}
+
+.wi-strong-wind:before {
+  content: "пЃђ";
+}
+
+.wi-sandstorm:before {
+  content: "п‚‚";
+}
+
+.wi-earthquake:before {
+  content: "пѓ†";
+}
+
+.wi-fire:before {
+  content: "пѓ‡";
+}
+
+.wi-flood:before {
+  content: "пЃј";
+}
+
+.wi-meteor:before {
+  content: "пЃ±";
+}
+
+.wi-tsunami:before {
+  content: "пѓ…";
+}
+
+.wi-volcano:before {
+  content: "пѓ€";
+}
+
+.wi-hurricane:before {
+  content: "пЃі";
+}
+
+.wi-tornado:before {
+  content: "пЃ–";
+}
+
+.wi-small-craft-advisory:before {
+  content: "пѓЊ";
+}
+
+.wi-gale-warning:before {
+  content: "пѓЌ";
+}
+
+.wi-storm-warning:before {
+  content: "пѓЋ";
+}
+
+.wi-hurricane-warning:before {
+  content: "пѓЏ";
+}
+
+.wi-wind-direction:before {
+  content: "п‚±";
+}
+
+.wi-alien:before {
+  content: "пЃµ";
+}
+
+.wi-celsius:before {
+  content: "пЂј";
+}
+
+.wi-fahrenheit:before {
+  content: "пЃ…";
+}
+
+.wi-degrees:before {
+  content: "пЃ‚";
+}
+
+.wi-thermometer:before {
+  content: "пЃ•";
+}
+
+.wi-thermometer-exterior:before {
+  content: "пЃ“";
+}
+
+.wi-thermometer-internal:before {
+  content: "пЃ”";
+}
+
+.wi-cloud-down:before {
+  content: "пЂЅ";
+}
+
+.wi-cloud-up:before {
+  content: "пЃЂ";
+}
+
+.wi-cloud-refresh:before {
+  content: "пЂѕ";
+}
+
+.wi-horizon:before {
+  content: "пЃ‡";
+}
+
+.wi-horizon-alt:before {
+  content: "пЃ†";
+}
+
+.wi-sunrise:before {
+  content: "пЃ‘";
+}
+
+.wi-sunset:before {
+  content: "пЃ’";
+}
+
+.wi-moonrise:before {
+  content: "пѓ‰";
+}
+
+.wi-moonset:before {
+  content: "пѓЉ";
+}
+
+.wi-refresh:before {
+  content: "пЃЊ";
+}
+
+.wi-refresh-alt:before {
+  content: "пЃ‹";
+}
+
+.wi-umbrella:before {
+  content: "п‚„";
+}
+
+.wi-barometer:before {
+  content: "пЃ№";
+}
+
+.wi-humidity:before {
+  content: "пЃє";
+}
+
+.wi-na:before {
+  content: "пЃ»";
+}
+
+.wi-train:before {
+  content: "пѓ‹";
+}
+
+.wi-moon-new:before {
+  content: "п‚•";
+}
+
+.wi-moon-waxing-cresent-1:before {
+  content: "п‚–";
+}
+
+.wi-moon-waxing-cresent-2:before {
+  content: "п‚—";
+}
+
+.wi-moon-waxing-cresent-3:before {
+  content: "п‚";
+}
+
+.wi-moon-waxing-cresent-4:before {
+  content: "п‚™";
+}
+
+.wi-moon-waxing-cresent-5:before {
+  content: "п‚љ";
+}
+
+.wi-moon-waxing-cresent-6:before {
+  content: "п‚›";
+}
+
+.wi-moon-first-quarter:before {
+  content: "п‚њ";
+}
+
+.wi-moon-waxing-gibbous-1:before {
+  content: "п‚ќ";
+}
+
+.wi-moon-waxing-gibbous-2:before {
+  content: "п‚ћ";
+}
+
+.wi-moon-waxing-gibbous-3:before {
+  content: "п‚џ";
+}
+
+.wi-moon-waxing-gibbous-4:before {
+  content: "п‚ ";
+}
+
+.wi-moon-waxing-gibbous-5:before {
+  content: "п‚Ў";
+}
+
+.wi-moon-waxing-gibbous-6:before {
+  content: "п‚ў";
+}
+
+.wi-moon-full:before {
+  content: "п‚Ј";
+}
+
+.wi-moon-waning-gibbous-1:before {
+  content: "п‚¤";
+}
+
+.wi-moon-waning-gibbous-2:before {
+  content: "п‚Ґ";
+}
+
+.wi-moon-waning-gibbous-3:before {
+  content: "п‚¦";
+}
+
+.wi-moon-waning-gibbous-4:before {
+  content: "п‚§";
+}
+
+.wi-moon-waning-gibbous-5:before {
+  content: "п‚Ё";
+}
+
+.wi-moon-waning-gibbous-6:before {
+  content: "п‚©";
+}
+
+.wi-moon-third-quarter:before {
+  content: "п‚Є";
+}
+
+.wi-moon-waning-crescent-1:before {
+  content: "п‚«";
+}
+
+.wi-moon-waning-crescent-2:before {
+  content: "п‚¬";
+}
+
+.wi-moon-waning-crescent-3:before {
+  content: "п‚­";
+}
+
+.wi-moon-waning-crescent-4:before {
+  content: "п‚®";
+}
+
+.wi-moon-waning-crescent-5:before {
+  content: "п‚Ї";
+}
+
+.wi-moon-waning-crescent-6:before {
+  content: "п‚°";
+}
+
+.wi-moon-alt-new:before {
+  content: "пѓ«";
+}
+
+.wi-moon-alt-waxing-cresent-1:before {
+  content: "пѓђ";
+}
+
+.wi-moon-alt-waxing-cresent-2:before {
+  content: "пѓ‘";
+}
+
+.wi-moon-alt-waxing-cresent-3:before {
+  content: "пѓ’";
+}
+
+.wi-moon-alt-waxing-cresent-4:before {
+  content: "пѓ“";
+}
+
+.wi-moon-alt-waxing-cresent-5:before {
+  content: "пѓ”";
+}
+
+.wi-moon-alt-waxing-cresent-6:before {
+  content: "пѓ•";
+}
+
+.wi-moon-alt-first-quarter:before {
+  content: "пѓ–";
+}
+
+.wi-moon-alt-waxing-gibbous-1:before {
+  content: "пѓ—";
+}
+
+.wi-moon-alt-waxing-gibbous-2:before {
+  content: "пѓ";
+}
+
+.wi-moon-alt-waxing-gibbous-3:before {
+  content: "пѓ™";
+}
+
+.wi-moon-alt-waxing-gibbous-4:before {
+  content: "пѓљ";
+}
+
+.wi-moon-alt-waxing-gibbous-5:before {
+  content: "пѓ›";
+}
+
+.wi-moon-alt-waxing-gibbous-6:before {
+  content: "пѓњ";
+}
+
+.wi-moon-alt-full:before {
+  content: "пѓќ";
+}
+
+.wi-moon-alt-waning-gibbous-1:before {
+  content: "пѓћ";
+}
+
+.wi-moon-alt-waning-gibbous-2:before {
+  content: "пѓџ";
+}
+
+.wi-moon-alt-waning-gibbous-3:before {
+  content: "пѓ ";
+}
+
+.wi-moon-alt-waning-gibbous-4:before {
+  content: "пѓЎ";
+}
+
+.wi-moon-alt-waning-gibbous-5:before {
+  content: "пѓў";
+}
+
+.wi-moon-alt-waning-gibbous-6:before {
+  content: "пѓЈ";
+}
+
+.wi-moon-alt-third-quarter:before {
+  content: "пѓ¤";
+}
+
+.wi-moon-alt-waning-crescent-1:before {
+  content: "пѓҐ";
+}
+
+.wi-moon-alt-waning-crescent-2:before {
+  content: "пѓ¦";
+}
+
+.wi-moon-alt-waning-crescent-3:before {
+  content: "пѓ§";
+}
+
+.wi-moon-alt-waning-crescent-4:before {
+  content: "пѓЁ";
+}
+
+.wi-moon-alt-waning-crescent-5:before {
+  content: "пѓ©";
+}
+
+.wi-moon-alt-waning-crescent-6:before {
+  content: "пѓЄ";
+}
+
+.wi-moon-0:before {
+  content: "п‚•";
+}
+
+.wi-moon-1:before {
+  content: "п‚–";
+}
+
+.wi-moon-2:before {
+  content: "п‚—";
+}
+
+.wi-moon-3:before {
+  content: "п‚";
+}
+
+.wi-moon-4:before {
+  content: "п‚™";
+}
+
+.wi-moon-5:before {
+  content: "п‚љ";
+}
+
+.wi-moon-6:before {
+  content: "п‚›";
+}
+
+.wi-moon-7:before {
+  content: "п‚њ";
+}
+
+.wi-moon-8:before {
+  content: "п‚ќ";
+}
+
+.wi-moon-9:before {
+  content: "п‚ћ";
+}
+
+.wi-moon-10:before {
+  content: "п‚џ";
+}
+
+.wi-moon-11:before {
+  content: "п‚ ";
+}
+
+.wi-moon-12:before {
+  content: "п‚Ў";
+}
+
+.wi-moon-13:before {
+  content: "п‚ў";
+}
+
+.wi-moon-14:before {
+  content: "п‚Ј";
+}
+
+.wi-moon-15:before {
+  content: "п‚¤";
+}
+
+.wi-moon-16:before {
+  content: "п‚Ґ";
+}
+
+.wi-moon-17:before {
+  content: "п‚¦";
+}
+
+.wi-moon-18:before {
+  content: "п‚§";
+}
+
+.wi-moon-19:before {
+  content: "п‚Ё";
+}
+
+.wi-moon-20:before {
+  content: "п‚©";
+}
+
+.wi-moon-21:before {
+  content: "п‚Є";
+}
+
+.wi-moon-22:before {
+  content: "п‚«";
+}
+
+.wi-moon-23:before {
+  content: "п‚¬";
+}
+
+.wi-moon-24:before {
+  content: "п‚­";
+}
+
+.wi-moon-25:before {
+  content: "п‚®";
+}
+
+.wi-moon-26:before {
+  content: "п‚Ї";
+}
+
+.wi-moon-27:before {
+  content: "п‚°";
+}
+
+.wi-time-1:before {
+  content: "п‚Љ";
+}
+
+.wi-time-2:before {
+  content: "п‚‹";
+}
+
+.wi-time-3:before {
+  content: "п‚Њ";
+}
+
+.wi-time-4:before {
+  content: "п‚Ќ";
+}
+
+.wi-time-5:before {
+  content: "п‚Ћ";
+}
+
+.wi-time-6:before {
+  content: "п‚Џ";
+}
+
+.wi-time-7:before {
+  content: "п‚ђ";
+}
+
+.wi-time-8:before {
+  content: "п‚‘";
+}
+
+.wi-time-9:before {
+  content: "п‚’";
+}
+
+.wi-time-10:before {
+  content: "п‚“";
+}
+
+.wi-time-11:before {
+  content: "п‚”";
+}
+
+.wi-time-12:before {
+  content: "п‚‰";
+}
+
+.wi-direction-up:before {
+  content: "пЃ";
+}
+
+.wi-direction-up-right:before {
+  content: "пЃ—";
+}
+
+.wi-direction-right:before {
+  content: "пЃЌ";
+}
+
+.wi-direction-down-right:before {
+  content: "п‚€";
+}
+
+.wi-direction-down:before {
+  content: "пЃ„";
+}
+
+.wi-direction-down-left:before {
+  content: "пЃѓ";
+}
+
+.wi-direction-left:before {
+  content: "пЃ€";
+}
+
+.wi-direction-up-left:before {
+  content: "п‚‡";
+}
+
+.wi-wind-beaufort-0:before {
+  content: "п‚·";
+}
+
+.wi-wind-beaufort-1:before {
+  content: "п‚ё";
+}
+
+.wi-wind-beaufort-2:before {
+  content: "п‚№";
+}
+
+.wi-wind-beaufort-3:before {
+  content: "п‚є";
+}
+
+.wi-wind-beaufort-4:before {
+  content: "п‚»";
+}
+
+.wi-wind-beaufort-5:before {
+  content: "п‚ј";
+}
+
+.wi-wind-beaufort-6:before {
+  content: "п‚Ѕ";
+}
+
+.wi-wind-beaufort-7:before {
+  content: "п‚ѕ";
+}
+
+.wi-wind-beaufort-8:before {
+  content: "п‚ї";
+}
+
+.wi-wind-beaufort-9:before {
+  content: "пѓЂ";
+}
+
+.wi-wind-beaufort-10:before {
+  content: "пѓЃ";
+}
+
+.wi-wind-beaufort-11:before {
+  content: "пѓ‚";
+}
+
+.wi-wind-beaufort-12:before {
+  content: "пѓѓ";
+}
+
+.wi-yahoo-0:before {
+  content: "пЃ–";
+}
+
+.wi-yahoo-1:before {
+  content: "пЂЋ";
+}
+
+.wi-yahoo-2:before {
+  content: "пЃі";
+}
+
+.wi-yahoo-3:before {
+  content: "пЂћ";
+}
+
+.wi-yahoo-4:before {
+  content: "пЂћ";
+}
+
+.wi-yahoo-5:before {
+  content: "пЂ—";
+}
+
+.wi-yahoo-6:before {
+  content: "пЂ—";
+}
+
+.wi-yahoo-7:before {
+  content: "пЂ—";
+}
+
+.wi-yahoo-8:before {
+  content: "пЂ•";
+}
+
+.wi-yahoo-9:before {
+  content: "пЂљ";
+}
+
+.wi-yahoo-10:before {
+  content: "пЂ•";
+}
+
+.wi-yahoo-11:before {
+  content: "пЂљ";
+}
+
+.wi-yahoo-12:before {
+  content: "пЂљ";
+}
+
+.wi-yahoo-13:before {
+  content: "пЂ›";
+}
+
+.wi-yahoo-14:before {
+  content: "пЂЉ";
+}
+
+.wi-yahoo-15:before {
+  content: "пЃ¤";
+}
+
+.wi-yahoo-16:before {
+  content: "пЂ›";
+}
+
+.wi-yahoo-17:before {
+  content: "пЂ•";
+}
+
+.wi-yahoo-18:before {
+  content: "пЂ—";
+}
+
+.wi-yahoo-19:before {
+  content: "пЃЈ";
+}
+
+.wi-yahoo-20:before {
+  content: "пЂ”";
+}
+
+.wi-yahoo-21:before {
+  content: "пЂЎ";
+}
+
+.wi-yahoo-22:before {
+  content: "пЃў";
+}
+
+.wi-yahoo-23:before {
+  content: "пЃђ";
+}
+
+.wi-yahoo-24:before {
+  content: "пЃђ";
+}
+
+.wi-yahoo-25:before {
+  content: "пЃ¶";
+}
+
+.wi-yahoo-26:before {
+  content: "пЂ“";
+}
+
+.wi-yahoo-27:before {
+  content: "пЂ±";
+}
+
+.wi-yahoo-28:before {
+  content: "пЂ‚";
+}
+
+.wi-yahoo-29:before {
+  content: "пЂ±";
+}
+
+.wi-yahoo-30:before {
+  content: "пЂ‚";
+}
+
+.wi-yahoo-31:before {
+  content: "пЂ®";
+}
+
+.wi-yahoo-32:before {
+  content: "пЂЌ";
+}
+
+.wi-yahoo-33:before {
+  content: "п‚ѓ";
+}
+
+.wi-yahoo-34:before {
+  content: "пЂЊ";
+}
+
+.wi-yahoo-35:before {
+  content: "пЂ—";
+}
+
+.wi-yahoo-36:before {
+  content: "пЃІ";
+}
+
+.wi-yahoo-37:before {
+  content: "пЂЋ";
+}
+
+.wi-yahoo-38:before {
+  content: "пЂЋ";
+}
+
+.wi-yahoo-39:before {
+  content: "пЂЋ";
+}
+
+.wi-yahoo-40:before {
+  content: "пЂљ";
+}
+
+.wi-yahoo-41:before {
+  content: "пЃ¤";яяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяя

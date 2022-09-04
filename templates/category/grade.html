@@ -1,0 +1,132 @@
+{% extends 'shared/director_dashboard.html' %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block container-fluid %}
+<div class="container">
+    <h1>Setup Your Dashboard</h1>
+    <div class="row">
+      <div class="col-md-4 ">
+        <h3>ADD GRADE</h3>
+        <form id="addUser" action="{% url 'create_grade' %}" method="POST">
+          {% csrf_token %}
+          {% if user.is_authenticated %}
+          <input type="hidden" name="director" value="{{ user.id }}">
+        {% endif %} 
+          <div class="form-group">
+              <label for="">Name:</label>
+            <input class="form-control" type="text" name="name" placeholder="grade" required>
+          </div>
+
+          <div class="form-group">
+              <label for="">Level:</label>
+            <select name="level" id="" class="form-control">
+                <option value="0">-------</option>
+                {% for level in levels %}
+                <option value="{{ level.id }}" class="form-control"> {{ level.name }}</option>
+                {% endfor %}
+            </select>
+          </div>
+          
+          <button class="btn btn-primary form-control" type="submit">SUBMIT</button>
+        </form>
+      </div>
+      <div class="col-md-8">
+        <h3>GRADE</h3>
+        <table id="userTable" class="table table-striped">
+          <tr>
+            <th>Grade</th>
+            <th>Level</th>
+            <th>Position</th>
+            <th>Actions</th>
+           
+          </tr>
+          {% if grades %}
+          {% for grade in grades %}
+          <tr >
+              <td class="userName">{{ grade.name }}</td>
+              <td class="userName">{{ grade.level.name }}</td>
+              <td class="userName">{{ grade.level.position }}</td>
+              
+              <td align="center">
+                  <button class="btn btn-success form-control" data-toggle="modal" data-target="#myModal">EDIT</button>
+                 
+              </td>
+              <td align="center">
+                  <button class="btn btn-danger form-control">DELETE</button>
+              </td>
+          </tr>
+
+           <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="myModalLabel">Update level</h4>
+        </div>
+        <form id="updateUser" action="" method="POST">
+          {% csrf_token %}
+        <div class="modal-body">
+            <input class="form-control" id="form-id" type="hidden" name="formId"/>
+            <label for="name">Name:</label>
+            <input class="form-control" id="form-name" type="text" name="formName" value="{{ grade.name }}"/>
+            <label for="">Level:</label>
+            <select name="level" id="" class="form-control">
+                <option value="0">-------</option>
+                {% for level in levels %}
+                <option value="{{ level.id }}" class="form-control"> {{ level.name }}</option>
+                {% endfor %}
+            </select>
+            
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" >Save changes</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+          {% endfor %}
+          {% else %}
+            No grade added...
+          {% endif %}
+        </table>
+      </div>
+    </div>
+  </div>
+ 
+{% endblock %}
+{% block javascript %}
+<script>
+// Create Django Ajax Call
+
+
+function appendToUsrTable(grade) {
+
+  $("#userTable > tbody:last-child").append(`
+
+        <tr id="user-${grade.id}">
+            <td class="userName" name="name">${grade.name}</td>
+            <td class="userName" name="name">${grade.position}</td>
+            
+            '<td align="center">
+                <button class="btn btn-success form-control" onClick="editUser(${grade.id})" data-toggle="modal" data-target="#myModal")">EDIT</button>
+            </td>
+            <td align="center">
+                <button class="btn btn-danger form-control" onClick="deleteUser(${grade.id})">DELETE</button>
+            </td>
+        </tr>`
+    )
+
+
+}
+
+
+
+
+</script>
+{% endblock javascript %}

@@ -1,0 +1,124 @@
+{% extends "shared/form.html" %}
+{% load static %}
+
+
+{% block form %}
+    
+<form action="" enctype="multipart/form-data" onsubmit="onFormSubmit(event)">
+     <!-- /.row -->
+     <div class="row">
+        <div class="col-md-12">
+        <div class="card card-default">
+          {% include "partials/_card-title.html" %}
+          
+          {% include "partials/_alerts.html" %}
+          <div class="card-body p-0">
+            <div class="bs-stepper">
+              <div class="bs-stepper-header" role="tablist">
+                <!-- your steps here -->
+                <div class="step" data-target="#logins-part">
+                  <button type="button" class="step-trigger" role="tab" aria-controls="logins-part" id="logins-part-trigger">
+                    <span class="bs-stepper-circle"></span>
+                    <span class="bs-stepper-label">Upload here</span>
+                  </button>
+                </div>
+                
+                <!-- <div class="line"></div>
+                <div class="step" data-target="#information-part">
+                  <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
+                    <span class="bs-stepper-circle">2</span>
+                    <span class="bs-stepper-label"> Certification</span>
+                  </button>
+                </div> -->
+              </div>
+              <div class="bs-stepper-content">
+                <!-- your steps content here -->
+                <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
+        <div class="form-group">
+            {% if request.user.is_authenticated %}
+           
+                <input type="hidden" name="user_id" value="{{ user.id }}" id="user">
+            {% else %}
+            <input type="hidden" name="user_id" value="{{ 0 }}" id="user">
+            {% endif %}
+        </div>
+
+        <!-- file 1 upload  -->
+        <div class="form-group">
+
+                <label for="id_file1"> Birth Certificate:</label>
+                <input type="file" name="file1" id="file1" class="form-control" required>
+           
+        </div>
+
+        <!-- file 2 upload  -->
+        <div class="form-group">
+            
+                <label for="id_file2"> Degree Certificate:</label>
+                <input type="file" name="file2" id="file2" class="form-control">
+            
+        </div>
+
+          <!-- file 3 upload  -->
+
+          <div class="form-group">
+           
+            <label for="id_file3"> NYSC Certificate:</label>
+            <input type="file" name="file3" id="file3" class="form-control">       
+            </div>
+
+            <!-- submit button  -->
+            <div class="form-group">                
+                    <button type="submit" class="btn btn-primary">upload</button>                
+            </div>
+
+            <!-- progress bar  -->
+        
+            <div class="form-group" style="display: none;" id="progress_div">
+                <div class="progress">
+                    <div class="progress-bar" id="progress_bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                    
+                </div>
+            </div>
+            
+            
+
+        <!-- progress text  -->
+        <div class="form-group">
+            <p id="progress_text">
+
+            </p>
+            
+        </div>
+
+        <!-- next btn  -->
+        <div class="form-group">
+          <a class="btn btn-primary"  href="{% url 'success_page' %}" id="next_btn" style="display: none;">Next</a>
+        </div>
+                
+      
+        <!-- <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger"> -->
+
+      
+       
+       
+     </div>
+   </div>
+ </div>
+</div>
+<!-- /.card-body -->
+
+</div>
+<!-- /.card -->
+</div>
+</div>
+
+</form>
+{% endblock form %}
+
+{% block script %}
+   <!-- js  -->
+   <script src="{% static 'js/file.js' %}"></script>
+ 
+{% endblock script %}
+   

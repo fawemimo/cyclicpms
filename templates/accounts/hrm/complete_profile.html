@@ -1,0 +1,8 @@
+<form action="accounts-complete-profile" method="POST">
+    {% csrf_token %}
+
+    {{ user_form }}
+
+    <input type="submit">
+
+</form>

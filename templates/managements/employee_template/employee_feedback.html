@@ -1,0 +1,94 @@
+{% extends "shared/employee_dashboard.html" %}
+{% load static %}
+
+{% block title %}
+  Feed Back
+{% endblock title %}
+
+{% block extrasyle %}
+
+{% endblock extrasyle %}
+{% block bodycontent %}
+<ul class="card card-primary card-outline">
+
+  <div class="card-header text-center">
+      <a href="{% url 'home' %}" class="h1"><b>Leave a Feedback</b></a>
+      <hr>
+    </div>
+  
+    <article>
+      <li>
+        <div class="user">
+        
+            
+          <div class="contact-phone">
+            <span>
+
+            </span>
+             
+          </div>
+          
+            <address>
+              <p class="card-text">
+              
+            
+              </p>
+            </address>
+        
+        </div>
+          <div class="card-body">
+            <h1 class="card-title">
+
+                          
+            </h1>
+
+              <form action="{% url 'employee_feedback_save' %}" method="POST">
+                {% csrf_token %}
+                
+                <div class="form">
+                  <label >Feedback Message:</label>
+                  <textarea name="feedback" id="id_feedback" class = "form-control" placeholder="feedback message"  rows="10"></textarea>
+                </div>
+
+               
+                <button class="btn btn-primary btn-block mt-2" type="submit">Leave a Feedback</button>
+              </form>
+              
+            
+      </li>
+    </article>
+ 
+
+
+         <div class="table">
+            <table class="table">
+                <tr>
+                    <th>#</th>
+
+                    <th>Feedback Message</th>
+                    <th>Feedback Reply</th>
+                    
+    
+    
+                </tr>
+    
+                {% for feedback in feedback_data %}
+                <tr>
+                    <td>
+                        {{ forloop.counter }}
+                    </td>
+
+                    <td>
+                        {{feedback.feedback}}
+                    </td>
+                    <td>
+                        {{ feedback.feedback_reply }}
+                    </td>
+                    
+                </tr>
+                {% endfor %}
+    
+           </table>
+         </div>
+
+{% endblock bodycontent %}

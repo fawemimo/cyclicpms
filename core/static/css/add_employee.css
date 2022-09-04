@@ -1,0 +1,22 @@
+@import url('https://https://fonts.google.com/specimen/Oswald?selection.family=Oswald:wght@300');
+form{
+    width: 49%;
+    margin-left: 26%;
+    margin-top: 4%;
+}
+.page-wrapper {
+    background: white;
+    position: relative;
+}
+/*
+.sidebar-nav ul .sidebar-item .sidebar-link.active, .sidebar-nav ul .sidebar-item .sidebar-link:hover {
+    opacity: 1;
+    background: red;
+} */
+.non-visible {
+    display: none;
+}
+
+/* min-height: 475px;
+background-position: 60% top; */
+/* height: 462px; */

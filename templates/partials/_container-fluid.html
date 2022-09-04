@@ -1,0 +1,165 @@
+ {% load static %}
+
+<!-- ============================================================== -->
+<!-- Sales chart -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- Sales chart -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Recent comment and chats -->
+<!-- ============================================================== -->
+<div class="row">
+    <!-- column -->
+    <!-- <div class="col-md-12"> -->
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Latest Blogs</h4>
+        </div>
+        <div class="comment-widgets scrollable">
+            <!-- Comment Row -->
+
+
+            {% if blogs %} {% if blog.author == user %} {% for blog in blogs %}
+            <div class="d-flex flex-row comment-row mt-0">
+
+                <div class="p-2"><img src="{{ profile.image.url }}" alt="user" width="50" class="rounded-circle">
+                </div>
+                <div>
+                </div>
+                <div class="comment-text w-100">
+
+                    <a href="{% url 'post-detail' blog.id %}">
+                        <h1 class="font-medium">{{ blog.title }}</h1>
+                    </a>
+                    <small class="font-medium text-muted"><i class="fa fa-user"></i> {{ blog.author }}</small>
+                    <small class="text-muted"><i class="far fa-calendar-check"></i>
+                          {{ blog.date_posted | date:"F d, Y"}}</small>
+
+
+                    <span class="mb-3 d-block">{{ blog.content|slice:':700'| safe }}
+                      </span>
+
+                    <div class="comment-footer">
+
+
+                        <a href="{% url 'post-create' %}">
+                            <button type="button" class="btn btn-success btn-sm text-white">
+                                  New Blog</button></a>
+                        <a href="{% url 'post_update' blog.id %}">
+                            <button type="button" class="btn btn-warning btn-sm text-white">
+                                  Edit</button></a>
+                        <button type="button" class="btn btn-success btn-sm text-white">Publish</button>
+
+                        <button type="button" id="myBtn" class="btn btn-danger btn-sm text-white">Delete</button>
+                        <!-- Trigger/Open The Modal -->
+
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <form action="{% url 'post-delete' blog.id %}" method="POST">
+                                    {% csrf_token %}
+
+                                    <h2>Are you sure you want to delete the post "{{ blog.title }}"</h2>
+                                    <div class="button">
+                                        <button type="submit" class="btn btn-success"> Yes, DELETE</button>
+                                        <a href="{% url 'directors' %}" class="btn btn-danger">cancel</a>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            {% endfor %} {% else %}
+
+            <div class="card-body">
+                <h6>
+                    no blog posted yet....
+                </h6>
+                <div class="comment-footer">
+                    <a href="{% url 'post-create' %}">
+                        <button type="button" class="btn btn-success btn-sm text-white">
+                              Create Blog</button></a>
+                    <a href="{% url 'bloghome'  %}">
+                        <button type="button" class="btn btn-warning btn-sm text-white">
+                              view other blogs</button></a>
+
+                </div>
+            </div>
+            <div class="comment-widgets scrollable">
+
+            </div>
+            {% endif %}
+
+
+
+
+
+
+            <!-- Comment Row -->
+
+
+
+            {% endif %}
+
+
+            <!-- Comment Row -->
+
+            <!-- Comment Row -->
+
+        </div>
+    </div>
+    <!-- Card -->
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">To Do List</h4>
+            <div class="todo-widget scrollable" style="height:450px;">
+                <ul class="list-task todo-list list-group mb-0" data-role="tasklist">
+                    <li class="list-group-item todo-item" data-role="task">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheck">
+                            <label class="form-check-label w-100 mb-0 todo-label" for="customCheck">
+                                  <span class="todo-desc fw-normal">Lorem Ipsum is simply dummy text of the
+                                      printing and typesetting industry.</span> <span
+                                      class="badge rounded-pill bg-danger float-end">Today</span>
+                              </label>
+                        </div>
+                        <ul class="list-style-none assignedto">
+                            <li class="assignee"><img class="rounded-circle" width="40" src="{% static 'assets/images/users/1.jpg' %}" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Steave"></li>
+                            <li class="assignee"><img class="rounded-circle" width="40" src="{% static 'assets/images/users/2.jpg' %}" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Jessica"></li>
+                            <li class="assignee"><img class="rounded-circle" width="40" src="{% static 'assets/images/users/3.jpg' %}" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
+                            <li class="assignee"><img class="rounded-circle" width="40" src="{% static 'assets/images/users/4.jpg' %}" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- card -->
+
+    <!-- card new -->
+
+
+
+    <!-- card -->
+
+    <!-- accoridan part -->
+
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->

@@ -1,0 +1,29 @@
+<div class="card-header">
+   <ul id="register">
+       <li>
+        {% url 'personalinfo'  as personalinfo %}
+        
+        <a class="card-title {% if request.path == personalinfo %} active {% endif %}" href="{% url 'personalinfo' %}">
+            <i class="fa-solid fa-user-shield"></i>
+            Personal Info</a> 
+        
+       </li>
+       <li>
+        {% url 'bankdetail'  as bankdetail %}
+        <a class="card-title {% if request.path == bankdetail %} active {% endif %}" href="{% url 'bankdetail' %}">
+            
+            <i class="fa-solid fa-bank"></i>Bank Detials</a>
+        
+       </li>
+       <li>
+        {% url 'education' as education %}   
+        <a class="card-title {% if request.path == education %} active {% endif %}" href="{% url 'education' %}">
+            <i class="fa-solid fa-graduation-cap"></i>Education</a>
+       </li>
+
+       <li>
+        {% url 'file_upload' as file_upload %}   
+        <a id="files-upload" class="card-title {% if request.path == file_upload %} {% endif %}" href="{% url 'file_upload' %}"><i class="fa-solid fa-cloud-arrow-up"></i> Upload</a>
+       </li>
+   </ul>
+  </div>

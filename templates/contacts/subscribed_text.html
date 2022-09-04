@@ -1,0 +1,31 @@
+
+
+{% autoescape on %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    
+    <h2>
+        Hi, {{ email }}
+    </h2>
+    
+    <p style="background: red;">
+        We will keep you updated of latest news all the time
+    </p>
+    <p>
+        To unsubscribe click here <b>
+            <a href="https://cyclicpms.herokuapp.com/contacts/unsubscribe/" style="background: blue; border-radius: 4px;">
+                Unsubscribe
+            </a>
+        </b>
+    </p>
+</body>
+</html>
+{% endautoescape %}

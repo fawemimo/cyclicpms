@@ -1,0 +1,24 @@
+{% extends "shared/director_dashboard.html" %} {% load static %} {% block title %} Director Dashboard {% endblock title %} {% block extrastyle %} {% endblock extrastyle %} {% block breadcrumb %} {% include "partials/_breadcrumb.html" %} {% endblock breadcrumb%}
+{% block container-fluid %} {% include "partials/_dashcard.html" %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div>
+                    <canvas id="myChart" width="400" height="400"></canvas>
+
+                </div>
+                <!-- /.card -->
+
+            </div>
+        </div>
+    </div>
+</div>
+{% include "partials/_container-fluid.html" %} {% endblock container-fluid %} {% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
+<script>
+</script>
+
+{% endblock scripts%}

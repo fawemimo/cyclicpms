@@ -1,0 +1,19 @@
+{% extends "shared/layout.html" %}
+{% load static %}
+
+{% block title %}
+  Home
+{% endblock title %}
+
+
+{% block board %}
+{% include "partials/_board.html" %} 
+{% endblock board %}
+
+{% block about %}
+         {% include "partials/_about.html" %} 
+{% endblock about %}
+
+{% block body %}
+       {% include "partials/_body.html" %}
+{% endblock body %} 

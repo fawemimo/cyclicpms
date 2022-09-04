@@ -1,0 +1,24 @@
+{% extends "shared/layout.html" %}
+
+{% load static %}
+{% block title %}
+  {{ user.first_name }}
+{% endblock title %}
+{% block extrastyle %}
+  <link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock extrastyle %}
+{% block body %}
+    <form action="{% url 'post-delete' object.id %}" method="POST" id="delete-post" >
+        {% csrf_token %}
+        <fieldset>
+            <legend>Delete Post</legend>
+               <h2>Are you sure you want to delete the post "{{ object.title }}"</h2>
+          
+            <div class="button">
+                <button type="submit" class="btn btn-danger"> Yes, DELETE</button>
+                <a href="{% url 'post-detail' object.id %}" class="btn btn-warning" id="cancel">cancel</a>
+            </div>
+        </fieldset>
+    </form>
+{% endblock body %}
+  

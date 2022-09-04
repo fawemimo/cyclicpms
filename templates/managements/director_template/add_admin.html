@@ -1,0 +1,292 @@
+{% extends "shared/director_dashboard.html" %}
+{% load static %}
+{% block title %}
+  Add Employee
+{% endblock title %}
+   
+{% block extrastyle %}
+    
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="{% static 'plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css' %}">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{% static 'plugins/select2/css/select2.min.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css' %}">
+  <!-- Bootstrap4 Duallistbox -->
+  <link rel="stylesheet" href="{% static 'plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css' %}">
+  <!-- BS Stepper -->
+  <link rel="stylesheet" href="{% static 'plugins/bs-stepper/css/bs-stepper.min.css' %}">
+  <!-- dropzonejs -->
+  <link rel="stylesheet" href="{% static 'plugins/dropzone/min/dropzone.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+
+  <!-- custom style  -->
+  <link rel="stylesheet" href="{% static 'css/add_employee.css' %}">
+{% endblock extrastyle %}
+
+{% block breadcrumb %}
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+              <h4 class="page-title">Cyclic Payroll Management System | Director Dashboard</h4>
+                <div class="ms-auto text-end">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'directors' %}">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Add admin</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+{% endblock breadcrumb %}
+
+{% block container-fluid %}
+
+<form action="{% url 'add_admin_save' %}" method="POST">
+    {% csrf_token %}
+    
+          <!-- /.row -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-default">
+                <div class="card-header">
+                  <h3 class="card-title">Add Admin</h3>
+                </div>
+                <div class="card-body p-0">
+                  <div class="bs-stepper">
+                    <div class="bs-stepper-header" role="tablist">
+                      <!-- your steps here -->
+                      <div class="step" data-target="#logins-part">
+                        <button type="button" class="step-trigger" role="tab" aria-controls="logins-part" id="logins-part-trigger">
+                          <span class="bs-stepper-circle">1</span>
+                          <span class="bs-stepper-label">Admin Logins</span>
+                        </button>
+                      </div>
+                      <div class="line"></div>
+                      <div class="step" data-target="#information-part">
+                        <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
+                          <span class="bs-stepper-circle">2</span>
+                          <span class="bs-stepper-label"> information</span>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="bs-stepper-content">
+                      <!-- your steps content here -->
+                      <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
+
+                        <!-- =========================================
+                                  Alerts message 
+                        ========================================= -->
+
+                        {% include "partials/_alerts.html" %}
+                          <!-- =========================================
+                                  Alerts message 
+                        ========================================= -->
+
+                        <div class="form-group">
+                            <label > Email</label>
+                            <input type="email"   class="form-control" name="email" placeholder="Email" id="id_email" required autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label > Username</label>
+                            <input type="text"   class="form-control" name="username" placeholder="Username" id="id_username" required autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label > password</label>
+                            <input type="password"   class="form-control" name="password" placeholder="Password" required autocomplete="off">
+                        </div>
+
+                        
+                        <button class="btn btn-primary" onclick="stepper.next()">Next</button>
+                      </div>
+                      <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
+                        <div class="form-group">
+                            <label > First name</label>
+                            <input type="text"   class="form-control" name="first_name" placeholder="Enter first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label > Last name</label>
+                            <input type="text"   class="form-control" name="last_name" placeholder="Enter last name" required>
+                        </div>
+                        <div class="form-group">
+                            <label > Other name</label>
+                            <input type="text"   class="form-control" name="other_name" placeholder="Enter other name" required>
+                        </div>
+                        
+                        
+                       
+                        <!-- <div class="form-group">
+                            <label >Company name</label>
+                            <input type="text"   class="form-control" name="company_name" placeholder="Company name"  required>
+                        </div> -->
+                        <div class="form-group">
+                            <label> Phone number</label>
+                            <input type="tel"   class="form-control phone-inputmask" name="phone_number" placeholder="Phone number" required id="phone-mask" autocomplete="tel-country-code">
+                        </div>
+                    
+                        <div class="form-group">
+                            <label > Phone number 2</label>
+                            <input type="tel"   class="form-control phone-inputmask" name="phone_number_2" placeholder="Phone number" id="phone-mask" required>
+                        </div> 
+                        <div class="form-group">
+                            <label > Contact Address</label>
+                            <input type="text"   class="form-control" name="contact_address" placeholder="Contact Address" required>
+                        </div> 
+                        <!-- <div class="form-group">
+                            <label > Department</label>
+                            <input type="text"   class="form-control" name="department" placeholder="Department" required>
+                        </div>  -->
+                        <div class="form-group">
+                            <label > D.O.B</label>
+                            <input type="date"   class="form-control date-inputmask" name="dob" placeholder="Date of Birth" id="date-mask" required>
+                        </div> 
+                        
+                        <div class="form-group">
+                          <label > Gender</label>
+                          
+                          <select name="gender" id="id_gender" class="form-control" placeholder = 'select your gender' >
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                          </select>
+                      </div> 
+                        
+                        
+                        <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
+                        <button type="submit" class="btn btn-primary">Add Admin</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+               
+              </div>
+              <!-- /.card -->
+            </div>
+          </div>
+    
+</form>
+
+  
+{% endblock container-fluid %}
+
+{% block scripts %}
+  
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- Select2 -->
+<script src="{% static 'plugins/select2/js/select2.full.min.js' %}"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="{% static 'plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js' %}"></script>
+<!-- InputMask -->
+<script src="{% static 'plugins/moment/moment.min.js' %}"></script>
+<script src="{% static 'plugins/inputmask/jquery.inputmask.min.js' %}"></script>
+<!-- date-range-picker -->
+<script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
+<!-- bootstrap color picker -->
+<script src="{% static 'plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js' %}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+<!-- Bootstrap Switch -->
+<script src="{% static 'plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}"></script>
+<!-- BS-Stepper -->
+<script src="{% static 'plugins/bs-stepper/js/bs-stepper.min.js' %}"></script>
+<!-- dropzonejs -->
+<script src="{% static 'plugins/dropzone/min/dropzone.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{% static 'dist/js/demo.js' %}"></script>
+<!-- Page specific script -->
+<script src="{% static 'js/add_employee.js' %}"></script>
+
+<script>
+
+
+
+  $(document).ready(function(){
+          $("#id_email").keyup(function(){
+              var email=$(this).val();
+  
+             if(email!=""){
+                  $.ajax({
+                      url:"{% url 'check_email_exist' %}",
+                      type:'POST',
+                      data:{email:email}
+                  })
+                  .done(function(response){
+                      console.log(response);
+                      if(response=="True"){
+                          $(".email_error").remove();
+                          $("<span class='email_error' style='padding: 5px;color: red;font-weight: bold;'>Email already taken</span>").insertAfter("#id_email");
+                      }
+                      else{
+                          $(".email_error").remove();
+                          $("<span class='email_error' style='padding: 5px;color: green;font-weight: bold;'>Email Available</span>").insertAfter("#id_email");
+                      }
+                  })
+                  .fail(function(){
+                      console.log("failed");
+                  })
+              }
+              else{
+                $(".email_error").remove();
+              }
+  
+          });
+  
+          $("#id_username").keyup(function(){
+              var username=$(this).val();
+  
+              if(username!=""){
+                  $.ajax({
+                      url:`{% url 'check_username_exist' %}`,
+                      type:'POST',
+                      data:{username:username}
+                  })
+                  .done(function(response){
+                      console.log(response);
+                      if(response=="True"){
+                          $(".username_error").remove();
+                          $("<span class='username_error' style='padding: 5px;color: red;font-weight: bold;'>Username Not Available</span>").insertAfter("#id_username");
+                      }
+                      else{
+                          $(".username_error").remove();
+                          $("<span class='username_error' style='padding: 5px;color: green;font-weight: bold;'>Username Available</span>").insertAfter("#id_username");
+                      }
+                  })
+                  .fail(function(){
+                      console.log("failed");
+                  })
+              }
+              else{
+                  $(".username_error").remove();
+              }
+  
+          });
+  
+      });
+    </script> 
+
+{% endblock scripts %}

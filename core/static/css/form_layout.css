@@ -1,0 +1,185 @@
+@import url('https://https://fonts.google.com/specimen/Oswald?selection.family=Oswald:wght@300');
+
+*{
+    margin: 0;
+    padding: 0;     
+    box-sizing: border-box;
+    
+}
+.educationform{
+    position: relative;
+    top: 100px;
+}
+body{
+    font-family: 'Oswald', sans-serif;
+    color: #888888;  
+    font-size: 18px;
+	font-family: 'Oswald',  sans-serif;
+	font-weight: 400;
+    -webkit-font-smoothing: antialiased;  
+    /* background-image: url(../img/unsplash.jpg) ;
+    min-height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;     */
+    /* background-color: #b7ae9c; */
+    background-color: #fff;
+    display: grid;
+    
+	
+}
+.breadcrumb {
+    position: fixed;
+    top: 136px;
+    left: 44px;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #333;
+}
+/* FORM LAYOUT */
+form{
+    display: grid;
+}
+.form-log{
+    display: grid;
+}
+
+.box {
+    margin: 0;
+    margin-top: 78px;
+    padding: 0;
+    font-family: sans-serif;
+    position: relative;
+    left: 22%;
+    /* margin-top: 47%; */
+    transform: translate(0%,1%);
+    width: 50%;
+    padding: 40px;
+    background: #fff;
+    box-sizing: border-box;
+    /* box-shadow: 0px 7px 17px -4px rgba(0,0,0,.5); */
+    border-radius: 10px;
+    /* width: 55%; */
+    display: grid;
+}
+
+.inputBox{
+    display: grid;
+}
+
+.box h2{
+    margin: 0;
+    padding: 0;
+    color: rgb(94, 129, 247);
+    text-align: center;
+}
+.box .inputBox{
+    position: relative;
+    width: 100%;
+
+}
+.box .inputBox input{
+    width: 100%;
+    padding: 18px 8px;
+    font-size: 20px;
+    color: #888;
+    letter-spacing: 0;
+    margin-bottom: 35px;
+    border: 1px solid grey;   
+    border-radius: 8px solid rgb(94, 129, 247);
+    outline: none;
+    background: transparent;
+}
+textarea{
+    color: #888;
+    font-size: 20px;
+    background: transparent;
+    border-radius: 8px solid rgb(153, 159, 180);
+    outline: none;
+}
+
+.box .inputBox input:hover, textarea:hover{
+    border: 1px solid rgb(94, 129, 247);
+    
+}
+
+.box .inputBox label{
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    letter-spacing: 1px;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #888;
+    pointer-events: none;
+    transition: .5s;
+    
+}
+
+.box .inputBox input:focus ~ label,
+.box .inputBox input:valid ~ label,
+.box .inputBox textarea:focus ~ label,
+.box .inputBox textarea:valid ~ label{
+    
+    top: -17px;
+    left: 10px;
+    background-color: #fff;
+    color:rgb(94, 129, 247);
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+.box button[type="submit"]{
+    background:rgb(85, 85, 244);
+    border:1px solid rgb(94, 129, 247);
+    outline: none;
+    /* background: #fff; */
+    color: #fff;
+    padding:10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 14%;
+}
+
+.box button[type="submit"]:hover{
+    background: rgb(94, 129, 247);
+    color: #fff;
+}
+fieldset{
+    padding: 30px;
+    color: rgb(94, 129, 247);
+    border: 1px solid rgb(94, 129, 247);
+    border-radius: 10px solid rgb(94, 129, 247);
+}
+
+
+/* END FORM LAYOUT */
+
+/* FOOTER CSS */
+
+.footer{
+    position: relative;
+    top: 67px;
+}
+footer, hr{
+    margin-top: 30px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(2,auto);
+    color:  #333;
+}
+ ul{
+    list-style-type: none;
+    display: grid;
+    justify-content: end;
+    
+    grid-template-columns: repeat(3, 128px);
+}
+ ul li a {
+    text-decoration: none;
+    color:  #fff;
+}
+
+ /* END FOOTER CSS  */
+
+ .not-visible{
+     display: none;
+ }

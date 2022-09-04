@@ -1,0 +1,19 @@
+@import url('https://https://fonts.google.com/specimen/Oswald?selection.family=Oswald:wght@300');
+header{
+    --text: #333;
+    --text-inverse: #f4f4f4;
+    --background: white;
+    /* box-shadow: 0 3px 20px rgb(0 0 0 / 20%); */
+
+}
+
+.home-about {
+    margin-top: 246px;
+}
+
+.ui-form .fields{
+
+
+    display: grid;
+    grid-template-rows: repeat(4,85px);
+}

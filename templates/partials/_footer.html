@@ -1,0 +1,155 @@
+<footer>
+  <div class="footertags">
+      <div class="ads">
+          <ul>
+              <strong>
+                  Our Financial Solutions
+              </strong>
+              <li>
+                  <a href="#">
+                      Tax Management
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                      Pension Plans and Management
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                      Financial Reports
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                      Payroll Plans
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                      Employee Management
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                      Employee Attendance tracking
+                  </a>
+              </li>
+          </ul>
+      </div>
+      <div class="ads1">
+          <ul class="nav">
+              <li>
+                  <strong>
+                      <a href="{% url 'home' %}">
+                         <i class="fa fa-home" ></i>
+                       Home </a> 
+                  </strong>
+              </li>
+              <li>
+                  <strong>
+                      <a href="/">
+                       <i class="fa fa-tasks"></i>
+                       About</a>
+                   </strong>
+              </li>
+              <li>
+                  <strong>
+                      <a href="{% url 'contacts' %}">
+                          <i class="fa fa-plus-square"></i>
+                          Contact</a>
+                  </strong>
+                 
+              </li>
+              <li>
+               <strong>
+                      <a href="/">
+                          <i class="fa fa-user-o" ></i>
+                          Blogs</a>
+                  </strong>
+              </li>
+          </ul>
+      </div>
+      <div class="ads2">
+          <div class="subs">
+              <h3>
+                  Subscribe for our Newsletter
+              </h3>
+             
+              <form action="{% url 'contacts-letter' %}" method="POST">
+                {% csrf_token %}
+                {{ email.email }}
+                <div class="fields">
+                  <button type="submit" class="btn btn-warning email-subscribe-btn">
+                    subscribe
+                  </button>
+                </div>
+              </form>
+          </div>
+  
+          <div class="member">
+              Did you own a company and want to manage your employee? if yes
+              <a href="{% url 'contacts' %}">click here </a> to join
+          </div>
+          <div class="social-media">
+              <h2>
+                  Our Social Handles:
+              </h2>
+              <span>
+                  <a href="#">
+                    <i class="fab fa-facebook-square"></i>
+                  </a>
+              </span>
+              <span>
+                  <a href="#">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+              </span>
+              <span>
+                  <a href="#">
+                      <i class="fab fa-instagram" ></i>  
+                  </a>     
+              </span>
+              <span>
+                <a href="#">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>     
+            </span>
+            <span>
+              <a href="#">
+                <i class="fab fa-pinterest-p"></i>
+                
+              </a>     
+          </span>
+          <span>
+            <a href="#">
+              
+              <i class="fab fa-whatsapp"></i>
+            </a>     
+        </span>
+          </div>
+      </div>
+      <div class="ads3">
+          <div class="logo">
+              <div class="logo1">
+                  <img src="img/cocoa.png" alt="">
+              </div>
+              <div class="logo1">
+                  <img src="img/bank-of-agriculture.jpg" alt="">
+              </div>
+              <div class="logo1">
+                  <img src="img/worldbank_logo.jpg" alt="">
+              </div>
+          </div>
+         
+      </div>
+  
+  
+  </div>
+ <div class="copyright">
+  <hr>
+  <p>
+      CyclicPMS.  &copy 2020
+  </p>
+ </div>
+</footer>
