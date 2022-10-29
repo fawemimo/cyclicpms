@@ -1,0 +1,22 @@
+[
+{
+    "model": "managements.department",
+    "pk": 1,
+    "fields": {
+        "director": 1,
+        "name": "Admin",
+        "date_created": "2022-10-03T09:38:43.018Z",
+        "date_updated": "2022-10-03T09:38:43.018Z"
+    }
+},
+{
+    "model": "managements.department",
+    "pk": 2,
+    "fields": {
+        "director": 2,
+        "name": "COMPUTER IT",
+        "date_created": "2022-10-03T12:34:07.236Z",
+        "date_updated": "2022-10-03T12:34:07.236Z"
+    }
+}
+]

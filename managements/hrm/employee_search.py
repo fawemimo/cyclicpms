@@ -31,7 +31,5 @@ def search_query(request):
             context = {
                 'employees': paged_employees,
                 'total': total,
-
-                # 'directors':directors
             }
         return render(request, 'managements/director_template/manage_employee.html', context)

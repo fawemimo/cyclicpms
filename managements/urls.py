@@ -34,22 +34,7 @@ urlpatterns = [
     path('ajax/crud/delete/',  directorviews.DeleteDepartment.as_view(),
          name='crud_ajax_delete'),
 
-    path('position/', directorviews.position, name='position'),
-    # path('position/create/',directorviews.CreatePosition.as_view(),name='position_create'),
-    path('position/create/', directorviews.create_position, name='position_create'),
-    path('edit_position/<int:position_id/',
-         directorviews.edit_position, name='edit_position'),
-    path('edit_position_save/', directorviews.edit_position_save,
-         name='edit_position_save'),
-    path('level/', directorviews.level, name='level'),
-    path('levels/', directorviews.create_level, name='create_level'),
-    path('grade/', directorviews.grade, name='grade'),
-    path('grades/', directorviews.create_grade, name='create_grade'),
-    path('step/', directorviews.step, name='step'),
-    path('steps/', directorviews.create_step, name='create_step'),
-    path('leaved/', directorviews.leave, name='leavess'),
-    path('leaveds/', directorviews.create_leave, name='create_leave'),
-
+    
     #    profile template
     path('all_staff_profile/', directorviews.all_staff_profile,
          name='all_staff_profile'),
@@ -64,52 +49,52 @@ urlpatterns = [
     # '''
 
     # employee
-    path('add-employee/', employee.add_employee, name='add-employee'),
-    path('added/', employee.add_employee_save, name='add-employee-save'),
-    path('manage-employee/', employee.manage_employee, name='manage-employee'),
-    path('edit-employee/<int:employee_id>/',
+    path('employee/add/', employee.add_employee, name='add-employee'),
+    path('employee/add/save', employee.add_employee_save, name='add-employee-save'),
+    path('employee/manage', employee.manage_employee, name='manage-employee'),
+    path('update/<int:employee_id>/employee/',
          employee.edit_employee, name='editemployee'),
-    path('edit-employee-save/', employee.edit_employee_save,
+    path('employee/update/save/', employee.edit_employee_save,
          name='editemployeesave'),
     path('delete/<int:employee_id>/',
          employee.delete_employee, name='delete_user'),
-    path('add_upload_employee/', employee.add_upload_employee,
+    path('add/upload/employee/', employee.add_upload_employee,
          name='add_upload_employee'),
 
     # employee feedbacks
-    path('employee-feedback-message/', employee_feedback.employee_feedback_message,
+    path('employee/feedback/message/', employee_feedback.employee_feedback_message,
          name='employee_feedback_message'),
-    path('search_feedback/', employee_feedback.search_feedback, name='search_feedback'),
-    path('employee_feedback_message_replied/', employee_feedback.employee_feedback_message_replied,
+    path('search/feedback/', employee_feedback.search_feedback, name='search_feedback'),
+    path('employee/feedback/message/replied/', employee_feedback.employee_feedback_message_replied,
          name='employee_feedback_message_replied'),
 
     #  employee leave response path
-    path('employee_leave_view/', employee_leave.employee_leave_view,
+    path('employee/leave/view/', employee_leave.employee_leave_view,
          name='employee_leave_view'),
-    path('search_leave/', employee_leave.search_leave, name='search_leave'),
-    path('employee_approve_leave/<str:leave_id>/',
+    path('search/leave/', employee_leave.search_leave, name='search_leave'),
+    path('employee/approve/leave/<str:leave_id>/',
          employee_leave.employee_approve_leave, name='employee_approve_leave'),
-    path('employee_disapprove_leave/<str:leave_id>',
+    path('employee/disapprove/leave/<str:leave_id>',
          employee_leave.employee_disapprove_leave, name='employee_disapprove_leave'),
 
     # employee notifications
-    path('director_send_notification_employee/', notifications.director_send_notification_employee,
+    path('director/send/notification/employee/', notifications.director_send_notification_employee,
          name='director_send_notification_employee'),
     # path('employee_send_notification/',directorviews.employee_send_notification,name='employee_send_notification'),
-    path('search_notify/', notifications.search_notify, name='search_notify'),
-    path('send_employee_notification/', notifications  .send_employee_notification,
+    path('search/notify/', notifications.search_notify, name='search_notify'),
+    path('send/employee/notification/', notifications  .send_employee_notification,
          name='send_employee_notification'),
     path('search/', employee_search.search_query, name='search'),
 
     # employeee category
-    path('add_category_list/', directorviews.add_category_view,
+    path('add/category/list/', directorviews.add_category_view,
          name='add_category_list'),
-    path('update_category/<int:category_id>/',
+    path('update/category/<int:category_id>/',
          directorviews.update_category, name='update_category'),
 
     #employee payroll manager
-    path('payroll_manager/',directorviews.payroll_manager,name='payroll_manager'),
-    path('payroll_manager_upload/',directorviews.payroll_manager_upload,name='payroll_manager_upload'),
+    path('payroll/manager/',directorviews.payroll_manager,name='payroll_manager'),
+    path('payroll/manager/upload/',directorviews.payroll_manager_upload,name='payroll_manager_upload'),
     # ============================================================
     # all admin path
 
@@ -174,17 +159,17 @@ urlpatterns = [
     # '''
 
 
-    path('employee_apply_leave/', my_leave.employee_apply_leave,
+    path('employee/apply/leave/', my_leave.employee_apply_leave,
          name='employee_apply_leave'),
-    path('employee_apply_leave_save/', my_leave   .employee_apply_leave_save,
+    path('employee/apply/leave/save/', my_leave.employee_apply_leave_save,
          name='employee_apply_leave_save'),
-    path('employee_feedback/', my_feedback.employee_feedback,
+    path('employee/feedback/', my_feedback.employee_feedback,
          name='employee_feedback'),
-    path('employee_feedback_save/', my_feedback.employee_feedback_save,
+    path('employee/feedback/save/', my_feedback.employee_feedback_save,
          name='employee_feedback_save'),
-    path('employee_fcmtoken_save/', my_notifications.employee_fcmtoken_save,
+    path('employee/fcmtoken/save/', my_notifications.employee_fcmtoken_save,
          name='employee_fcmtoken_save'),
-    path('employee_all_notificaton/', my_notifications.employee_all_notificaton,
+    path('employee/all/notificaton/', my_notifications.employee_all_notificaton,
          name='employee_all_notificaton'),
 
 

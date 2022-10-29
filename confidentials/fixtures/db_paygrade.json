@@ -1,0 +1,24 @@
+[
+{
+    "model": "payroll.paygrade",
+    "pk": 1,
+    "fields": {
+        "director": null,
+        "job_role": 1,
+        "name": "Trainee",
+        "created_at": "2022-10-03T09:39:52.164Z",
+        "updated_at": "2022-10-03T09:39:52.164Z"
+    }
+},
+{
+    "model": "payroll.paygrade",
+    "pk": 2,
+    "fields": {
+        "director": 2,
+        "job_role": 2,
+        "name": "SENIOR",
+        "created_at": "2022-10-03T14:22:02.470Z",
+        "updated_at": "2022-10-03T14:22:02.470Z"
+    }
+}
+]

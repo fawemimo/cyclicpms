@@ -1,5 +1,10 @@
 ._.DS_Store
 .DS_Store
+*.txt
+*.md
+kite-installer
+.env
+.coverage
 ### Django ###
 *.log
 *.pot
@@ -10,10 +15,13 @@ db.sqlite3
 db.sqlite3-journal
 /media
 .venv
+.env
+.vscode
 /static
 /staticfiles
 .env
 media
+archive
 logs01-08-21
 /logs01-08-21
 .idea
@@ -155,5 +163,11 @@ dmypy.json
 # profiling data
 .prof
 
+
 # End of https://www.toptal.com/developers/gitignore/api/django
 
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

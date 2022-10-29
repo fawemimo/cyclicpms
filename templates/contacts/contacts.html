@@ -2,108 +2,110 @@
 {% load static %}
 
 {% block title %}
-  Contact
+Contact
 {% endblock title %}
 
 
 {% block extrastyle %}
-  <!-- <link rel="stylesheet" href="{% static 'css/blogs.css' %}"> -->
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy" rel="stylesheet">
-  <!-- Vendor CSS Files -->
-  <link href="{% static 'assets3/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets3/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'assets3/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets3/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets3/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets3/css/style.css' %}" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'css/contacts.css' %}">
-    <!-- Template Main CSS File -->
-    <!-- <link href="{% static 'assets3/css/style.css' %}" rel="stylesheet"> -->
+<!-- <link rel="stylesheet" href="{% static 'css/blogs.css' %}"> -->
+<!-- Google Fonts -->
+<link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy"
+    rel="stylesheet">
+<!-- Vendor CSS Files -->
+<link href="{% static 'assets3/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets3/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+<link href="{% static 'assets3/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets3/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets3/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets3/css/style.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/contacts.css' %}">
+<!-- Template Main CSS File -->
+<!-- <link href="{% static 'assets3/css/style.css' %}" rel="stylesheet"> -->
 {% endblock extrastyle %}
 
 
 {% block header %}
 
- <!-- ======= Contact Me Section ======= -->
- <section id="contact" class="contact">
-  <div class="container">
+<!-- ======= Contact Me Section ======= -->
+<section id="contact" class="contact">
+    <div class="container">
 
-      <div class="section-title">
-         
-          <h2>Contact Us</h2>
-          <p>
-            You can reach us on our social handles, email, phone number and you can contact us here
-          </p>
-      </div>
+        <div class="section-title">
 
-      <div class="row">
+            <h2>Contact Us</h2>
+            <p>
+                You can reach us on our social handles, email, phone number and you can contact us here
+            </p>
+        </div>
 
-          <div class="col-lg-6">
+        <div class="row">
 
-              <div class="row">
-                  <div class="col-md-12">
-                      <div class="info-box">
-                          <i class="bx bx-share-alt"></i>
-                          <h3>Social Profiles</h3>
-                          <div class="social-links">
-                              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                              <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-                              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                      <div class="info-box mt-4">
-                          <i class="bx bx-envelope"></i>
-                          <h3>Email Me</h3>
-                          <p>f.owolabi81@gmail.com</p>
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                      <div class="info-box mt-4">
-                          <i class="bx bx-phone-call"></i>
-                          <h3>Call Us</h3>
-                          <p>+234 805 8366 78</p>
-                      </div>
-                  </div>
-              </div>
+            <div class="col-lg-6">
 
-          </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="info-box">
+                            <i class="bx bx-share-alt"></i>
+                            <h3>Social Profiles</h3>
+                            <div class="social-links">
+                                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
+                                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-box mt-4">
+                            <i class="bx bx-envelope"></i>
+                            <h3>Email Me</h3>
+                            <p>f.owolabi81@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-box mt-4">
+                            <i class="bx bx-phone-call"></i>
+                            <h3>Call Us</h3>
+                            <p>+234 805 8366 78</p>
+                        </div>
+                    </div>
+                </div>
 
-          <div class="col-lg-6">
-              <form action="{% url 'contacts' %}" method="POST" role="form" class="php-email-form">
-                {% csrf_token %}
+            </div>
 
-                  <div class="row">                      
+            <div class="col-lg-6">
+                <form action="{% url 'contacts' %}" method="POST" role="form" class="php-email-form">
+                    {% csrf_token %}
+
+                    <div class="row">
                         <div class="form-group col-md-6">
                             {{ form.phone }}
                         </div>
-                      <div class="col-md-6 form-group mt-3 mt-md-0">
-                          {{ form.email }}
-                      </div>
-                      
-                  </div>
-                  
-                  <div class="form-group options-for-contact">
-                      {{ form.message }}
-                  </div>
-                  
-                  <div class="text-center"><button type="submit">Send Message</button></div>
-              </form>
-          </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                            {{ form.email }}
+                        </div>
 
-      </div>
+                    </div>
 
-  </div>
+                    <div class="form-group options-for-contact">
+                        {{ form.message }}
+                    </div>
+
+                    <div class="text-center"><button type="submit">Send Message</button></div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
 </section>
 <!-- End Contact Me Section -->
 
 {% endblock header %}
 
-  
+
 
 {% block body %}
 
@@ -112,3 +114,6 @@
 {% endblock body %}
 
 
+{% block script %}
+
+{% endblock script %}

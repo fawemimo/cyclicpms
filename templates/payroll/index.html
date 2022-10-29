@@ -6,6 +6,12 @@
 {% endblock title %}
 
 
+{% block extrasyle %}
+
+<link rel="stylesheet" href="{% static 'css/_dropdown.css' %}" />
+{% endblock extrasyle %}
+
+
 {% block board %}
 {% include "partials/_board.html" %} 
 {% endblock board %}

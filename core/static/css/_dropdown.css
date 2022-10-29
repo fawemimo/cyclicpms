@@ -1,0 +1,27 @@
+
+div.dropdown #wrapper ul {
+    margin-left: 10px;
+}
+
+div.dropdown #wrapper ul li {
+    list-style: none;
+    margin-top: 31px;
+    padding: 10px;
+    min-height: 13px;
+}
+
+div.dropdown #wrapper ul li:hover {
+    background: #8a6ad7;
+    border-left: 4px solid rgb(3, 3, 83);
+
+    color: white;
+    margin-left: -8px;
+}
+
+div.dropdown #wrapper ul li a {
+    text-decoration: none;
+}
+
+div.dropdown #wrapper ul li a:hover {
+    color: white;
+}

@@ -1,22 +1,44 @@
-<div class="page-wrapper">
-    <!-- ============================================================== -->
-    <!-- Bread crumb and right sidebar toggle -->
-    <!-- ============================================================== -->
-    <div class="page-breadcrumb">
-        <div class="row">
-            <div class="col-12 d-flex no-block align-items-center">
-                <h4 class="page-title">Cyclic Payroll Management System | HRM Dashboard</h4>
-                <div class="ms-auto text-end">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
+{% load static %}
+{% block extrastyle %}
+
+  {% endblock extrastyle %}
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <!-- LEAVE  -->
+          {% url 'employee_apply_leave' as leave %}
+          <!-- FEEDBACK  -->
+          {% url 'employee_feedback' as feedback %}
+          
+          {% if request.path == leave %}
+            <li class="breadcrumb-item" style="color: green;">
+              Leave
+            </li>
+            <li class="breadcrumb-item active"> 
+                <a href="{% url 'employee_apply_leave' %}">
+                  Apply Leave
+                </a>
+              </li>
+            <li class="breadcrumb-item "> Manage Leave</li>
+            <li class="breadcrumb-item "> Relief Officer</li>
+          
+          {% elif request.path == feedback %}
+            <li class="breadcrumb-item" style="color:green;">
+              
+                Feedback
+            </li>
+            <li class="breadcrumb-item active">
+              <a href="{% url 'employee_feedback' %}">
+                Message Us
+              </a> </li>
+            <li class="breadcrumb-item active"> Manage Feedback</li>
+          {% endif %}  
+          
+          
+        </ol>
+      </nav>
     </div>
-    <!-- ============================================================== -->
-    <!-- End Bread crumb and right sidebar toggle -->
-    <!-- ============================================================== -->
+  </section>

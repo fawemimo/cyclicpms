@@ -1,0 +1,65 @@
+[
+{
+    "model": "set_salary.salaryattributevalue",
+    "pk": 1,
+    "fields": {
+        "director": 2,
+        "salary_attribute_value": 1,
+        "value": "12038474.00"
+    }
+},
+{
+    "model": "set_salary.salaryattributevalue",
+    "pk": 2,
+    "fields": {
+        "director": 1,
+        "salary_attribute_value": 2,
+        "value": "38487.00"
+    }
+},
+{
+    "model": "set_salary.salaryattributevalue",
+    "pk": 3,
+    "fields": {
+        "director": 1,
+        "salary_attribute_value": 3,
+        "value": "384847.00"
+    }
+},
+{
+    "model": "set_salary.salaryattributevalue",
+    "pk": 4,
+    "fields": {
+        "director": 1,
+        "salary_attribute_value": 1,
+        "value": "3333.00"
+    }
+},
+{
+    "model": "set_salary.salaryattributevalue",
+    "pk": 5,
+    "fields": {
+        "director": 2,
+        "salary_attribute_value": 5,
+        "value": "1829122.00"
+    }
+},
+{
+    "model": "set_salary.salaryattributevalue",
+    "pk": 6,
+    "fields": {
+        "director": 2,
+        "salary_attribute_value": 5,
+        "value": "123234.00"
+    }
+},
+{
+    "model": "set_salary.salaryattributevalue",
+    "pk": 7,
+    "fields": {
+        "director": 2,
+        "salary_attribute_value": 7,
+        "value": "34332.00"
+    }
+}
+]

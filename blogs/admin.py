@@ -7,7 +7,7 @@ from .models import Post
 class PostAdmin(admin.ModelAdmin):
     
     list_per_page                   = 25
-    list_display                    = ('author','title','date_posted')
+    list_display                    = ('author','title','published')
     list_display_link               = ('author','title')
-    list_filter                     = ('author','date_posted')
+    list_filter                     = ('author','published')
 admin.site.register(Post,PostAdmin)

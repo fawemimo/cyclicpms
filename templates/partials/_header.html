@@ -1,30 +1,85 @@
+{% load static %}
 <header>
-</div>
-<a href="{% url 'home' %}" class="site-logo" aria-label="homepage">Cyclic<b>PMS.</b></a>
-<nav class="main-nav">
-  <ul class="nav__list">
-    <li class="nav__list-item"><a href="{% url 'home' %}" class="nav__link active">Home</a></li>
-    <li class="nav__list-item">
-      <a href="#about" class="nav__link">About</a>
+  </div>
+  <a href="{% url 'home' %}" class="site-logo" aria-label="homepage">Cyclic<b>PMS</b><sup>{{user_country_details.flag}}</sup>
+    <nav class="main-nav"></a> 
+    <ul class="nav__list">
+      <li class="nav__list-item"><a href="{% url 'home' %}" class="nav__link active">Home</a></li>
+      {% if request.user.is_authenticated %}
+     {% if request.user.user_type == 1 %}
+     <li class="nav__list-item dropdown">
+      <span><a  class="nav__link dropdown-btn">Requests</a></span>
+      <div class="dropdown-content">
+        <ul>
+          <li><a href="{% url 'employee_apply_leave' %}">Leave</a></li>
+          <li><a href="{% url 'req_apply' %}">Requisition</a></li>
+          <li><a href="/">Report</a></li>
+          <li><a href="/">Transfer</a></li>
+          <li><a href="/">Resignation</a></li>
+          <li><a href="{% url 'employee_feedback' %}">Feedback</a></li>
+        </ul>
+      </div>
     </li>
-    <li class="nav__list-item">
-      <a href=" {% url 'contacts' %}" class="nav__link active">Contact</a>
-    </li>
-    <li class="nav__list-item">
-      <a href="#" class="nav__link">Services</a>
-    </li>
-    <li class="nav__list-item">
-      <a href="#" class="nav__link">Pricing</a>
-    </li>
-    <li class="nav__list-item"><a href="#" class="nav__link active">Vacancies</a></li>
-    <li class="nav__list-item"><a href="{% url 'bloghome' %}" class="nav__link active">Blog</a></li>
-
-  </ul>
-</nav>
-<nav class="account">
-  <ul class="nav__list">
+    <li class="nav__list-item dropdown">
+      <span><a class="nav__link dropdown-btn" href="{% url 'contacts' %}">Performance</a></span>
      
-  
-  </ul>
-</nav>
+    </li>
+    <li class="nav__list-item">
+      <a href="{% url 'payslip' %}" class="nav__link">Payslip</a>
+    </li>
+    <li class="nav__list-item">
+      <a href="#" class="nav__link">Document</a>
+    </li>
+    {% elif request.user.user_type == 5 %}
+    <li class="nav__list-item dropdown">
+      <span><a class="nav__link dropdown-btn">workspace</a></span>
+     
+    </li>
+     {% endif %}      
+    
+      <li class="nav__list-item"><a href="{% url 'bloghome' %}" class="nav__link">Blog</a></li>
+      {% if request.user.user_type == 1 %}
+      <li class="nav__list-item active"><a href="{% url 'employee' %}" class="nav__link">Dashboard</a></li>
+      {% elif request.user.user_type == 5 %}  
+      <li class="nav__list-item active"><a href="{% url 'directors' %}" class="nav__link">Dashboard</a></li>
+      {% endif %}
+      <li class="nav__list-item"><img src="{% static 'img/avatar.png' %}" alt="{{user.first_name}}" style="border-radius: 14px;width: 12%;
+            margin-top: 3px;"></li>
+      {% else %}
+      <li class="nav__list-item">
+        <a href="#about" class="nav__link dropdown">About</a>
+      </li>
+      <li class="nav__list-item">
+        <a href=" {% url 'contacts' %}" class="nav__link active"></a>
+      </li>
+      <li class="nav__list-item">
+        <a href="#" class="nav__link">Services</a>
+      </li>
+      <li class="nav__list-item">
+        <a href="#" class="nav__link">Pricing</a>
+      </li>
+      <li class="nav__list-item"><a href="#" class="nav__link active">Vacancies</a></li>
+      <li class="nav__list-item"><a href="{% url 'bloghome' %}" class="nav__link active">Blog</a></li>
+      <li class="nav__list-item"><a href="{% url 'accounts-login' %}" class="nav__link active">Log in</a></li>
+      
+      {% endif %}
+      <li class="nav__list-item"><span  class="nav__link active"><i class="ar flag"></i></span></li>
+    </ul>
+
+  </nav>
+  <nav class="account" style="margin-right: -244px;">
+    <!-- <ul class="nav__list">
+      {% if request.user.user_type == 1 %}
+      <li class="nav__list-item active"><a href="{% url 'employee' %}" class="nav__link">Dashboard</a></li>
+      <li class="nav__list-item"><img src="{% static 'img/avatar.png' %}" alt="{{user.first_name}}" style="border-radius: 14px;width: 12%;
+            margin-top: 3px;"></li>
+      <li class="nav__list-item"><a href="#" class="nav__link"></a></li>
+      {% else %}
+      <li class="nav__list-item"><a href="{% url 'accounts-login' %}" class="nav__link">Log in</a></li>
+      <li class="nav__list-item"><a href="{% url 'join' %}" class="nav__link">Join</a></li>
+      {% endif %}
+    </ul> -->
+  </nav>
+
+
 </header>

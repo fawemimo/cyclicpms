@@ -1,0 +1,101 @@
+[
+    {
+        "model": "set_salary.paymentattribute",
+        "pk": 1,
+        "fields": {
+            "director": 1,
+            "name": "Tax",
+            "definations": "Government Tax Deduction"
+        }
+    },
+    {
+        "model": "set_salary.paymentattribute",
+        "pk": 2,
+        "fields": {
+            "director": 1,
+            "name": "NHF",
+            "definations": "National Housing Funds"
+        }
+    },
+    {
+        "model": "set_salary.paymentattribute",
+        "pk": 3,
+        "fields": {
+            "director": 1,
+            "name": "Loan",
+            "definations": "Company Loans"
+        }
+    },
+    {
+        "model": "set_salary.paymentattribute",
+        "pk": 4,
+        "fields": {
+            "director": 2,
+            "name": "Pension",
+            "definations": "Pension Deduction funds"
+        }
+    },
+    {
+        "model": "set_salary.paymentattribute",
+        "pk": 1,
+        "fields": {
+            "director": 1,
+            "name": "Basic",
+            "definations": "Basic salary Payment"
+        }
+    },
+    {
+        "model": "set_salary.paymentattribute",
+        "pk": 2,
+        "fields": {
+            "director": 1,
+            "name": "Housing",
+            "definations": "House Payment"
+        }
+    },
+    {
+        "model": "set_salary.paymentattribute",
+        "pk": 3,
+        "fields": {
+            "director": 1,
+            "name": "Meal",
+            "definations": "Food allowances"
+        }
+    },
+    {
+        "model": "set_salary.paymentattribute",
+        "pk": 4,
+        "fields": {
+            "director": 1,
+            "name": "Transport",
+            "definations": "Transport fare"
+        }
+    },
+    {
+        "model": "set_salary.paymentattribute",
+        "pk": 5,
+        "fields": {
+            "director": 2,
+            "name": "Basic",
+            "definations": "Basic salary Payment"
+        }
+    },
+    {
+        "model": "set_salary.paymentattribute",
+        "pk": 6,
+        "fields": {
+            "director": 2,
+            "name": "Housing",
+            "definations": "Housing Payment"
+        }
+    },
+    {
+        "model": "set_salary.paymentattribute",
+        "pk": 7,
+        "fields": {
+            "director": 2,
+            "name": "Meal",
+            "definations": "Food allowances"
+        }
+    }
+]

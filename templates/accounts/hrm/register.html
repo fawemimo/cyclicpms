@@ -2,31 +2,7 @@
 
 <form action="" method="POST">
     {% csrf_token %}
-    <label for="">
-        {{ hrmform.username.label }}
-    </label>
-    {{ hrmform.username }}
-
-    <label for="">
-        {{ hrmform.email.label }}
-    </label>
-    {{ hrmform.email }}
-    
-
-    <label for="">
-        {{ hrmform.password.label }}
-    </label>
-    {{ hrmform.password }}
-    
-
-    <label for="">
-        {{ hrmform.password2.label }}
-    </label>
-    {{ hrmform.password2 }}
-    <div>
-        <!-- {{ director.as_p }} -->
-    </div>
-
+    {{ hrmform.as_p}}
     <div>
         <input type="submit" value="submit">
     </div>

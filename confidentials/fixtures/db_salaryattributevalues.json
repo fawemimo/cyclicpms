@@ -1,0 +1,56 @@
+[
+{
+    "model": "payroll.salaryattributevalues",
+    "pk": 1,
+    "fields": {
+        "director": 1,
+        "salary_attribute_value": 1,
+        "employee_data": 1
+    }
+},
+{
+    "model": "payroll.salaryattributevalues",
+    "pk": 2,
+    "fields": {
+        "director": null,
+        "salary_attribute_value": 4,
+        "employee_data": 1
+    }
+},
+{
+    "model": "payroll.salaryattributevalues",
+    "pk": 3,
+    "fields": {
+        "director": null,
+        "salary_attribute_value": 2,
+        "employee_data": 1
+    }
+},
+{
+    "model": "payroll.salaryattributevalues",
+    "pk": 4,
+    "fields": {
+        "director": null,
+        "salary_attribute_value": 3,
+        "employee_data": 1
+    }
+},
+{
+    "model": "payroll.salaryattributevalues",
+    "pk": 5,
+    "fields": {
+        "director": 2,
+        "salary_attribute_value": 5,
+        "employee_data": 2
+    }
+},
+{
+    "model": "payroll.salaryattributevalues",
+    "pk": 6,
+    "fields": {
+        "director": 2,
+        "salary_attribute_value": 7,
+        "employee_data": 2
+    }
+}
+]

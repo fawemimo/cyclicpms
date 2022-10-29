@@ -98,16 +98,16 @@ body {
   }
   
   .nav-scrolled {
-    --text: #333;
-    --text-inverse: #f4f4f4;
-    --background: #f4f4f4;
+    --text: white;
+    --text-inverse: white;
+    --background: #8a6ad7;
   
     box-shadow: 0 3px 20px rgba(black, 0.2);
   }
   
   .home-intro {
     padding: 33vh 0;
-    background: #222 url(//unsplash.it/900);
+    background: #8a6ad7b0  url(//unsplash.it/900);
     background-size: cover;
     background-blend-mode: multiply;
     color: white;
@@ -123,6 +123,10 @@ body {
     min-height: 1rem;
     font-size: 5rem;
 }
+  .home-text{
+    margin-left: 415px;
+    max-width: 50%;
+  }
   
   .columns {
     display: flex;

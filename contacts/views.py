@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from .forms import ContactRequestForm, SubscribersForm,MailMessagesForm
 from django.contrib import messages
-from .models import Subscriber
-# Create your views here.
+from .models import Subscriber, ContactRequest
+from django.http import JsonResponse
 
 # Email configurations 
 from django.contrib.sites.shortcuts import get_current_site
@@ -15,6 +15,7 @@ import requests
 from django.template import Context
 from django.template.loader import get_template
 from django.conf import settings
+
 
 
 
@@ -31,14 +32,15 @@ def contact(request):
             return redirect('contacts')        
     else:
         form =   ContactRequestForm()
-          
-        
-                
     context = {
         'form':form,
     }
     return render(request,'contacts/contacts.html',context)
 
+
+def getContact(request):
+    contact = ContactRequest.objects.all()
+    return JsonResponse({'contact':list(contact.values())})
 
 # email subscribers 
 
@@ -59,23 +61,14 @@ def subscribers(request):
                 # send email 
                 current_site = get_current_site(request)
                 mail_subject = 'You have now subscribe to our Newsletter'
-                html_message = get_template('contacts/subscribed_text.html').render()                   
-                
-
-                   
-
-                
+                html_message = get_template('contacts/subscribed_text.html').render()   
                 email = form.cleaned_data.get('email')
-                
                 to = email
                 send_email = EmailMessage(mail_subject,html_message,to=[to])
                 send_email.content_subtype = "html"
                 send_email.send()
                 messages.success(request,'Mail sent successfully')
-                
-               
                 return redirect('home')
-            
 
     else:
         form = SubscribersForm()

@@ -1,0 +1,14 @@
+div.side-bar {
+    width: 14%;
+    position: sticky;
+    top: 19%;
+    margin-bottom: 36px;
+}
+
+header {
+    background: white;
+    color: black;
+}
+.site-logo {
+    color: black;
+}

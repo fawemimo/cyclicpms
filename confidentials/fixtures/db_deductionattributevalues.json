@@ -1,0 +1,47 @@
+[
+{
+    "model": "payroll.deductionattributevalues",
+    "pk": 1,
+    "fields": {
+        "director": null,
+        "deduction_attribute_value": 1,
+        "employee_data": 1
+    }
+},
+{
+    "model": "payroll.deductionattributevalues",
+    "pk": 2,
+    "fields": {
+        "director": null,
+        "deduction_attribute_value": 4,
+        "employee_data": 1
+    }
+},
+{
+    "model": "payroll.deductionattributevalues",
+    "pk": 3,
+    "fields": {
+        "director": null,
+        "deduction_attribute_value": 3,
+        "employee_data": 1
+    }
+},
+{
+    "model": "payroll.deductionattributevalues",
+    "pk": 4,
+    "fields": {
+        "director": 2,
+        "deduction_attribute_value": 2,
+        "employee_data": 2
+    }
+},
+{
+    "model": "payroll.deductionattributevalues",
+    "pk": 5,
+    "fields": {
+        "director": 2,
+        "deduction_attribute_value": 5,
+        "employee_data": 2
+    }
+}
+]

@@ -1,4 +1,119 @@
+@import url('https://https://fonts.google.com/specimen/Oswald?selection.family=Oswald:wght@300');
+
 .home-intro .home-text .nav__list-item h1 {
     min-height: 1rem;
     font-size: 5rem;
+}
+
+footer .footertags {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+footer .ads ul  {
+    list-style:none;
+
+}
+
+footer a {
+    color:white;
+    text-decoration: none;
+  }
+
+
+  .nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0px;
+    display: flex;
+    float: left;
+}
+
+.table {
+   
+    width: 95%;
+    margin: -78px 2rem 24rem 2rem;
+    background-color: transparent;
+    
+}
+nav.arial-label {
+    margin: -11rem 3rem 2rem 195px;
+}
+.pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+    margin-left: 765px;
+    margin-top: -127px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 8% auto;
+}
+
+span#form-btn {
+    margin: -6rem 22rem 0rem 70rem;
+    background: #8a6ad7;
+    border: navajowhite;
+    color: #fff;
+    width: 10%;
+    padding: 10px;
+}
+
+div.table div.apply-for- {
+    margin: 30px 1108px;
+    padding: -7px;
+}
+
+.btn-outline-secondary {
+    color: white;
+    background-color: #8a6ad7;
+    background-image: none;
+    border-color: #8a6ad7;
+    font-size: 21px;
+}
+
+.bene-detail {
+    width: 330px;
+    margin: -135px 10px;
+}
+
+.btn-group .btn + .btn {
+    margin-left: 51px;
+}
+
+button#btn-back {
+    margin-left: -620px;
+}
+
+button#btn-next {
+    margin-left: 731px;
+}
+
+div.textarea {
+    margin-top: -216px;
+}
+
+button#btn-back-last {
+    margin-left: -658px;
+}
+button#btn-next-submit {
+    right: 43px;
+}
+
+div.col-md-12 p.lead {
+    color: red;
+    background: #e9c1c1;
+    width: 12%;
+    margin-left: 300px;
+    border-radius: 12px;
+}
+
+
+div.showcase section#showcase-inner{
+    /* margin-top: 92px; */
+}
+.mt-3, .my-3 {
+    margin-top: 12rem !important;
 }

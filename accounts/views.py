@@ -66,18 +66,15 @@ def login_page(request):
         user = authenticate(request, username=email, password=password)
         if user is not None:
             request.session['pk'] = user.pk
-
             login(request, user)
-
-            is_safe_url
             try:
                 del request.session['email']
             except:
                 pass
-            if is_safe_url(redirect_path, request.get_host()):
-
-                return redirect(redirect_path)
-            else:
+            # if request(redirect_path, request.get_host()):
+ 
+            #     return redirect(redirect_path)
+            
                 messages.success(request, 'Enter OTP code sent to your phone')
                 if user.user_type == 5:
                     return redirect('directors')

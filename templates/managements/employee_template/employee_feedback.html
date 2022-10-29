@@ -1,94 +1,137 @@
-{% extends "shared/employee_dashboard.html" %}
+{% extends "shared/layout.html" %}
 {% load static %}
 
-{% block title %}
-  Feed Back
-{% endblock title %}
 
-{% block extrasyle %}
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/_dashboard.css' %}">
+<link rel="stylesheet" href="{% static 'css/_styles_leave.css' %}">
+{% endblock extrastyle %}
 
-{% endblock extrasyle %}
-{% block bodycontent %}
-<ul class="card card-primary card-outline">
+<!-- SHOWCASE  -->
+<!-- SHOWCASE  -->
+{% block showcase %}
+{% include "partials/_showcase.html" %}
+{% endblock showcase %}
 
-  <div class="card-header text-center">
-      <a href="{% url 'home' %}" class="h1"><b>Leave a Feedback</b></a>
-      <hr>
-    </div>
-  
-    <article>
-      <li>
-        <div class="user">
-        
-            
-          <div class="contact-phone">
-            <span>
+<!-- BREADCRUMB  -->
+{% block breadcrumb %}
+{% include "partials/_breadcrumb.html" %}
+{% endblock breadcrumb %}
 
-            </span>
-             
-          </div>
-          
-            <address>
-              <p class="card-text">
-              
-            
-              </p>
-            </address>
-        
+{% block body %}
+<!-- PROGRESS BAR SECTION -->
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <!--Step One Get Started -->
+    <div class="form-container">
+      <div class="heading">
+
+        <h2>GIVE A FEEDBACK </h2>
+      </div>
+      <div class="progressbar">
+        <div class="progress" id="progress"></div>
+        <!--the line that is going from first to 2nd ..-->
+
+        <div class="progress-step progress-step-active" data-title="Tell Us"></div>
+        <div class="progress-step" data-title="Your Message"></div>
+
+
+        <div class="progress" id="progress"></div>
+      </div>
+
+
+      <div class="form-step form-step-active">
+        <div class="content active">
+          <p>
+            <span style="color: #043c6d">Feedback let us know your feelings</span>
+            <span style="color:#067ed3;"><br>and we will get back to you.</span><br>
+          </p>
+          <a href="#" data-next nextclass="btn" id="nextBtn" class="btn-next get-started">Message us</a>
+
         </div>
-          <div class="card-body">
-            <h1 class="card-title">
+      </div>
 
-                          
-            </h1>
 
-              <form action="{% url 'employee_feedback_save' %}" method="POST">
-                {% csrf_token %}
-                
-                <div class="form">
-                  <label >Feedback Message:</label>
-                  <textarea name="feedback" id="id_feedback" class = "form-control" placeholder="feedback message"  rows="10"></textarea>
+      <!-- Step Two Personal Information-->
+      <div class="form-step">
+        <form action="{% url 'employee_feedback_save'  %}" method="POST">
+          {% csrf_token %}
+          <div class="container">
+
+            <div class="first-layer">
+              <div class="row">
+                <div class="col-25">
+                  <label>Feedback Message:</label>
                 </div>
+                <div class="col-75  textarea">
+                  <textarea name="feedback" id="id_feedback" class="bene-detail" placeholder="feedback message"
+                    rows="10" required></textarea>
+                </div>
+              </div>
+              <div class="btn-group">
+                <button type="button" class="back btn btn-prev" id="btn-back-last">Back</button>
+                <input type="submit" name="submit" class="next btn_submit" value="submit" id="btn-next-submit" />
+              </div>
 
-               
-                <button class="btn btn-primary btn-block mt-2" type="submit">Leave a Feedback</button>
-              </form>
-              
-            
-      </li>
-    </article>
- 
+            </div>
 
+          </div>
+      </div>
 
-         <div class="table">
-            <table class="table">
-                <tr>
-                    <th>#</th>
+    </div>
 
-                    <th>Feedback Message</th>
-                    <th>Feedback Reply</th>
-                    
-    
-    
-                </tr>
-    
-                {% for feedback in feedback_data %}
-                <tr>
-                    <td>
-                        {{ forloop.counter }}
-                    </td>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-                    <td>
-                        {{feedback.feedback}}
-                    </td>
-                    <td>
-                        {{ feedback.feedback_reply }}
-                    </td>
-                    
-                </tr>
-                {% endfor %}
-    
-           </table>
-         </div>
+<!-- FEEDBACK TABLE  -->
+<div class="table">
+  <div class="apply-for-">
+    <button class="btn btn-outline-secondary mt-10" id="myBtn">Message Us</button>
+  </div>
+  <table class="table">
+    <tr>
+      <th>#</th>
+      <th>Feedback Message</th>
+      <th>Feedback Reply</th>
+      <th>Actions</th>
+    </tr>
 
-{% endblock bodycontent %}
+    {% for feedback in feedback_data %}
+    <tr>
+      <td>
+        {{ forloop.counter }}
+      </td>
+      <td>
+        {{feedback.feedback}}
+      </td>
+      <td>
+        {{ feedback.feedback_reply }}
+      </td>
+      <td>
+        <span class="alert alert-secondary">
+          <a href="">Update</a>
+        </span>
+        <span class="alert alert-danger">
+          <a href="">Delete</a>
+        </span>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+{% endblock body %}
+
+{% block script %}
+<script src="{% static 'js/employee/_leave.js' %}"></script>
+{% endblock script %}

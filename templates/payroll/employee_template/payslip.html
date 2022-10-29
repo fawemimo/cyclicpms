@@ -1,0 +1,349 @@
+{% extends "shared/layout.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/_dashboard.css' %}">
+<link rel="stylesheet" href="{% static 'css/employee/_payslip.css' %}">
+{% endblock extrastyle %}
+
+{% block board %}
+{% endblock board %}
+
+<!-- SHOWCASE  -->
+{% block showcase %}
+{% include "partials/_showcase.html" %}
+{% endblock showcase %}
+{% block about %}
+
+{% endblock about %}
+
+{% block body %}
+
+<!-- CARD DISPLAY  -->
+<div class="container-bio">
+    <!-- PAYSLIP SEARCH  -->
+    <div class="search-generate">
+        <h4>
+            Generate your payslip
+        </h4>
+        <small>View your monthly payslip</small>
+        <form action="" method="post">
+            <div class="col-12">
+                <label for="">
+                    Date:
+                </label>
+                <select name="" id="">
+                    <option value="">January 2022</option>
+                    <option value="">January 2022</option>
+                    <option value="">January 2022</option>
+                </select>
+            </div>
+
+            <div class="apply-for-">
+                <button class="btn btn-outline-secondary mt-10" id="myBtn">Generate PaySlip</button>
+            </div>
+        </form>
+    </div>
+    <div class="card-money">
+        <div class="card-wrapper">
+            <!-- GROSS PAY CARD / -->
+            <div class="card1">
+                <div>
+                    <img src="{% static 'img/icons/icons8-margin-64.png' %}" alt="">
+                </div>
+                <span>
+                    Gross Pay
+                </span>
+                <p>
+                    N123,4000,234.00
+                </p>
+            </div>
+            <!-- DEDUCTIONS  -->
+            <div class="card1" id="deductions">
+                <div>
+                    <img src="{% static 'img/icons/icons8-minus-64.png' %}" alt="">
+                </div>
+                <span>
+                    Deductions
+                </span>
+                <p>
+                    N123,4000,234.00
+                </p>
+            </div>
+            <!-- NET PAY  -->
+            <div class="card1" id="net-pay">
+                <div>
+                    <img src="{% static 'img/icons/icons8-pay-date-48.png' %}" alt="">
+                </div>
+                <span>
+                    Net Pay
+                </span>
+                <p>
+                    N123,4000,234.00
+                </p>
+            </div>
+
+        </div>
+        <div class="apply-for-">
+            <button class="btn btn-outline-secondary mt-10" id="myBtn">Print Payslip</button>
+        </div>
+    </div>
+
+    <!-- EMPLOYEE BIODATA  -->
+    <div class="wrapper">
+        <div class="wrapper-slip">
+            <div class="company-contact">
+                <p>contact@companyname.com</p>
+                <address>+2348058367768</address>
+            </div>
+            <p>
+                Employee Bio Data
+            </p>
+            <ul class="bio-data">
+                <li>
+                    Name:
+                </li>
+                <li>
+                    <small>
+                        {{ employee_data.employee.user.first_name }} {{employee_data.employee.user.last_name}}
+                    </small>
+                </li>
+                <li>
+                    Employee Unique ID:
+                </li>
+                <li>
+                    <small> {{ employee_data.employee.employee_unique_id }}</small>
+                </li>
+                <li>
+                    Job Role:
+                </li>
+                <li>
+                    <small> {{ employee_data.job_role }}</small>
+                </li>
+                <li>
+                    Pay Grade:
+                </li>
+                <li>
+                    <small> {{ employee_data.pay_grade }}</small>
+                </li>
+                <li>
+                    Pay Group:
+                </li>
+                <li>
+                    <small> {{ employee_data.pay_group }}</small>
+                </li>
+                <li>
+                    Account Number:
+                </li>
+                <li>
+                    <small> 2999990000</small>
+                </li>
+                <li>
+                    Bank Name:
+                </li>
+                <li>
+                    <small> Zenith Bank </small>
+                </li>
+            </ul>
+        </div>
+        <div class="slip">
+            <h2>
+                PAYSLIP FOR OCTOBER 2022
+            </h2>
+            <!-- PAYSLIP TABLE -->
+            <div class="table">
+                <table class="table">
+                    <!-- TABLE ROW HEADINGS  -->
+                    <tr class="heads">
+                        <th>Earnings</th>
+                        <th>Amount(N)</th>
+                    </tr>
+
+                    {% if salary_attribute %}
+                    {% for x in salary_attribute %}
+                    <tr class="data">
+                        <td>
+                            {{x.salary_attribute_value.salary_attribute_value.name}}:
+                        </td>
+                        <td>
+                            {{x.salary_attribute_value.value | intcomma}}
+                        </td>
+                    </tr>                    
+                    {% endfor %}
+                    <tr>
+                        <td>
+                            Sub-Total
+                        </td>
+                        <td>
+                            {{salary_attribute_total | floatformat:2 | intcomma }}
+                        </td>
+                    </tr>
+                    {% endif %}
+                    <!-- DEDUCTIONS AND AMOUNT  -->
+                    <tr class="heads">
+                        <th>Deductions</th>
+                        <th>Amount(N)</th>
+                    </tr>
+
+                    {% if deduction_attribute %}
+                      {% for x in deduction_attribute %}
+                        <tr class="data">
+                            <td>
+                                {{ x.deduction_attribute_value.deduction_attribute.name }}:
+                            </td>
+                            <td>
+                                {{x.deduction_attribute_value.attribute_value | intcomma }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            <td>
+                                Sub-Total:
+                            </td>
+                            <td>
+                                {{deduction_attribute_total | floatformat:2 | intcomma }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                    <!-- GRAND TOTAL AND AMOUNT  -->
+                    <tr class="heads">
+                        <th>Grand Total</th>
+                        <th>Amount(N)</th>
+                    </tr>
+                    <tr class="data">
+                        <td>
+                            Earnings:
+                        </td>
+                        <td>
+                            {{salary_attribute_total | floatformat:2 | intcomma }}
+                        </td>
+                    </tr>
+                    <tr class="data">
+                        <td>
+                            Deductions:
+                        </td>
+                        <td>
+                            {{deduction_attribute_total | floatformat:2 | intcomma }}
+                        </td>
+                    </tr>
+                    <tr >
+                        <td>
+                            Total:
+                        </td>
+                        <td>
+                            {{grand_total | floatformat:2 | intcomma }}
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock body %}
+
+{% block script %}
+
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-messaging.js"></script>
+<script>
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-analytics.js";
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyAsusPcXCSHm5uZkxvyjqrkzIMp-1lJSDQ",
+        authDomain: "payrollmanagements-b98f9.firebaseapp.com",
+        databaseURL: "https://payrollmanagements-b98f9-default-rtdb.firebaseio.com/",
+        projectId: "payrollmanagements-b98f9",
+        storageBucket: "payrollmanagements-b98f9.appspot.com",
+        messagingSenderId: "577873096525",
+        appId: "1:577873096525:web:70556298edfadc85061104",
+        measurementId: "G-LHZB5KKQX8"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const messaging = firebase.messaging();
+    // Initialize Firebase
+    // const app = initializeApp(firebaseConfig);
+    // const analytics = getAnalytics(app);
+
+    function IntitalizeFireBaseMessaging() {
+        messaging
+            .requestPermission()
+            .then(function () {
+                console.log("Notification Permission");
+                return messaging.getToken();
+            })
+            .then(function (token) {
+                console.log("Token : " + token);
+                sendToServer(token);
+            })
+            .catch(function (reason) {
+                console.log(reason);
+            });
+    }
+
+    messaging.onMessage(function (payload) {
+        console.log(payload);
+        const notificationOption = {
+            body: payload.notification.body,
+            icon: payload.notification.icon
+        };
+
+        if (Notification.permission === "granted") {
+            var notification = new Notification(payload.notification.title, notificationOption);
+
+            notification.onclick = function (ev) {
+                ev.preventDefault();
+                window.open(payload.notification.click_action, '_blank');
+                notification.close();
+            }
+        }
+
+    });
+    messaging.onTokenRefresh(function () {
+        messaging.getToken()
+            .then(function (newtoken) {
+                console.log("New Token : " + newtoken);
+                sendToServer(newtoken);
+            })
+            .catch(function (reason) {
+                console.log(reason);
+            })
+    });
+
+    function sendToServer(token) {
+        $.ajax({
+            url: "{% url 'employee_fcmtoken_save' %}",
+            type: 'POST',
+            data: { token: token },
+        })
+            .done(function (response) {
+                if (response == "True") {
+                    console.log("Token Save");
+                }
+                else {
+                    console.log("Error in Token Save");
+                }
+            });
+    }
+    IntitalizeFireBaseMessaging();
+</script>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+
+    };
+
+
+</script>
+
+{% endblock script %}

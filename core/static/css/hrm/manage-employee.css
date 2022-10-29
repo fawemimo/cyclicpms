@@ -1,0 +1,39 @@
+@import url('https://https://fonts.google.com/specimen/Oswald?selection.family=Oswald:wght@300');
+
+section{
+    margin-top: 5%;
+    margin-left: 17%;
+    width: 80%;
+}
+
+.input-group .input-group-sm{
+    width: 457px;
+    display: flex;
+    left: 293px;
+}
+
+
+
+.row {
+    --bs-gutter-x: 20px;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 108%;    
+    margin-top: -50.6%;
+    margin-left: -3%;
+
+    /* width: 100%;
+    margin-top: -35.6%;
+    margin-left: -1.6%; */
+}
+
+.table {
+    width: 95%;
+    margin: 25px 2rem 24rem 2rem;
+    background-color: transparent;
+}
+
+img {
+    width: 25%;
+}

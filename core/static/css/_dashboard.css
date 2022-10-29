@@ -1,0 +1,124 @@
+header {
+    background: #8a6ad7;
+    /* background: #8a6ad7; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+div.dropdown #wrapper {
+    position: absolute;
+    top: 99%;
+    left: 348px;
+    background: #dbd0f5;
+    border-radius: 4px;
+    color: #3c3535;
+    width: 15%;
+}
+
+div.container div.wrapper div.user-board {
+
+    background: #dbd0f5;
+    margin: 50px;
+    padding: 52px;
+    width: 83%;
+    min-height: 107px;
+    margin: 91px 65px;
+    border-radius: 52px;
+    border: none;
+    box-shadow: 9px 12px 20px 0px grey;
+}
+
+div.container div.wrapper ul.col-10 {
+    list-style: none;
+}
+
+div.container div.wrapper {
+    width: 98%;
+    /* background: white; */
+}
+
+div.container div.wrapper ul.list-group li.list-group-item span.icon-wrapper img.ui-icon-image {
+    margin-left: 8px;
+    width: 51%;
+    background: #dbd0f5;
+    border-radius: 7px;
+}
+
+div#container {
+    margin-top: 33px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: #dbd0f5a6;
+    padding: 10px;
+}
+
+div#leave-progress {
+    margin-left: 95px;
+    background: white;
+    width: 79%;
+}
+
+div#leave-progress div.heading {
+    border-top: 4px solid #8a6ad7;
+    margin: -26px 0px 26px 0px;
+}
+
+div#leave-progress div.heading h2 {
+    margin: 4px 127px;
+}
+
+div#leave-progress ul.list-group li.list-group-item .leave-list img {
+    width: 50%;
+}
+
+div#leave-progress ul.list-group li.list-group-item .leave-list {
+    width: 102%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 776px) {
+    div#container {
+        display: block;
+    }
+
+    div.wrapper-todo {
+        width: 98%;
+
+    }
+
+    div#leave-progress {
+        margin-left: 6px;
+        width: 98%;
+    }
+}
+
+
+div.container div.upcoming-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 27px -6px 2px 0px;
+    background: #e8e0f8;
+    justify-items: center;
+    border-radius: 7px;
+    width: 195%;
+}
+
+div.container div.wrapper#events {
+    width: 121%;
+    /* background: white; */
+    margin-left: -23px;
+}
+
+div.notification ul.list-group li.list-group-item div.event-bg {
+    margin-left: -59px;
+}
+
+div.notification ul.list-group li.list-group-item .holiday-list {
+   
+    max-height: 150px;
+}
+
+div.notification ul.list-group li.list-group-item div.employee-name#employee-name {
+    margin-left: -35px; 
+}

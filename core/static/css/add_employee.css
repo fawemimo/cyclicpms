@@ -1,22 +1,72 @@
-@import url('https://https://fonts.google.com/specimen/Oswald?selection.family=Oswald:wght@300');
-form{
-    width: 49%;
-    margin-left: 26%;
-    margin-top: 4%;
-}
-.page-wrapper {
+div.form-container {
+    width: 60%;
+    margin: -370px 219px 48px;
+    min-height: 80%;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-radius: 4px;
     background: white;
-    position: relative;
 }
-/*
-.sidebar-nav ul .sidebar-item .sidebar-link.active, .sidebar-nav ul .sidebar-item .sidebar-link:hover {
-    opacity: 1;
-    background: red;
-} */
-.non-visible {
-    display: none;
+div.form-container {
+    height: 570px;
+    width: 60%;
+}
+div.form-container div.container div.first-layer div.row, div.form-container div.container div.second-layer div.row {
+    margin: -35px 129px;
+    place-content: center;
 }
 
-/* min-height: 475px;
-background-position: 60% top; */
-/* height: 462px; */
+div.container div.first-layer div.row, div.form-container div.container div.second-layer div.row{
+    margin-top: -861px;
+    display: block;
+}
+.form-control {
+    display: block;
+    width: 159%;
+}
+
+.btn-group {
+    margin-bottom: 56px;
+    margin-top: 40px;
+    margin-left: 629px;
+}
+
+.row {
+    display: block;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-top: -445px;
+}
+
+.names {
+    margin-bottom: 1rem;
+    width: 759%;
+}
+
+.names-group {
+    margin-bottom: 59px;
+    margin-top: -105px;
+    margin-left: 555px;
+    top: -60px;
+}
+
+.phone-number {
+    margin-bottom: 1rem;
+    width: 261px;
+}
+
+.phone-group {
+    margin-bottom: 59px;
+    margin-top: -105px;
+    margin-left: 370px;
+    top: -108px;
+    left: -27px;
+}
+
+.add-employee {    
+    padding: 14px;
+    background-color: #8a6ad7;
+    border-color: #8a6ad7;
+}

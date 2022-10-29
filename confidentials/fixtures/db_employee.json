@@ -1,0 +1,38 @@
+[
+{
+    "model": "managements.employee",
+    "pk": 1,
+    "fields": {
+        "user": 2,
+        "director": 1,
+        "department": 1,
+        "employee_unique_id": "#0dac",
+        "dob": "2022-10-03",
+        "phone_number_2": "+23498008",
+        "contact_address": null,
+        "fcm_token": "",
+        "date_employed": "2022-10-03T09:38:59.946Z",
+        "gender": "Male",
+        "profile_pic": "avatar.png",
+        "date_updated": "2022-10-03T09:52:30.852Z"
+    }
+},
+{
+    "model": "managements.employee",
+    "pk": 2,
+    "fields": {
+        "user": 4,
+        "director": 2,
+        "department": 2,
+        "employee_unique_id": "#505f",
+        "dob": "2022-10-10",
+        "phone_number_2": null,
+        "contact_address": null,
+        "fcm_token": "",
+        "date_employed": "2022-10-03T12:34:18.398Z",
+        "gender": "Male",
+        "profile_pic": "avatar.png",
+        "date_updated": "2022-10-03T14:28:25.512Z"
+    }
+}
+]

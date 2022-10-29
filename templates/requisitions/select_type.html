@@ -1,0 +1,61 @@
+{% extends "shared/layout.html" %}
+{% load static %}
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/_dashboard.css' %}">
+<link rel="stylesheet" href="{% static 'css/_styles_leave.css' %}">
+<link rel="stylesheet" href="{% static 'css/req_apply' %}">
+{% endblock extrastyle %}
+
+<!-- SHOWCASE  -->
+{% block showcase %}
+    {% include "partials/_showcase.html" %}
+{% endblock showcase %}
+
+<!-- BREADCRUMB  -->
+{% block breadcrumb %}
+{% include "partials/_breadcrumb.html" %}
+{% endblock breadcrumb %}
+
+{% block body %}
+  
+<div class="form-container">
+    <div class="heading">
+  
+      <h2>SELECT REQUEST TYPE </h2>
+    </div>
+    <div class="progressbar">
+      <div class="progress" id="progress"></div>
+      <!--the line that is going from first to 2nd ..-->
+<!--   
+      <div class="progress-step progress-step-active" data-title="Tell Us"></div>
+      <div class="progress-step" data-title="Your Message"></div>
+      <div class="progress" id="progress"></div> -->
+    </div>
+    <div class="form-step form-step-active">
+      <div class="content active">
+        <div class="selection">
+            <span class="btn btn-secondary"> 
+                <a href="">Materials Requisition</a>
+            </span>
+            <span class="btn btn-secondary"> 
+                <a href="">Materials Requisition</a>
+            </span>
+
+            <span class="btn btn-secondary"> 
+                <a href="">Analytic Requisition</a>
+            </span>
+
+            <span class="btn btn-secondary"> 
+                <a href="">Analytic Requisition</a>
+            </span>
+        </div>
+        <p>
+          <span style="color: #043c6d">Selecting different types of request </span>
+          <span style="color:#067ed3;"><br>that is available by the company.</span><br>
+        </p>
+        <!-- <a href="#" data-next nextclass="btn" id="nextBtn" class="btn-next get-started">Message us</a> -->
+  
+      </div>
+    </div>
+  
+{% endblock body %}

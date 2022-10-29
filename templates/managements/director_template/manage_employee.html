@@ -1,271 +1,230 @@
-{% extends "shared/director_dashboard.html" %}
+{% extends "shared/hrm.html" %}
 
 {% load static %}
 {% block title %}
-  Manage Employee
+Manage Employee
 {% endblock title %}
 
 
-{% block extrstyle %}
-       <!-- Google Font: Source Sans Pro -->
-       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-       <!-- Font Awesome -->
-       <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
-       <!-- Theme style -->
-       <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
-       <!-- custom styles  -->
-       <link rel="stylesheet" href="{% static 'css/manage-employee.css' %}">
-{% endblock extrstyle %}
+{% block extrastyle %}
+
+<!-- custom styles  -->
+<link rel="stylesheet" href="{% static 'css/hrm/manage-employee.css' %}">
+{% endblock extrastyle %}
 
 
-{% block breadcrumb %}
+
 <div class="page-wrapper">
-  <!-- ============================================================== -->
-  <!-- Bread crumb and right sidebar toggle -->
-  <!-- ============================================================== -->
-  <div class="page-breadcrumb">
-      <div class="row">
-          <div class="col-12 d-flex no-block align-items-center">
-            <h4 class="page-title">Cyclic Payroll Management System | Director Dashboard</h4>
-              <div class="ms-auto text-end">
-                  <nav aria-label="breadcrumb">
-                      <ol class="breadcrumb">
-                          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-                          <li class="breadcrumb-item"><a href="{% url 'directors' %}">Dashboard</a></li>
-                          <li class="breadcrumb-item active" aria-current="page">Manage Employee</li>
-                      </ol>
-                  </nav>
-              </div>
-          </div>
-      </div>
-  </div>
-  <!-- ============================================================== -->
-  <!-- End Bread crumb and right sidebar toggle -->
-  <!-- ============================================================== -->
-{% endblock breadcrumb %}
 
-{% block container-fluid %}
+  {% block body %}
 
-<section>
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header">
-          {% if 'search' in request.path %}
-          <h3 class="card-title">Search Results...</h3>
+  {% include "partials/hrm/_sidebar.html" %}
+  <section>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            {% if 'search' in request.path %}
+            <h3 class="card-title">Search Results...</h3>
 
-          {% else %}
-          <h3 class="card-title">Manage Employee</h3>
-          {% endif %}
-          
-  
-          <div class="card-tools">
+            {% else %}
+            <h3 class="card-title">Manage Employee</h3>
+            {% endif %}
 
-            <form action="{% url 'search' %}" >
-              
-              <div class="input-group input-group-sm" style="width: 500px;">
-                
-               
-                <input type="text" name="keyword" class="form-control" placeholder="search here...">
-              
-               
-                <!-- <input type="text" name="table_search" class="form-control " placeholder="Search"> -->
-    
-                <div class="input-group-append">
-                  
-                  <button type="submit" class="btn btn-default" method="GET" value="search">
-                    <i class="fas fa-search"></i>
-                  </button>
+
+            <div class="card-tools">
+
+              <form action="{% url 'search' %}">
+
+                <div class="input-group input-group-sm" style="width: 500px;">
+
+
+                  <input type="text" name="keyword" class="form-control" placeholder="search here...">
+
+
+                  <!-- <input type="text" name="table_search" class="form-control " placeholder="Search"> -->
+
+                  <div class="input-group-append">
+
+                    <button type="submit" class="btn btn-default" method="GET" value="search">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
                 </div>
-              </div>
 
-            </form>
-            
+              </form>
+
+            </div>
           </div>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body table-responsive p-0">
-           
-           <!-- =========================================
+          <!-- /.card-header -->
+          <div class="card-body table-responsive p-0">
+
+            <!-- =========================================
                                   Alerts message 
                         ========================================= -->
 
 
-                          <!-- =========================================
+            <!-- =========================================
                                   Alerts message 
                         ========================================= -->
 
-                        {% if 'search' in request.path %}
-                        <h5>total search found | {{ total }}</h5>
-                        {% else %} 
-                        <P>
-                          No search found...
-                        </P>
-                        
-                        {% endif %}
+            {% if 'search' in request.path %}
+            <h5>total search found | {{ total }}</h5>
+            {% endif %}
 
-                                    <table id="zero_config" class="table table-striped table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Profile pics</th>
-                                                <th>Unique ID</th>
-                                                <th>Date Joined</th>
-                                                <th>Actions</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                          
-                                          {% if employees %}
-                                            
-                                          
-                                            {% for employee in employees %}
-
-                                                 <tr>
-                                                    <td>{{ forloop.counter }}</td>
-                                                    <td>
-                                                      <a href="{% url 'editemployee' employee.user.id %}">
-                                                          {{ employee.user.first_name | capfirst }} {{ employee.user.last_name | capfirst}} {{ employee.user.other_name | capfirst}}
-                                                      </a>
-                                                    </td>
-                                                    <td>{{ employee.user.email }}</td>
-                                                   <td>
-                                                    {% if employee.profile_pic %}
-                                                    <img src="{{ employee.profile_pic.url }}" alt="{{ employee.user.first_name}}"  width="50"
-                                                     class="rounded-circle">
-                                                     {% else %}
-                                                     <img src="{% static 'img/avatar.png' %}" alt="{{ employee.user.first_name}}"  width="50"
-                                                     class="rounded-circle">
-                                                      
-                                                    {% endif %}
-                                                   </td>
-                                                    <td>{{ employee.employee_unique_id }}</td>
-                                                    <td>{{ employee.user.date_joined }}</td>
-                                                    <td><a href=" {% url 'editemployee' employee.user.id %}" class="btn btn-success"> Update</a>
-                                                     
-                                                    <a href="{% url 'delete_user' employee.user.id  %}" class="btn btn-danger" >Delete</a></td>
-                                                    <td>
-
-                                                  </tr>
-
-                                            {% endfor %}
-                                            {% else %} 
-                                                  <td>
-                                                    No employee's added...
-                                                  </td>
-                                            {% endif %}
-                                            
-                                        </tbody>
-
-                                    </table>
-
-                                   <p>
-                                    
-                                   </p>
-                                      <!-- Trigger/Open The Modal -->
-
-                                                <!-- The Modal -->
-                                                <div id="myModal" class="modal">
-
-                                                  <!-- Modal content -->
-                                                  <div class="modal-content">
-                                                  <span class="close">&times;</span>
-                                                  <form action=" " method="POST" >
-                                                      {% csrf_token %}
-                                                  
-                                                  <h2>Are you sure you want to delete  "{{ employee.user.first_name }} {{ employee.user.last_name }}"</h2>                                                
-                                                  <div class="button">
-                                                      <button type="submit" class="btn btn-success"> Yes, DELETE</button>
-                                                     
-                                                  </div>
-                                                  
-                                                  </form>
-                                                  </div>                                                
-                                              </div>
-
-        </div>
-        <!-- /.card-body -->
-      </div>
-      <!-- /.card -->
-    </div>
-  </div>               
-
-  <nav class="arial-label">
-    {% if employees.has_other_pages %}
-    <ul class="pagination">  
-         {% if employees.has_previous %}
-             <li class="page-item">
-                 <a href="?page={{ employees.previous_page_number }}" class="page-link">
-                     &laquo; Previous   
-                 </a>
-             </li>
-         {% else %} 
-             <li class="page-item">
-                 <a  class="page-link">
-                     &laquo; Previous
-                 </a>
-             </li>
-
-         {% endif %}
-         {% for i in employees.paginator.page_range  %}
-             {% if employees.number == i %}
-                 <li class="page-item">
-                     <a class="page-link">
-                         {{ i }}
-                     </a>
-                 </li>
-             {% else %}    
-                 <li class="page-item">
-                     <a href="?page={{ i }}" class="page-link">
-                         {{ i }}
-                     </a>
-                 </li>
-               
-             {% endif %}
-           
-         {% endfor %}
-
-         {% if employees.has_next %}
-             <li class="page-item">
-                 <a href="?page={{ employees.next_page_number }}" class="page-link">
-                     Next  &raquo; 
-                 </a>
-             </li>
-         {% else %}
-             <li class="page-item">
-                 <a  class="page-link">
-                     Next  &raquo;
-                 </a>
-             </li>
-
-         {% endif %}
-
-     </ul>
-    
-    {% endif %}
-   
-        
-        
- 
-</nav>
- 
-</section>
-
-{% endblock container-fluid %}
-
-
-{% block scripts %}
-      <!-- jQuery -->
-<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
-<!-- Bootstrap 4 -->
-<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-<!-- AdminLTE App -->
-<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{% static 'dist/js/demo.js' %}"></script>
-
-{% endblock scripts %}
+            <div class="table">
+              <table  class="table overflow" >
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Unique ID</th>
+                    <th>Date Joined</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
   
+                <tbody>
+                  {% if employees %}
+                  {% for employee in employees %}
+                  <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>
+                      <a href="{% url 'editemployee' employee.user.id %}">
+                        {{ employee.user.first_name | capfirst }} {{ employee.user.last_name | capfirst}} {{employee.user.other_name | capfirst}}
+                        
+                      </a>
+                    </td>
+                    <td>{{ employee.user.email }}</td>
+                    <td>
+                      {{ employee.department.name | capfirst }}
+                    </td>
+                    <td>{{ employee.employee_unique_id }}</td>
+                    <td>{{ employee.user.date_joined }}</td>
+                    <td><a href=" {% url 'editemployee' employee.user.id %}" >
+                      <img src="/static/admin/img/icon-changelink.svg" alt="Change">
+                    </a>
+  
+                      <a href="{% url 'delete_user' employee.user.id  %}" id="myBtn">
+                        <img src="/static/admin/img/icon-deletelink.svg" alt="Delete">
+                      </a>
+                    </td>
+                    <td>
+                  </tr>
+                  {% endfor %}
+                  {% else %}
+                  <td>
+                    No employee's added...
+                  </td>
+                  {% endif %}
+                </tbody>
+  
+              </table>
+            </div>
+
+            <!-- Trigger/Open The Modal -->
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+              <!-- Modal content -->
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <form action=" " method="POST">
+                  {% csrf_token %}
+
+                  <h2>Are you sure you want to delete "{{ employee.user.first_name }} {{ employee.user.last_name }}"
+                  </h2>
+                  <div class="button">
+                    <button type="submit" class="btn btn-success"> Yes, DELETE</button>
+
+                  </div>
+
+                </form>
+              </div>
+            </div>
+
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+    </div>
+
+    <nav class="arial-label">
+      {% if employees.has_other_pages %}
+      <ul class="pagination">
+        {% if employees.has_previous %}
+        <li class="page-item">
+          <a href="?page={{ employees.previous_page_number }}" class="page-link">
+            &laquo; Previous
+          </a>
+        </li>
+        {% else %}
+        <li class="page-item">
+          <a class="page-link">
+            &laquo; Previous
+          </a>
+        </li>
+
+        {% endif %}
+        {% for i in employees.paginator.page_range %}
+        {% if employees.number == i %}
+        <li class="page-item">
+          <a class="page-link">
+            {{ i }}
+          </a>
+        </li>
+        {% else %}
+        <li class="page-item">
+          <a href="?page={{ i }}" class="page-link">
+            {{ i }}
+          </a>
+        </li>
+
+        {% endif %}
+
+        {% endfor %}
+
+        {% if employees.has_next %}
+        <li class="page-item">
+          <a href="?page={{ employees.next_page_number }}" class="page-link">
+            Next &raquo;
+          </a>
+        </li>
+        {% else %}
+        <li class="page-item">
+          <a class="page-link">
+            Next &raquo;
+          </a>
+        </li>
+
+        {% endif %}
+
+      </ul>
+
+      {% endif %}
+
+
+
+
+    </nav>
+
+  </section>
+
+  {% endblock body %}
+
+
+  {% block scripts %}
+  <!-- jQuery -->
+  <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+  <!-- Bootstrap 4 -->
+  <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- AdminLTE App -->
+  <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="{% static 'dist/js/demo.js' %}"></script>
+
+  {% endblock scripts %}

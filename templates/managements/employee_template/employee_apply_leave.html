@@ -1,184 +1,279 @@
-{% extends "shared/employee_dashboard.html" %}
+{% extends "shared/layout.html" %}
 {% load static %}
 
-{% block title %}
-  Apply Leave
-{% endblock title %}
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/_dashboard.css' %}">
+<link rel="stylesheet" href="{% static 'css/_styles_leave.css' %}">
+{% endblock extrastyle %}
 
-{% block extrasyle %}
-<!-- <link rel="stylesheet" href="{% static 'css/blogs.css' %}"> -->
-{% endblock extrasyle %}
-{% block bodycontent %}
-<ul class="card card-primary card-outline">
+<!-- SHOWCASE  -->
+{% block showcase %}
+{% include "partials/_showcase.html" %}
+{% endblock showcase %}
 
-  <div class="card-header text-center">
-      <a href="{% url 'home' %}" class="h1"><b>Apply leave</b></a>
-      <hr>
+<!-- BREADCRUMB  -->
+{% block breadcrumb %}
+{% include "partials/_breadcrumb.html" %}
+{% endblock breadcrumb %}
+
+{% block body %}
+
+<!-- TABLE FOR APPLIED LEAVE  -->
+<!-- Trigger/Open The Modal -->
+<!-- <button id="myBtn">Open Modal</button> -->
+
+<!-- The Modal -->
+<!-- <div id="myModal" class="modal"> -->
+
+<!-- Modal content -->
+<!-- <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Some text in the Modal..</p>
+    </div> -->
+
+<!-- </div> -->
+
+<div class="table">
+    <div class="apply-for-">
+        <button class="btn btn-outline-secondary mt-10" id="myBtn">Apply Leave</button>
     </div>
-  
-    <article>
-      <li>
-        <div class="user">
-        
-            
-          <div class="contact-phone">
-            <span>
-              <code>
-                <small>
+    <table class="table">
+        <tr>
+            <th>#</th>
 
-               </small>
-              </code>
-            </span>
-             
-          </div>
-          
-            <address>
-              <p class="card-text">
-              
-            
-              </p>
-            </address>
-        
+            <th>Leave Start</th>
+            <th>Leave End</th>
+            <th>Leave Total Days</th>
+            <th>Leave Description</th>
+            <th>Leave Status</th>
+            <th>Actions</th>
+
+
+        </tr>
+        {% if leave_data %}
+        {% for leave in leave_data %}
+        <tr>
+            <td>
+                {{ forloop.counter }}
+            </td>
+
+            <td>
+                {{leave.leave_start }}
+            </td>
+            <td>
+                {{leave.leave_end }}
+            </td>
+            <td>
+                {% if leave.total_duration_days > 1 %}
+                {{leave.total_duration_days }} days
+                {% else %} 
+                {{leave.total_duration_days}} day
+                  
+                {% endif %}
+            </td>
+            <td>
+                {{ leave.leave_reason }}
+            </td>
+            <td>
+                {% if leave.leave_status == 1 %}
+                <span class="alert alert-success">Approved</span>
+
+                {% elif leave.leave_status == 2 %}
+                <span class="alert alert-danger">Rejected</span>
+
+                {% else %}
+                <span class="alert alert-warning">Pending</span>
+                {% endif %}
+            </td>
+            <td>
+                <span class="alert alert-success">Update</span>
+                <span class="alert alert-danger">Delete</span>
+            </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </table>
+</div>
+
+<!-- THE MODAL  -->
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <!-- APPLY FOR LEAVE  -->
+        <div class="alertBox"></div>
+        <!--Step One Get Started -->
+        <div class="form-container">
+            <div class="heading">
+                <h2>APPLY FOR LEAVE </h2>
+            </div>
+            <div class="progressbar">
+                <div class="progress" id="progress"></div>
+                <!--the line that is going from first to 2nd ..-->
+
+                <div class="progress-step progress-step-active" data-title="Request Now"></div>
+                <div class="progress-step" data-title="Starting Date"></div>
+                <div class="progress-step" data-title="Ending Date"></div>
+                <div class="progress-step" data-title="Descriptions"></div>
+                <div class="progress" id="progress"></div>
+            </div>
+            <div class="form-step form-step-active">
+                <div class="content active">
+                    <p>
+                        <span style="color: #043c6d">Take this simple steps</span>
+                        <span style="color:#067ed3;"><br>in a minute.</span><br>
+                    </p>
+                    <a href="#" data-next nextclass="btn" id="nextBtn" class="btn-next get-started">Apply Now</a>
+
+                </div>
+            </div>
+
+
+            <!-- Step Two Personal Information-->
+            <div class="form-step">
+
+                <!-- Leave Apply Form  -->
+                <form action="{% url 'employee_apply_leave_save' %}"  method="POST">
+                    {% csrf_token %}
+                    <div class="container">
+
+                        <div class="first-layer">
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="">Leave Start Date:</label>
+                                </div>
+                                <div class="col-75">
+                                    <input class="bene-detail" id="leave_start" type="date" name="leave_start" value="">
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" data-previous class="back btn btn-prev" id="btn-back">Back</button>
+                                <button type="button" data-next class="next btn btn-next btn-display" id="btn-next">Next</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+
+            <!-- Step Three  -->
+            <div class="form-step">
+                <div class="container">
+                    <div class="first-layer">
+                    </div>
+                    <div class="second-layer">
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="">Leave Ending Date:</label>
+                            </div>
+                            <div class="col-75">
+                                <input class="bene-detail leave_end" id="leave_end" type="date" name="leave_end"
+                                    value="">
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="back btn btn-prev" id="btn-back">Back</button>
+                            <button type="button" class="next btn btn-next btn-display2" id="btn-next">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step Four Asset Details -->
+
+            <div class="form-step ">
+                <div class="container">
+                    <div class="first-layer">
+                    </div>
+                    <div class="second-layer">
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="">Leave Descriptions</label>
+                            </div>
+                            <div class="col-75 textarea" >
+                                <textarea class="bene-detail bankRsaNumber" id="leave_reason" type="text"
+                                    name="leave_reason" rows="6" required></textarea>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="back btn btn-prev" id="btn-back-last">Back</button>
+                            <input type="submit"  class="next btn_submit" value="submit" />
+                          </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
         </div>
-          <div class="card-body">
-            <h1 class="card-title">
+    </div>
+</div>
 
-                          
-            </h1>
+<!-- PAGINATION  -->
+<nav class="arial-label">
+    {% if leave_data.has_other_pages %}
+    <ul class="pagination">
+        {% if leave_data.has_previous %}
+        <li class="page-item">
+            <a href="?page={{ leave_data.previous_page_number }}" class="page-link">
+                &laquo; Previous
+            </a>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a class="page-link">
+                &laquo; Previous
+            </a>
+        </li>
 
-              <form action="{% url 'employee_apply_leave_save' %}" method="POST">
-                {% csrf_token %}
-                
-                <div class="form">
-                  <label >Leave Start:</label>
-                  <input type="date" name="leave_start" id="id_leave_start" class = "form-control" placeholder="leave start on" required>
-                </div>
+        {% endif %}
+        {% for i in leave_data.paginator.page_range %}
+        {% if leave_data.number == i %}
+        <li class="page-item">
+            <a class="page-link">
+                {{ i }}
+            </a>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a href="?page={{ i }}" class="page-link">
+                {{ i }}
+            </a>
+        </li>
 
-                <div class="form">
-                    <label >Leave End:</label>
-                    <input type="date" name="leave_end" id="id_leave_end" class = "form-control" placeholder="leave start on" required>
-                  </div>
+        {% endif %}
 
-                <div class="form">
-                    <label >Leave Reason:</label>
-                    <textarea name="leave_reason" id="id_leave_reason" placeholder="leave reason" class = "form-control" rows="6" required></textarea>
-                </div>
+        {% endfor %}
 
-                <button class="btn btn-primary btn-block mt-2" type="submit">Apply Leave</button>
-              </form>
-              
-            
-      </li>
-    </article>
- 
+        {% if leave_data.has_next %}
+        <li class="page-item">
+            <a href="?page={{ leave_data.next_page_number }}" class="page-link">
+                Next &raquo;
+            </a>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a class="page-link">
+                Next &raquo;
+            </a>
+        </li>
+
+        {% endif %}
+
+    </ul>
+
+    {% endif %}
 
 
-         <div class="table">
-            <table class="table">
-                <tr>
-                    <th>#</th>
 
-                    <th>Leave Start</th>
-                    <th>Leave End</th>
-                    <th>Leave Total Days</th>
-                    <th>Leave Purpsoe</th>
-                    <th>Leave Status</th>
-    
-    
-                </tr>
-                
-                {% for leave in leave_data %}
-                <tr>
-                    <td>
-                        {{ forloop.counter }}
-                    </td>
 
-                    <td>
-                        {{leave.leave_start }}
-                    </td>
-                    <td>
-                        {{leave.leave_end }}
-                    </td>
-                    <td>
-                        {{leave.total_days }} days
-                    </td>
-                    <td>
-                        {{ leave.leave_reason }}
-                    </td>
-                    <td>
-                        {% if leave.leave_status == 1 %}
-                          <span class="alert alert-success">Approved</span>
-    
-                        {% elif  leave.leave_status == 2 %}  
-                            <span class="alert alert-danger">Rejected</span>
-    
-                        {% else %}    
-                            <span class="alert alert-warning">Pending</span>
-                        {% endif %}
-                    </td>
-                </tr>
-                {% endfor %}
-    
-           </table>
+</nav>
+</div>
+</ul>
+</div>
 
-           <nav class="arial-label">
-            {% if leave_data.has_other_pages %}
-            <ul class="pagination">  
-                 {% if leave_data.has_previous %}
-                     <li class="page-item">
-                         <a href="?page={{ leave_data.previous_page_number }}" class="page-link">
-                             &laquo; Previous   
-                         </a>
-                     </li>
-                 {% else %} 
-                     <li class="page-item">
-                         <a  class="page-link">
-                             &laquo; Previous
-                         </a>
-                     </li>
-        
-                 {% endif %}
-                 {% for i in leave_data.paginator.page_range  %}
-                     {% if leave_data.number == i %}
-                         <li class="page-item">
-                             <a class="page-link">
-                                 {{ i }}
-                             </a>
-                         </li>
-                     {% else %}    
-                         <li class="page-item">
-                             <a href="?page={{ i }}" class="page-link">
-                                 {{ i }}
-                             </a>
-                         </li>
-                       
-                     {% endif %}
-                   
-                 {% endfor %}
-        
-                 {% if leave_data.has_next %}
-                     <li class="page-item">
-                         <a href="?page={{ leave_data.next_page_number }}" class="page-link">
-                             Next  &raquo; 
-                         </a>
-                     </li>
-                 {% else %}
-                     <li class="page-item">
-                         <a  class="page-link">
-                             Next  &raquo;
-                         </a>
-                     </li>
-        
-                 {% endif %}
-        
-             </ul>
-            
-            {% endif %}
-           
-                
-                
-         
-        </nav>
-         </div>
+{% endblock body %}
 
-{% endblock bodycontent %}
+{% block script %}
+<script src="{% static 'js/employee/_leave_ajax.js' %}"></script>
+<script src="{% static 'js/employee/_leave.js' %}"></script>
+{% endblock script %}

@@ -1,0 +1,15 @@
+{% load static %}
+<section id="showcase-inner" class="py-5 text-white">
+        <div class="container">
+          <div class="row text-center">
+            <div class="col-md-12">
+              <h1 class="display-4">{{user.first_name}} {{user.last_name}}</h1>
+              {% if e %}
+                <p class="lead">{{ e.employee_unique_id }}</p>
+              
+                
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </section>

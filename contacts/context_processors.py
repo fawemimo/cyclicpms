@@ -7,9 +7,3 @@ def email_subscriber(request):
         'email': form
     }
     return context
-
-
-# def email(request):
-#     return {
-#         'form':subscribers(request)
-#     }

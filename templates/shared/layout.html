@@ -8,29 +8,48 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>CylicPMS | {% block title %}
+  <title>CylicPMS | {% if request.user.is_authenticated %}
+    {{ user.first_name }} {% else %}{% block title %}
 
-    {% endblock title %} </title>
+    {% endblock title %}
+    {% endif %} </title>
+
   <!-- Web icon  -->
   <link rel="icon" href="{% static 'img/abcicon.png' %}" sizes="16x16">
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,900&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+  <!-- semantic UI    -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css"/> -->
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
   <!-- Theme style -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/_dropdown.css' %}" />
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap/styles.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/bootstrap/lightbox.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}" />
+
   <link rel="stylesheet" href="{% static 'css/alerts.css' %} " />
+
+  <!-- MODAL  -->
+  <link rel="stylesheet" href="{% static 'css/layout/_modal.css' %}">
   <link rel="stylesheet" href="{% static 'css/main.css' %} " />
-  <link rel="stylesheet" href="{% static 'css/main_edit.css' %} " />
+  <link rel="stylesheet" href="{% static 'css/_breadcrumb.css' %}" />
+
+  <!-- Dropdown  -->
+  <link rel="stylesheet" href="{% static 'css/layout/_dropdown.css' %}" />
 
   {% block extrastyle %}
 
   {% endblock extrastyle %}
+  <link rel="stylesheet" href="{% static 'css/main_edit.css' %}" />
 </head>
 
 <body>
@@ -43,6 +62,16 @@
   {% block header %}
 
   {% endblock header %}
+  <div class="showcase">
+    {% block showcase %}
+
+    {% endblock showcase %}
+  </div>
+  <nav>
+    {% block breadcrumb %}
+
+    {% endblock breadcrumb %}
+  </nav>
   <main>
 
     <!-- Board sections  -->
@@ -78,15 +107,20 @@
 
   {% endblock footer %}
 
+  <!-- semantic ui / -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js"></script> -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="{% static 'js/_dashboard.js' %}"></script>
   <script src="{% static 'js/observers.js' %}"></script>
   <script src="{% static 'js/_alerts.js' %}"></script>
 
+  <!-- modal js  -->
+  <script src="{% static 'js/layout/_modal.js' %}"></script>
   {% block script %}
 
   {% endblock script %}
- 
+
 
 </body>
 

@@ -1,0 +1,122 @@
+/* EMPLOYEE SLIP  */
+
+div.container-bio {
+    margin: 52px 50px 20px 163px;
+    width: 74%;
+    padding: 21px;
+}
+
+div.container-bio ul {
+    list-style: none;
+    margin-left: -40px;
+}
+
+div.container-bio ul li:nth-child(even) {
+    color: #181717;
+    font-size: 25px;
+    margin-top: -6px;
+}
+
+div.col-md-12 h1.display-4 {
+    text-align: center;
+    margin: 93px 20px 10px 93px;
+}
+
+div.container-bio div.wrapper {
+    background: #d9cadff5;
+    margin-top: 28px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+}
+
+div.container-bio ul li:nth-child(odd) {
+    color: #fff;
+    font-size:14px;
+   
+}
+
+div.container-bio .card-money .card-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 90px;
+    color: #fcfbff
+}
+
+div.container-bio .card-money .card-wrapper .card1 {
+    background: #eed75e;
+    padding: 26px;
+    text-align: start;
+    border-radius: 9px;
+}
+
+div.container-bio .card-money .card-wrapper #deductions {
+    background: #f48884;
+}
+
+div.container-bio .card-money .card-wrapper #net-pay {
+    background: #1fa3e5;
+}
+
+div.container-bio .card-money .card-wrapper .card1 div img {
+    width: 100%;
+}
+
+div.container-bio .card-money .card-wrapper .card1 div {
+    display: grid;
+    place-content: center;
+}
+
+div.container-bio .card-money div.apply-for- {
+    margin: 11px 85px 1px 815px;
+}
+
+div.container-bio div.wrapper-slip {
+    width: 72%;
+    padding: 30px;
+}
+
+div.container-bio div.wrapper div.slip{
+    margin: 12px -127px;
+    background: white;
+    width: 122%;
+}
+
+div.container-bio div.wrapper div.slip h2 {
+    text-align: start;
+    padding: 25px;
+}
+
+div.container-bio div.wrapper div.slip .table {
+    width: 95%;
+    margin: 2rem 2rem 11rem 1rem;
+    background-color: transparent;
+}
+
+div.container-bio div.wrapper div.slip .table tr.heads{
+    background: #8a6ad7;
+    color: white;
+}
+
+div.container-bio div.wrapper div.slip .table tr.data:nth-child(odd) {
+    background: #dbd0f5;
+}
+div.container-bio div.wrapper div.slip .table tr.data:nth-child(even) {
+    background: #dbd0f5;
+}
+
+div.container-bio div.search-generate {
+    margin-bottom: 33px;
+    background: #eae7f1;
+    padding: 26px;
+}
+
+div.container-bio div.search-generate form{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin-top: 34px;
+}
+
+div.container-bio div.search-generate h4 {
+    font-size: 40px;
+    color: darkcyan;
+}

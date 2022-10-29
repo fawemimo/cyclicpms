@@ -279,7 +279,7 @@
                   class="hide-menu">Category</span></a>
                             <ul aria-expanded="false" class="first-level collapse" id="demo">
 
-                                <!-- add department  -->
+                                 add department 
                                 <li class="sidebar-item">
                                     {% url 'department' as department %}
                                     <a class="sidebar-link  {% if request.path == department %} active {% endif %}" href="{% url 'department' %}" aria-expanded="false"><i class="far fa-building"></i>
@@ -293,7 +293,7 @@
                                     {% url 'position' as position %}
 
 
-                                    <a class="sidebar-link waves-effect waves-dark sidebar-link {% if request.path == position %} active {% endif %}" href="{% url 'position' %}" aria-expanded="false"><i class="fas fa-arrows-alt"></i><span
+                                    {% comment %} <a class="sidebar-link waves-effect waves-dark sidebar-link {% if request.path == position %} active {% endif %}" href="{% url 'position' %}" aria-expanded="false"><i class="fas fa-arrows-alt"></i><span {% endcomment %}
                       class="hide-menu">Add Position </span></a>
                                 </li>
 
@@ -303,7 +303,7 @@
                                     {% url 'level' as level %}
 
 
-                                    <a class="sidebar-link waves-effect waves-dark sidebar-link {% if request.path == level %} active {% endif %}" href="{% url 'level' %}" aria-expanded="false"><i class="fas fa-chart-line"></i><span
+                                    {% comment %} <a class="sidebar-link waves-effect waves-dark sidebar-link {% if request.path == level %} active {% endif %}" href="{% url 'level' %}" aria-expanded="false"><i class="fas fa-chart-line"></i><span {% endcomment %}
                       class="hide-menu">Add Level</span></a>
                                 </li>
 
@@ -312,7 +312,7 @@
                                 <li class="sidebar-item">
                                     {% url 'grade' as grade %}
 
-                                    <a class="sidebar-link waves-effect waves-dark sidebar-link {% if request.path == grade %} active {% endif %}" href="{% url 'grade' %}" aria-expanded="false"><i class="fas fa-caret-up"></i><span
+                                    {% comment %} <a class="sidebar-link waves-effect waves-dark sidebar-link {% if request.path == grade %} active {% endif %}" href="{% url 'grade' %}" aria-expanded="false"><i class="fas fa-caret-up"></i><span {% endcomment %}
                       class="hide-menu">Add Grade</span></a>
                                 </li>
 
@@ -322,7 +322,7 @@
                                     {% url 'step' as step %}
 
 
-                                    <a class="sidebar-link waves-effect waves-dark sidebar-link {% if request.path == step %} active {% endif %} " href="{% url 'step' %}" aria-expanded="false"><i class="fas fa-angle-up"></i><span
+                                    {% comment %} <a class="sidebar-link waves-effect waves-dark sidebar-link {% if request.path == step %} active {% endif %} " href="{% url 'step' %}" aria-expanded="false"><i class="fas fa-angle-up"></i><span {% endcomment %}
                       class="hide-menu">Add Step</span></a>
                                 </li>
                                 <!-- leave  -->
@@ -330,7 +330,7 @@
                                     {% url 'leavess' as leavess %}
 
 
-                                    <a class="sidebar-link waves-effect waves-dark sidebar-link {% if request.path == leavess %} active {% endif %} " href="{% url 'leavess' %}" aria-expanded="false"><i
+                                    {% comment %} <a class="sidebar-link waves-effect waves-dark sidebar-link {% if request.path == leavess %} active {% endif %} " href="{% url 'leavess' %}" aria-expanded="false"><i {% endcomment %}
                       class="nav-icon far fa-house-leave mb-1"></i><span class="hide-menu">Add Leave Days</span></a>
                                 </li>
 
@@ -402,7 +402,6 @@
                             </ul>
                         </li>
                         <li>
-
 
 
 

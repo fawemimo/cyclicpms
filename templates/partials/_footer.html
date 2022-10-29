@@ -39,6 +39,7 @@
       </div>
       <div class="ads1">
           <ul class="nav">
+              <strong>Quick Links</strong>
               <li>
                   <strong>
                       <a href="{% url 'home' %}">
@@ -68,6 +69,36 @@
                           Blogs</a>
                   </strong>
               </li>
+
+              <li>
+                <strong>
+                       <a href="/">
+                           <i class="fa fa-user-o" ></i>
+                           Pricing</a>
+                   </strong>
+               </li>
+
+               <li>
+                <strong>
+                       <a href="/">
+                           <i class="fa fa-user-o" ></i>
+                           Services</a>
+                   </strong>
+               </li>
+               <li>
+                <strong>
+                       <a href="/">
+                           <i class="fa fa-user-o" ></i>
+                           Documentation</a>
+                   </strong>
+               </li>
+               <li>
+                <strong>
+                       <a href="/">
+                           <i class="fa fa-user-o" ></i>
+                           Vacancies</a>
+                   </strong>
+               </li>
           </ul>
       </div>
       <div class="ads2">
@@ -75,15 +106,14 @@
               <h3>
                   Subscribe for our Newsletter
               </h3>
-             
               <form action="{% url 'contacts-letter' %}" method="POST">
                 {% csrf_token %}
-                {{ email.email }}
-                <div class="fields">
-                  <button type="submit" class="btn btn-warning email-subscribe-btn">
-                    subscribe
-                  </button>
+                {{ form.label }}
+                <div class="form">
+                  {{ form.email }}
                 </div>
+
+                <button type="submit" class="btn btn-warning email-subscribe-btn">Subscribe</button>
               </form>
           </div>
   
@@ -132,13 +162,13 @@
       <div class="ads3">
           <div class="logo">
               <div class="logo1">
-                  <img src="img/cocoa.png" alt="">
+                  <!-- <img src="img/cocoa.png" alt=""> -->
               </div>
               <div class="logo1">
-                  <img src="img/bank-of-agriculture.jpg" alt="">
+                  <!-- <img src="img/bank-of-agriculture.jpg" alt=""> -->
               </div>
               <div class="logo1">
-                  <img src="img/worldbank_logo.jpg" alt="">
+                  <!-- <img src="img/worldbank_logo.jpg" alt=""> -->
               </div>
           </div>
          

@@ -1,0 +1,24 @@
+[
+{
+    "model": "payroll.paygroup",
+    "pk": 1,
+    "fields": {
+        "director": null,
+        "pay_grade": 1,
+        "name": "GRADUATE INTERN",
+        "created_at": "2022-10-03T09:40:07.281Z",
+        "updated_at": "2022-10-03T09:40:07.281Z"
+    }
+},
+{
+    "model": "payroll.paygroup",
+    "pk": 2,
+    "fields": {
+        "director": 2,
+        "pay_grade": 2,
+        "name": "SENIOR STAFF",
+        "created_at": "2022-10-03T14:22:28.674Z",
+        "updated_at": "2022-10-03T14:22:28.674Z"
+    }
+}
+]

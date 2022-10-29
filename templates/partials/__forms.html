@@ -1,0 +1,124 @@
+{% load static  %}
+
+
+<!-- PROGRESS BAR SECTION -->
+<!--Step One Get Started -->
+
+<div class="form-container">
+    <div class="heading">
+
+        <h2>APPLY FOR LEAVE </h2>
+    </div>
+    <div class="progressbar">
+        <div class="progress" id="progress"></div>
+        <!--the line that is going from first to 2nd ..-->
+
+        <div class="progress-step progress-step-active" data-title="Request Now"></div>
+        <div class="progress-step" data-title="Leave Starting Date"></div>
+        <div class="progress-step" data-title="Leave Ending Date"></div>
+        <div class="progress-step" data-title="Leave Descriptions"></div>
+
+
+
+        <div class="progress" id="progress"></div>
+    </div>
+
+
+    <div class="form-step form-step-active">
+        <div class="content active">
+            <p>
+                <span style="color: #043c6d">Take this simple steps</span>
+                <span style="color:#067ed3;"><br>in a minute.</span><br>
+            </p>
+            <a href="#" data-next nextclass="btn" id="nextBtn" class="btn-next get-started">Apply Now</a>
+
+        </div>
+    </div>
+
+
+    <!-- Step Two Personal Information-->
+    <div class="form-step">
+        <form action="{% url 'employee_apply_leave_save'  %}" method="POST">
+            {% csrf_token %}
+            <div class="container">
+
+                <div class="first-layer">
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="">Leave Start Date:</label>
+                        </div>
+                        <div class="col-75">
+                            <input class="bene-detail" id="leave_start" type="date" name="leave_start"
+                                value="">
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" data-previous class="back btn btn-prev" id="">Back</button>
+                        <button type="button" data-next class="next btn btn-next btn-display">Next</button>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+
+    <!-- Step Three  -->
+    <div class="form-step">
+        <div class="container">
+            <div class="first-layer">
+            </div>
+            <div class="second-layer">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="">Leave Ending Date:</label>
+                    </div>
+                    <div class="col-75">
+                        <input class="bene-detail leave_end" id="leave_end" type="date" name="leave_end" value="">
+                    </div>
+                </div>
+
+
+
+                <div class="btn-group">
+                    <button type="button" class="back btn btn-prev" id="">Back</button>
+                    <button type="button" class="next btn btn-next btn-display2">Next</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Step Four Asset Details -->
+
+    <div class="form-step ">
+        <div class="container">
+            <div class="first-layer">
+            </div>
+            <div class="second-layer">
+
+                <div class="row">
+                    <div class="col-25">
+                        <label for="">Leave Descriptions</label>
+                    </div>
+                    <div class="col-75">
+                        <textarea class="bene-detail bankRsaNumber" id="address" type="text" name="leave_reason"
+                            rows="6" required></textarea>
+                    </div>
+                </div>
+
+
+
+                <div class="btn-group">
+
+
+                    <button type="button" class="back btn btn-prev" id="">Back</button>
+                    <input type="submit" name="submit" class="next btn_submit" value="submit" />
+                </div>
+
+            </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+</div>

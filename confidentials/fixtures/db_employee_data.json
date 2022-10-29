@@ -1,0 +1,22 @@
+[
+{
+    "model": "payroll.employeedata",
+    "pk": 1,
+    "fields": {
+        "employee": 1,
+        "job_role": 1,
+        "pay_grade": 1,
+        "pay_group": 1
+    }
+},
+{
+    "model": "payroll.employeedata",
+    "pk": 2,
+    "fields": {
+        "employee": 2,
+        "job_role": 2,
+        "pay_grade": 2,
+        "pay_group": 2
+    }
+}
+]

@@ -1,0 +1,47 @@
+[
+{
+    "model": "set_salary.deductionattributevalue",
+    "pk": 1,
+    "fields": {
+        "director": 2,
+        "deduction_attribute": 1,
+        "attribute_value": "3845.00"
+    }
+},
+{
+    "model": "set_salary.deductionattributevalue",
+    "pk": 2,
+    "fields": {
+        "director": 1,
+        "deduction_attribute": 1,
+        "attribute_value": "232.00"
+    }
+},
+{
+    "model": "set_salary.deductionattributevalue",
+    "pk": 3,
+    "fields": {
+        "director": 1,
+        "deduction_attribute": 2,
+        "attribute_value": "35566.00"
+    }
+},
+{
+    "model": "set_salary.deductionattributevalue",
+    "pk": 4,
+    "fields": {
+        "director": 1,
+        "deduction_attribute": 3,
+        "attribute_value": "456777.00"
+    }
+},
+{
+    "model": "set_salary.deductionattributevalue",
+    "pk": 5,
+    "fields": {
+        "director": 2,
+        "deduction_attribute": 4,
+        "attribute_value": "239433.00"
+    }
+}
+]

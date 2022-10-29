@@ -1,0 +1,94 @@
+[
+{
+    "model": "accounts.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$1dBb2Epz5gnKtx7NXPHktB$meDxnxB6OYna3jjBzLSamBLRypCyf2dTiPrd1VjpVPI=",
+        "is_superuser": false,
+        "first_name": "Fawemimo",
+        "last_name": "Akolawole",
+        "other_name": "O",
+        "username": "syllabustech",
+        "email": "f.owolabi81@gmail.com",
+        "phone_number": "+2348058367768",
+        "date_joined": "2022-10-03T09:33:11.950Z",
+        "last_login": "2022-10-03T09:34:13.486Z",
+        "is_admin": true,
+        "is_staff": true,
+        "is_active": true,
+        "is_superadmin": true,
+        "user_type": 5,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$D2USO0IYsfDfs1D0kXVqTT$iKEq6WUuRW9F39IJwBXVe5JdMpWi9ThGz63H6U0tvuM=",
+        "is_superuser": false,
+        "first_name": "Akinyeke",
+        "last_name": "Olaoluwa",
+        "other_name": "Oluwatosin",
+        "username": "dr.akinyeke",
+        "email": "dr.akinyeke@gmail.com",
+        "phone_number": "+2348058367768",
+        "date_joined": "2022-10-03T09:35:05.010Z",
+        "last_login": "2022-10-03T09:52:30.846Z",
+        "is_admin": false,
+        "is_staff": false,
+        "is_active": true,
+        "is_superadmin": false,
+        "user_type": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$NAMdCg05B1RG0Zv6BGB63u$ABByL4O1VAx9tWcUD/jbmD/HXncHN1tns3BdQ2Ssyvk=",
+        "is_superuser": false,
+        "first_name": "Fawemimo",
+        "last_name": "Olukorede",
+        "other_name": "E.",
+        "username": "company2",
+        "email": "f.akorede@gmail.com",
+        "phone_number": "+2348058367768",
+        "date_joined": "2022-10-03T12:28:27.737Z",
+        "last_login": "2022-10-03T12:29:25.276Z",
+        "is_admin": false,
+        "is_staff": false,
+        "is_active": true,
+        "is_superadmin": false,
+        "user_type": 5,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$RV2MXnoKRjsGqmfZ3wqTXk$3UdGSBabEtxyCHS3wX+pxXMg9Ch1d+Rl3BLwKzhq7So=",
+        "is_superuser": false,
+        "first_name": "Arubo",
+        "last_name": "Adetunji",
+        "other_name": "A.",
+        "username": "employee2",
+        "email": "aruboadetunji@gmail.com",
+        "phone_number": "+2348058367768",
+        "date_joined": "2022-10-03T12:31:10.186Z",
+        "last_login": "2022-10-03T14:28:25.507Z",
+        "is_admin": false,
+        "is_staff": false,
+        "is_active": true,
+        "is_superadmin": false,
+        "user_type": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

@@ -1,24 +1,31 @@
-{% extends "shared/director_dashboard.html" %} {% load static %} {% block title %} Director Dashboard {% endblock title %} {% block extrastyle %} {% endblock extrastyle %} {% block breadcrumb %} {% include "partials/_breadcrumb.html" %} {% endblock breadcrumb%}
-{% block container-fluid %} {% include "partials/_dashcard.html" %}
+{% extends "shared/hrm.html" %}
+{% load static %}
+{% load humanize %}
 
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6">
-                <div>
-                    <canvas id="myChart" width="400" height="400"></canvas>
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/employee/_payslip.css' %}">
+<link rel="stylesheet" href="{% static 'css/employee/_todo.css' %}">
+<link rel="stylesheet" href="{% static 'css/_dashboard.css' %}">
+                                               
+<!--CSS-->
+<!-- <link rel="stylesheet" href="{% static 'css/hrm/styles.css' %}">      -->
+{% endblock extrastyle %}
 
-                </div>
-                <!-- /.card -->
+{% block board %}
 
-            </div>
-        </div>
-    </div>
-</div>
-{% include "partials/_container-fluid.html" %} {% endblock container-fluid %} {% block scripts %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
-<script>
-</script>
+{% endblock board %}
+{% block about %}
 
-{% endblock scripts%}
+{% endblock about %}
+
+{% block body %}
+{% include "partials/hrm/_sidebar.html" %}
+{% endblock body %}
+
+{% block script %}
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="{% static 'js/employee/_todo-edit.js' %}" defer></script>
+
+{% endblock script %}

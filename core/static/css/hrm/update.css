@@ -1,0 +1,34 @@
+div.container {
+    margin-top: -351px;
+    margin-left: 191px;
+    width: 100%;
+    margin-bottom: 75px;
+}
+
+div.container div.wrapper {
+    padding: 38px;
+    border: 2px solid;
+}
+
+.form-control {
+    display: block;
+    width: 40%;
+}
+
+
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0px;
+}
+
+.table {
+    width: 50%;
+    margin: 21px -30rem 19rem 2rem;
+    background-color: transparent;
+}
+
+.select-control {
+    display: block;
+    width: 139%;
+}

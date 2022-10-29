@@ -1,0 +1,26 @@
+div.page-wrapper div.page-breadcrumb {
+    margin: 130px 248px;
+    
+}
+
+div.page-wrapper div.page-breadcrumb div.row div.col-12 div.ms-auto nav ol.breadcrumb {
+    list-style: none;
+    display: flex;
+    justify-content: start;
+    margin: 114px 103px;
+    background: #dbd0f5;
+    border-radius: 4px;
+}
+
+div.page-wrapper div.page-breadcrumb div.row div.col-12 div.ms-auto nav ol.breadcrumb li{
+    margin-left: 25px;
+    padding: 11px;
+}
+div.page-wrapper div.page-breadcrumb div.row div.col-12 div.ms-auto nav ol.breadcrumb li a {
+    text-decoration: none;
+    
+}
+
+div.page-wrapper div.page-breadcrumb div.row div.col-12 div.ms-auto nav ol.breadcrumb li a:hover{
+    
+}

@@ -1,6 +1,7 @@
 # Create your models here.
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
+import random
 # from PIL import Image
 # from django_countries.fields import CountryField
 
@@ -50,7 +51,6 @@ class UserManager(BaseUserManager):
         return user
 
 
-
 class User(AbstractUser):
     first_name          = models.CharField(max_length=50)
     last_name           = models.CharField(max_length=50)
@@ -93,7 +93,7 @@ class User(AbstractUser):
     def has_module_perms(self, add_label):
         return True
 
-import random
+
 
 
 class OtpCode(models.Model):
@@ -118,26 +118,6 @@ class OtpCode(models.Model):
         super().save(*args,**kwargs)       
         
 
-# Creating   User Role
-class UserRole(models.Model):
-    user = models.OneToOneField(
-        User,on_delete=models.DO_NOTHING
-    )
-    is_manager = models.BooleanField(
-        default = False
-    )
-    is_supervisor = models.BooleanField(
-        default=False.
-        help_text =  "format: Supervisor,Team Leader,Head of Department ha ve the same role"
-    )
-    def __str__(self):
-        pass
-
-    class Meta:
-        db_table = ''
-        managed = True
-        verbose_name = 'User Role'
-        verbose_name_plural = 'User Roles'
 
 #
 

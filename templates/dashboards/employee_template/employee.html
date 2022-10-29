@@ -1,109 +1,789 @@
-{% extends "shared/employee_dashboard.html" %}
+{% extends "shared/layout.html" %}
 {% load static %}
+{% load humanize %}
 
-{% block bodycontent %}
-  {% include "partials/employee/_body.html" %}
-{% endblock bodycontent %}
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/employee/_payslip.css' %}">
+<link rel="stylesheet" href="{% static 'css/employee/_todo.css' %}">
+<link rel="stylesheet" href="{% static 'css/_dashboard.css' %}">
 
-{% block script %}
-  
-<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-messaging.js"></script>
-<script>
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-analytics.js";
 
-    var firebaseConfig = {
-        apiKey: "AIzaSyAsusPcXCSHm5uZkxvyjqrkzIMp-1lJSDQ",
-        authDomain: "payrollmanagements-b98f9.firebaseapp.com",
-        databaseURL:"https://payrollmanagements-b98f9-default-rtdb.firebaseio.com/",
-        projectId: "payrollmanagements-b98f9",
-        storageBucket: "payrollmanagements-b98f9.appspot.com",
-        messagingSenderId: "577873096525",
-        appId: "1:577873096525:web:70556298edfadc85061104",
-        measurementId: "G-LHZB5KKQX8"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const messaging=firebase.messaging();
-     // Initialize Firebase
-    // const app = initializeApp(firebaseConfig);
-    // const analytics = getAnalytics(app);
+{% endblock extrastyle %}
 
-    function IntitalizeFireBaseMessaging() {
-        messaging
-            .requestPermission()
-            .then(function () {
-                console.log("Notification Permission");
-                return messaging.getToken();
-            })
-            .then(function (token) {
-                console.log("Token : "+token);
-                sendToServer(token);
-            })
-            .catch(function (reason) {
-                console.log(reason);
-            });
-    }
+{% block board %}
+{% endblock board %}
 
-    messaging.onMessage(function (payload) {
-        console.log(payload);
-        const notificationOption={
-            body:payload.notification.body,
-            icon:payload.notification.icon
+<!-- SHOWCASE  -->
+{% block showcase %}
+{% include "partials/_showcase.html" %}
+{% endblock showcase %}
+{% block about %}
+
+{% endblock about %}
+
+{% block body %}
+<!-- EMPLOYEE PROFILE -->
+<div class="container" id="container">
+    <div class="wrapper">
+        <ul class="list-group">
+            <li class="list-group-item d-flex">
+                <span class="icon-wrapper">
+                    <img src="{% static 'img/icons/icons8-user-96.png' %}" alt="" class="ui-icon-image">
+                </span>
+                <div>
+                    <small class="text-uppercase lsp-2 text-muted">
+                        DEPARTMENT
+                    </small>
+                    <p>
+                        {{ employee.department.name }}
+                    </p>
+                </div>
+            </li>
+
+            <li class="list-group-item d-flex">
+                <span class="icon-wrapper">
+                    <img src="{% static 'img/icons/icons8-user-location-100.png' %}" alt="" class="ui-icon-image">
+                </span>
+                <div>
+                    <small class="text-uppercase lsp-2 text-muted">
+                        LOCATION
+                    </small>
+                    <p>
+                        Lagos
+                    </p>
+                </div>
+            </li>
+            <li class="list-group-item d-flex">
+                <span class="icon-wrapper">
+                    <img src="{% static 'img/icons/icons8-user-96.png' %}" alt="" class="ui-icon-image">
+                </span>
+                <div>
+                    <small class="text-uppercase lsp-2 text-muted">
+                        SUPERVISOR
+                    </small>
+                    {% for supervisor in is_supervisor %}
+                    <p>
+                        {{ supervisor.employee.user }}
+                    </p>
+                    {% endfor %}
+                </div>
+            </li>
+
+            <li class="list-group-item d-flex">
+                <span class="icon-wrapper">
+                    <img src="{% static 'img/icons/icons8-date-96.png' %}" alt="" class="ui-icon-image">
+                </span>
+                <div>
+                    <small class="text-uppercase lsp-2 text-muted">
+                        EMPLOYMENT DATE
+                    </small>
+                    <p>
+                        {{employee.date_employed | date:"F jS, Y" }}
+                    </p>
+                </div>
+            </li>
+
+            <li class="list-group-item d-flex">
+                <span class="icon-wrapper">
+                    <img src="{% static 'img/icons/icons8-account-96.png' %}" alt="" class="ui-icon-image">
+                </span>
+                <div>
+                    <small class="text-uppercase lsp-2 text-muted">
+                        PROMOTION
+                    </small>
+                    <p>
+                        None
+                    </p>
+                </div>
+            </li>
+
+            <li class="list-group-item d-flex pt-4">
+
+                <div>
+                    Edit profile
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <!-- TODO LIST  -->
+    <div class="wrapper-todo">
+        <div class="heading">
+            <h2 class="text-muted">
+                TODO LIST
+            </h2>
+        </div>
+
+        <div class="task-input">
+            <ion-icon name="create-outline"></ion-icon>
+            <form action="{% url 'todo' %}" method="POST" role="form">
+                {% csrf_token %}
+                <input name="description" id="id_description" type="text" placeholder="Add a New Task + Enter">
+                <!-- <button class="clear-btn" value="submit">Add</button> -->
+
+            </form>
+        </div>
+        <div class="controls">
+            <div class="filters">
+                <span class="active" id="all">
+                    {% url 'employee' as employee %}
+                    <a href="{% url 'employee' %}" class="{% if request.path == employee %} active  {% endif %}">
+                        All
+                    </a>
+                </span>
+                {% url 'pending' as pending %}
+                <span id="pending">
+
+                    <a href="{% url 'pending' %}" class="{% if request.path == pending %} active {% endif %}">
+                        Pending
+                    </a>
+                </span>
+                {% url 'complete' as complete %}
+                <span id="completed">
+                    <a href="{% url 'complete' %}" class="{% if request.path == complete %} active  {% endif %}">
+                        Completed
+                    </a>
+                </span>
+                <a href="{% url 'deletecomplete' %}">
+                    <button class="clear-btn">Delete Completed</button>
+                </a>
+                <a href="{% url 'alldelete' %}">
+                    <button class="clear-btn">Clear All</button>
+                </a>
+            </div>
+
+        </div>
+        <ul class="task-box overflow">
+            <!-- SHOWING TODO LIST  -->
+            {% if todo_list %}
+            {% for todo in todo_list %}
+            <!-- SHOWING IS_COMPLETED -->
+            {% if todo.is_completed %}
+
+            <li class="task" style="background-color: grey;">
+                <label for="">
+                    <p class="checked">
+                        {{todo.description}}
+                    </p>
+                </label>
+                <!-- showing settings -->
+                <div class="settings">
+                    <p class="uil uil-ellipsis-h show"></p>
+                    <ul class="task-menu">
+                        <li><i class="uil uil-pen"></i>Edit</li>
+                        <li><i class="uil uil-trash"></i>Delete</li>
+                    </ul>
+                </div>
+
+            </li>
+            {% else %}
+            <!-- SHOWING TODO LIST IF IT NOT COMPLETED -->
+            <li class="task">
+                <label for="">
+                    <a href="{% url 'is_completed' todo.id %}">
+                        <p>
+                            {{todo.description}}
+                        </p>
+                    </a>
+                </label>
+                <!-- showing settings -->
+                <div class="settings">
+                    <p class="uil uil-ellipsis-h"></p>
+                    <ul class="task-menu">
+                        <li><i class="uil uil-pen"></i>Edit</li>
+                        <li><i class="uil uil-trash"></i>Delete</li>
+                    </ul>
+                </div>
+
+            </li>
+            {% endif %}
+            {% endfor %}
+
+            {% endif %}
+
+            <!-- Showing pending todo tasks -->
+            {% url 'pending' as pending %}
+            {% if request.path == pending %}
+            {% for x in pending_todo %}
+            <li class="task">
+                <label for="">
+                    <a href="{% url 'is_completed' x.id %}">
+                        <p>
+                            {{x.description}}
+                        </p>
+                    </a>
+                </label>
+                <!-- showing settings -->
+                <div class="settings">
+                    <p class="uil uil-ellipsis-h show"></p>
+                    <ul class="task-menu">
+                        <li><i class="uil uil-pen"></i>Edit</li>
+                        <li><i class="uil uil-trash"></i>Delete</li>
+                    </ul>
+                </div>
+
+            </li>
+            {% endfor %}
+            {% endif %}
+
+            <!-- Showing complete todo tasks -->
+            {% url 'complete' as complete %}
+            {% if request.path == complete %}
+            {% for x in complete_todo %}
+            <li class="task">
+                <label for="">
+                    <p class="checked">
+                        {{x.description}}
+                    </p>
+                </label>
+                <!-- showing settings -->
+                <div class="settings">
+                    <p class="uil uil-ellipsis-h show"></p>
+                    <ul class="task-menu">
+                        <li><i class="uil uil-pen"></i>Edit</li>
+                        <li><i class="uil uil-trash"></i>Delete</li>
+                    </ul>
+                </div>
+
+            </li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
+    <!-- LEAVE CALCULATION DAYS -->
+    <div class="wrapper-todo" id="leave-progress">
+
+        <div class="heading">
+            <h2 class="text-muted">
+                LEAVE
+            </h2>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item d-flex">
+                <span class="icon-wrapper">
+                    <img src="{% static 'img/icons/icons8-user-96.png' %}" alt="" class="ui-icon-image">
+                </span>
+                <div>
+                    <small class="text-uppercase lsp-2 text-muted">
+                        Total leave cycle
+                    </small>
+                    <p>
+                        {{ employee.leave_allocation_days }}
+                    </p>
+                </div>
+            </li>
+
+            <li class="list-group-item d-flex">
+                <span class="icon-wrapper">
+                    <img src="{% static 'img/icons/icons8-user-96.png' %}" alt="" class="ui-icon-image">
+                </span>
+                <div>
+                    <small class="text-uppercase lsp-2 text-muted">
+                        Total leave day(s) left
+                    </small>
+                    <p style="color: green;">
+                        {{ leave.total_days_left }}
+                    </p>
+                </div>
+            </li>
+
+            <li class="list-group-item d-flex">
+                <span class="icon-wrapper">
+                    <img src="{% static 'img/icons/icons8-user-96.png' %}" alt="" class="ui-icon-image">
+                </span>
+                <div>
+                    <small class="text-uppercase lsp-2 text-muted">
+                        Total Used leave
+                    </small>
+                    <p style="color: red;">
+                        {{ leave.total_duration_days }}
+                    </p>
+                </div>
+            </li>
+
+
+            <li class="list-group-item d-flex">
+
+                <div>
+                    <small class="text-uppercase lsp-2 text-muted">
+                        List of Employee(s) on Leave in your Department
+                    </small>
+                    <ul class="list-group task-box overflow">
+                        {% if is_on_leave %}
+                        {% for x in is_on_leave %}
+                        <li class="list-group-item leave-list task">
+                            <span class="icon-wrapper">
+                                <img src="{% static 'img/icons/icons8-user-96.png' %}" alt="" class="ui-icon-image">
+                            </span>
+                            <div>
+                                <small class="text-uppercase lsp-2 text-muted">
+                                    {{x.employee.user.first_name}} {{x.employee.user.last_name}}
+                                </small>
+                                <p>
+                                    {{ x.leave_start | date:"F jS, Y" }}
+                                </p>
+                            </div>
+                        </li>
+                        {% endfor %}
+                        {% else %}
+                        <li class="list-group-item leave-list task">
+
+                            <div>
+                                <small class="text-uppercase lsp-2 text-muted">
+                                    No Employee(s) on Leave
+                                </small>
+                            </div>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="card-wrapper">
+        <!-- GROSS PAY CARD / -->
+        <div class="card1">
+            <div>
+                <img src="{% static 'img/icons/icons8-margin-64.png' %}" alt="">
+            </div>
+            <span>
+                Gross Pay
+                <p>
+                    123,4000,234.00
+                </p>
+            </span>
+
+        </div>
+        <!-- DEDUCTIONS  -->
+        <div class="card1" id="deductions">
+            <div>
+                <img src="{% static 'img/icons/icons8-minus-64.png' %}" alt="">
+            </div>
+            <span>
+                Deductions
+                <p>
+                    123,4000,234.00
+                </p>
+            </span>
+
+        </div>
+        <!-- NET PAY  -->
+        <div class="card1" id="net-pay">
+            <div>
+                <img src="{% static 'img/icons/icons8-pay-date-48.png' %}" alt="">
+            </div>
+            <span>
+                Net Pay
+                <p>
+                    123,4000,234.00
+                </p>
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- EMPLOYEE AND NOTIFICATION  -->
+    <div class="notifi-employee">
+        <div class="notification">
+            <h2 class="text-uppercase text-muted">
+                Recent Notification(s)
+            </h2>
+            <div class="wrapper">
+                <ul class="list-group task-box overflow">
+                    <li class="list-group-item task">
+                        <a href="" class="link-info">
+                            Data usage this month has gone so high, this is the attach below
+                        </a>
+                    </li>
+                    <li class="list-group-item task">
+                        <a href="" class="link-info">
+                            Data usage this month has gone so high, this is the attach below
+                        </a>
+                    </li>
+                    <li class="list-group-item task">
+                        <a href="" class="link-info">
+                            Data usage this month has gone so high, this is the attach below
+                        </a>
+                    </li>
+                    <li class="list-group-item task">
+                        <a href="" class="link-info">
+                            Data usage this month has gone so high, this is the attach below
+                        </a>
+                    </li>
+                    <li class="list-group-item task">
+                        <a href="" class="link-info">
+                            Data usage this month has gone so high, this is the attach below
+                        </a>
+                    </li>
+                    <li class="list-group-item task">
+                        <a href="" class="link-info">
+                            Data usage this month has gone so high, this is the attach below
+                        </a>
+                    </li>
+                    <li class="list-group-item task">
+                        <a href="" class="link-info">
+                            Data usage this month has gone so high, this is the attach below
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="notification">
+            <h2 class="text-uppercase  text-muted">
+                List of Employee(s)
+            </h2>
+            <div class="wrapper">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex">
+
+                        <div>
+                            <small class="text-uppercase lsp-2 text-muted">
+                                List of All Employee(s)
+                            </small>
+                            <ul class="list-group task-box overflow">
+                                {% if employees %}
+                                {% for employee in employees %}
+                                <li class="list-group-item leave-list task">
+                                    <span class="icon-wrapper">
+                                        <img src="{% static 'img/icons/icons8-user-96.png' %}" alt=""
+                                            class="not-ui-icon-image">
+                                    </span>
+                                    <div class="employee-name" id="employee-name">
+                                        <small class="text-uppercase">
+                                            {{employee.user}}
+                                        </small>
+                                        <small class="text-">
+                                            {{ employee.user.phone_number }}
+                                        </small>
+                                        <small class="text-">
+                                            {{ employee.department.name }}
+                                        </small>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                                {% else %}
+                                <li class="list-group-item leave-list task">
+
+                                    <div>
+                                        <small class="text-uppercase lsp-2 text-muted">
+                                            Ooops....No more employee(s) in the list here
+                                        </small>
+
+                                    </div>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- UPCOMING EVENTS -->
+        <div class="upcoming-wrapper">
+
+            <div class="card1">
+                <div class="notification">
+                    <div class="wrapper" id="events">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex">
+
+                                <div>
+                                    <small class="text-uppercase lsp-2 text-muted">
+                                        Birthdays
+                                    </small>
+                                    <ul class="list-group task-box overflow">
+                                        {% if birthdays %}
+                                        {% for birthday in birthdays %}
+                                        <li class="list-group-item leave-list task">
+                                            <span class="icon-wrapper">
+                                                <img src="{% static 'img/icons/icons8-user-96.png' %}" alt=""
+                                                    class="not-ui-icon-image">
+                                            </span>
+                                            <div class="employee-name event-bg">
+                                                <small class="text-uppercase lsp-2 text-muted">
+                                                    {{ birthday.user }}
+                                                </small>
+                                                <p>
+                                                    {{ birthday.dob | date:"F jS" }}
+                                                </p>
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                        {% else %}
+                                        <li class="list-group-item leave-list task">
+
+                                            <div class="employee-name event-bg">
+                                                <small class="text-uppercase lsp-2 text-muted">
+                                                    No birthday(s) this month
+                                                </small>
+
+                                            </div>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card1">
+
+                <div class="notification">
+                    <div class="wrapper" id="events">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex">
+
+                                <div>
+                                    <small class="text-uppercase lsp-2 text-muted">
+                                        UPCOMING HOLIDAY CYCLES
+                                    </small>
+                                    <ul class="list-group task-box overflow">
+                                        {% if holidays %}
+                                        {% for x , name in holidays %}
+                                        <li class="list-group-item leave-list holiday-list task">
+                                            <span class="icon-wrapper">
+                                                <img src="{% static 'img/icons/icons8-date-96.png' %}" alt=""
+                                                    class="not-ui-icon-image">
+                                            </span>
+                                            <div class="employee-name event-bg">
+                                                <small class="text-uppercase text-muted">
+                                                    {{ name }}
+                                                </small>
+                                                <p>
+                                                    {{ x }}
+                                                </p>
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                        {% else %}
+                                        <li class="list-group-item leave-list holiday-list task">
+
+                                            <div class="employee-name event-bg">
+                                                <small class="text-uppercase text-muted">
+                                                    No Holidays added
+                                                </small>
+
+                                            </div>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="card1">
+
+                <div class="notification">
+                    <div class="wrapper" id="events">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex">
+
+                                <div>
+                                    <small class="text-uppercase lsp-2 text-muted">
+                                        WORK CYCLES
+                                    </small>
+                                    <ul class="list-group task-box overflow">
+                                        <li class="list-group-item leave-list task">
+                                            <span class="icon-wrapper">
+                                                <img src="{% static 'img/icons/icons8-user-96.png' %}" alt=""
+                                                    class="not-ui-icon-image">
+                                            </span>
+                                            <div class="employee-name event-bg">
+                                                <small class="text-uppercase lsp-2 text-muted">
+                                                    Fawemimo Akolawole
+                                                </small>
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item leave-list task">
+                                            <span class="icon-wrapper">
+                                                <img src="{% static 'img/icons/icons8-user-96.png' %}" alt=""
+                                                    class="not-ui-icon-image">
+                                            </span>
+                                            <div class="employee-name event-bg">
+                                                <small class="text-uppercase lsp-2 text-muted">
+                                                    Fawemimo Akolawole
+                                                </small>
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item leave-list task">
+                                            <span class="icon-wrapper">
+                                                <img src="{% static 'img/icons/icons8-user-96.png' %}" alt=""
+                                                    class="not-ui-icon-image">
+                                            </span>
+                                            <div class="employee-name event-bg">
+                                                <small class="text-uppercase lsp-2 text-muted">
+                                                    Fawemimo Akolawole
+                                                </small>
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item leave-list task">
+                                            <span class="icon-wrapper">
+                                                <img src="{% static 'img/icons/icons8-user-96.png' %}" alt=""
+                                                    class="not-ui-icon-image">
+                                            </span>
+                                            <div class="employee-name event-bg">
+                                                <small class="text-uppercase lsp-2 text-muted">
+                                                    Fawemimo Akolawole
+                                                </small>
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item leave-list task">
+                                            <span class="icon-wrapper">
+                                                <img src="{% static 'img/icons/icons8-user-96.png' %}" alt=""
+                                                    class="not-ui-icon-image">
+                                            </span>
+                                            <div class="employee-name event-bg">
+                                                <small class="text-uppercase lsp-2 text-muted">
+                                                    Fawemimo Akolawole
+                                                </small>
+                                            </div>
+                                        </li>
+
+                                        <li class="list-group-item leave-list task">
+                                            <span class="icon-wrapper">
+                                                <img src="{% static 'img/icons/icons8-user-96.png' %}" alt=""
+                                                    class="not-ui-icon-image">
+                                            </span>
+                                            <div class="employee-name event-bg">
+                                                <small class="text-uppercase lsp-2 text-muted">
+                                                    Fawemimo Akolawole
+                                                </small>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    {% endblock body %}
+
+    {% block script %}
+
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-messaging.js"></script>
+    <script>
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-analytics.js";
+
+        var firebaseConfig = {
+            apiKey: "AIzaSyAsusPcXCSHm5uZkxvyjqrkzIMp-1lJSDQ",
+            authDomain: "payrollmanagements-b98f9.firebaseapp.com",
+            databaseURL: "https://payrollmanagements-b98f9-default-rtdb.firebaseio.com/",
+            projectId: "payrollmanagements-b98f9",
+            storageBucket: "payrollmanagements-b98f9.appspot.com",
+            messagingSenderId: "577873096525",
+            appId: "1:577873096525:web:70556298edfadc85061104",
+            measurementId: "G-LHZB5KKQX8"
         };
+        firebase.initializeApp(firebaseConfig);
+        const messaging = firebase.messaging();
+        // Initialize Firebase
+        // const app = initializeApp(firebaseConfig);
+        // const analytics = getAnalytics(app);
 
-        if(Notification.permission==="granted"){
-            var notification=new Notification(payload.notification.title,notificationOption);
-
-            notification.onclick=function (ev) {
-                ev.preventDefault();
-                window.open(payload.notification.click_action,'_blank');
-                notification.close();
-            }
+        function IntitalizeFireBaseMessaging() {
+            messaging
+                .requestPermission()
+                .then(function () {
+                    console.log("Notification Permission");
+                    return messaging.getToken();
+                })
+                .then(function (token) {
+                    console.log("Token : " + token);
+                    sendToServer(token);
+                })
+                .catch(function (reason) {
+                    console.log(reason);
+                });
         }
 
-    });
-    messaging.onTokenRefresh(function () {
-        messaging.getToken()
-            .then(function (newtoken) {
-                console.log("New Token : "+ newtoken);
-                sendToServer(newtoken);
-            })
-            .catch(function (reason) {
-                console.log(reason);
-            })
-    });
+        messaging.onMessage(function (payload) {
+            console.log(payload);
+            const notificationOption = {
+                body: payload.notification.body,
+                icon: payload.notification.icon
+            };
 
-    function sendToServer(token){
-         $.ajax({
-                url:"{% url 'employee_fcmtoken_save' %}",
-                type:'POST',
-                data:{token:token},
-            })
-            .done(function(response){
-                if(response=="True"){
-                    console.log("Token Save");
+            if (Notification.permission === "granted") {
+                var notification = new Notification(payload.notification.title, notificationOption);
+
+                notification.onclick = function (ev) {
+                    ev.preventDefault();
+                    window.open(payload.notification.click_action, '_blank');
+                    notification.close();
                 }
-                else{
-                    console.log("Error in Token Save");
-                }
-            });
-    }
-    IntitalizeFireBaseMessaging();
-</script>
+            }
 
-<script type="module">
-  // Import the functions you need from the SDKs you need
+        });
+        messaging.onTokenRefresh(function () {
+            messaging.getToken()
+                .then(function (newtoken) {
+                    console.log("New Token : " + newtoken);
+                    sendToServer(newtoken);
+                })
+                .catch(function (reason) {
+                    console.log(reason);
+                })
+        });
 
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+        function sendToServer(token) {
+            $.ajax({
+                url: "{% url 'employee_fcmtoken_save' %}",
+                type: 'POST',
+                data: { token: token },
+            })
+                .done(function (response) {
+                    if (response == "True") {
+                        console.log("Token Save");
+                    }
+                    else {
+                        console.log("Error in Token Save");
+                    }
+                });
+        }
+        IntitalizeFireBaseMessaging();
+    </script>
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
+    <script type="module">
+        // Import the functions you need from the SDKs you need
 
-  };
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+
+        };
 
 
-</script>
-{% endblock script %}
+    </script>
+    <script src="{% static 'js/employee/_todo-edit.js' %}" defer></script>
+    {% endblock script %}
