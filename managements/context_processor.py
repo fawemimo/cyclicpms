@@ -5,13 +5,14 @@ from managements.models import Employee
 
 
 def employee_context(request):
-    e = Employee.objects.all().get(user=request.user)
-    if e:
-        context = {
-        'e':e,
-        }
-        return context
-    else:
-        user = User.objects.get(id=request.user.id)    
-        return user
+    if request.user.user_type == 1 :
+        e = Employee.objects.get(user=request.user)
+        if e:
+            context = {
+            'e':e,
+            }
+            return context
+        else:
+            user = User.objects.get(id=request.user.id)    
+            return user
     

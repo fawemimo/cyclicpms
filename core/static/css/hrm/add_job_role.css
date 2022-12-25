@@ -1,0 +1,35 @@
+div.form-container {
+    height: 388px;
+    width: 33%;
+    margin: -576px 219px 48px;
+}
+.form-group {
+    margin-bottom: -12rem;
+}
+
+.form-control {
+    display: block;
+    width: 90%;
+    margin-left: 20px;
+    padding: 1.375rem 0.75rem;
+}
+
+.btn-group {
+    margin-bottom: 6px;
+    margin-left: -316px;
+    margin-top: 202px;
+}
+
+img {
+    width: 20%;
+}
+
+.table-job-role {
+    width: 50%;
+    margin: -436px 59rem 26rem 47rem;
+}
+
+div.side-bar {
+    margin-top: 123px;
+    margin-bottom: 104px;
+}

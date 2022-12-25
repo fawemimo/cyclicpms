@@ -1,4 +1,5 @@
 # from accounts.models import Profile
+from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpResponse
 from managements.models import Employee
@@ -36,6 +37,8 @@ def payslip_data(request):
         grand_total = 0
         grand_total = salary_attribute_total - deduction_attribute_total
 
+        today_date = datetime.now()
+        print(today_date)
         # Render the data into the template
         context = {
             "employee": employee,

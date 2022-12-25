@@ -30,7 +30,7 @@ class Company(models.Model):
     def save(self, *args, **kwargs):
         if self.company_tracking_id == "":
             date = self.date_created
-            self.company_tracking_id = date + str(uuid.uuid4()).replace("-", "").upper()[:10]
+            self.company_tracking_id = str(uuid.uuid4()).replace("-", "").upper()[:10]
         return super().save(*args, **kwargs)
 
 

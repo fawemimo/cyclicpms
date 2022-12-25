@@ -6,12 +6,22 @@ from django.utils.translation import gettext_lazy as _
 import pandas as pd
 import numpy as np
 from django.contrib import messages
+
 # Create your models here.
 from managements.models import Admin, Employee
 
 """
 EMPLOYEE MANAGEMENT
 """
+
+
+class LeaveReportEmployeeManager(models.Manager):
+    """
+    LEAVE FOR EMPLOYEE TO RETURN ALL EMPLOYEE THAT IS ON LEAVE
+    """
+
+    def get_queryset(self):
+        return super().get_queryset().filter(is_on_leave=True)
 
 
 class LeaveReportEmployee(models.Model):
@@ -23,13 +33,16 @@ class LeaveReportEmployee(models.Model):
     leave_reason = models.TextField()
     leave_start = models.DateTimeField()
     leave_end = models.DateTimeField()
-    total_duration_days = models.CharField(max_length=100, blank=True,null=True)
+    total_duration_days = models.CharField(max_length=100, blank=True, null=True)
     total_days_left = models.CharField(max_length=255, blank=True, null=True)
     leave_comment = models.CharField(max_length=255, blank=True)
     leave_status = models.IntegerField(default=0)
+    is_requesting = models.BooleanField(default=True)
     is_on_leave = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = models.Manager()
+    is_on_leave_manager = LeaveReportEmployeeManager()
 
     class Meta:
         verbose_name = _("Leave Report Employee")
@@ -51,14 +64,13 @@ class LeaveReportEmployee(models.Model):
 
         # compare the leave days
         if self.employee.leave_allocation_days > self.total_duration_days:
-            messages.error(self,'Number of allocation days exceed')
+            messages.error(self, "Number of allocation days exceed")
         leave_end = pd.to_datetime(self.leave_end).date()
         leave_start = pd.to_datetime(self.leave_start).date()
         self.total_duration_days = np.busday_count(leave_start, leave_end, holidays=[leave_start, leave_end])
 
-       
-        if self.leave_status == 1 :
-            self.is_on_leave = True   
+        if self.leave_status == 1:
+            self.is_on_leave = True
         super(LeaveReportEmployee, self).save(*args, **kwargs)
 
 

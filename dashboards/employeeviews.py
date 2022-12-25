@@ -99,6 +99,10 @@ def staff(request):
         # Todo form
         todoform = TodoForm()
 
+        # employeedata 
+        employeedata = EmployeeData.objects.prefetch_related('salary_attribute_value')
+        print(employeedata)
+
         # Render the data into the template
         context = {
             "employee": employee,

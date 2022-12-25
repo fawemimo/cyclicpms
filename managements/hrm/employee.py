@@ -227,7 +227,6 @@ def edit_employee(request, employee_id):
 
         # get the actual employee roles
         employee_role = EmployeeRole.objects.get(employee=employee)
-        print(employee_role.is_manager)
         context = {
             "employee": employee,
             "id": employee_id,
@@ -265,6 +264,10 @@ def edit_employee_save(request):
             phone_number = request.POST["phone_number"]
             phone_number_2 = request.POST["phone_number_2"]
 
+            # Employee Role
+            is_manager = request.POST['is_manager']
+            is_supervisor = request.POST['is_supervisor']
+
             # PAY ROLE
             job_role = request.POST['job_role']
             pay_grade = request.POST['pay_grade']
@@ -285,6 +288,13 @@ def edit_employee_save(request):
                 employee.contact_address = contact_address
                 # employee.profile_pic                   = profile_pic
                 employee.save()
+
+                # EMPLOYEE ROLE MODEL TO SAVE
+                employee_role = EmployeeRole.objects.get(employee=employee_id)
+                employee_role.is_manager  = is_manager
+                employee_role.is_supervisor = is_supervisor
+                print(employee_role.is_manager)
+                employee_role.save()
 
                 # ROLE MODEL TO SAVE
                 jobrole = JobRole.objects.get(director=employee.director)

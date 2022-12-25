@@ -3,9 +3,10 @@ from decouple import config
 from pathlib import Path
 import django
 from urllib import request
-import django_on_heroku
-import dj_database_url
-import boto3
+from datetime import timedelta
+# import django_on_heroku
+# import dj_database_url
+# import boto3
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -15,6 +16,7 @@ DEBUG = config("DEBUG", default=True, cast=bool)
 ALLOWED_HOSTS = ["cyclicpms.herokuapp.com", "127.0.0.1","payroll-env.eba-8xuxcsmm.us-west-2.elasticbeanstalk.com"]
 
 # Application definition
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -24,11 +26,17 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # admin area model config
     # 'contacts.apps.ContactAdminConfig',
+
     # django packages
     "django.contrib.humanize",
-    "ckeditor",
+    "corsheaders",
+    # "ckeditor",
     "rest_framework",
+    "rest_framework.authtoken",
+    "django_filters",
+    "rest_framework_simplejwt.token_blacklist",
     # "django_celery_beat",
+
     # my apps
     "payroll.apps.PayrollConfig",
     "accounts.apps.AccountsConfig",
@@ -46,6 +54,7 @@ INSTALLED_APPS = [
 
     # DJANGO REST API
     "api.apps.ApiConfig",
+    # "corsheaders",
     # for widgets customizations
     "widget_tweaks",
     "storages",
@@ -59,6 +68,10 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+
+    "corsheaders.middleware.CorsMiddleware",
+    
+    
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -187,9 +200,63 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # DRF PERMISSIONS
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated'
-    ]
-    
+        'rest_framework.permissions.AllowAny',
+    ],
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'rest_framework_simplejwt.authentication.JWTAuthentication',
+    # )   
 }
 
-django_on_heroku.settings(locals())
+# Permission 
+# AllowAny
+# IsAuthenticated
+# IsAdminUser
+# IsAuthenticatedOrReadOnly
+
+
+CELERY_BEAT_SCHEDULE = {
+    "scheduled_task": {
+        "task": "managements.hrm.tasks.leave_management"
+    }
+}
+
+CORS_ALLOW__ORIGINS = [
+    "http://localhost:3000",
+]
+
+
+# DJANGO REST FRAMEWORK SIMPLE JWT
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': False,
+    'UPDATE_LAST_LOGIN': False,
+
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUDIENCE': None,
+    'ISSUER': None,
+    'JWK_URL': None,
+    'LEEWAY': 0,
+
+    'AUTH_HEADER_TYPES': ('Bearer', 'JWT'),
+    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+    'USER_AUTHENTICATION_RULE': 'rest_framework_simplejwt.authentication.default_user_authentication_rule',
+
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+    'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
+
+    'JTI_CLAIM': 'jti',
+
+    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
+    'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+}
+
+
+# django_on_heroku.settings(locals())

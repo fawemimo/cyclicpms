@@ -22,10 +22,12 @@ def leave_apply(request):
         employee_obj = Employee.objects.get(user=request.user.id)
     return render(request, "managements/employee_template/employee_apply_leave.html")
 
-""" 
-EMPLOYEE APPLY FOR LEAVE
-"""
+
 def employee_apply_leave(request):
+    
+    """ 
+    EMPLOYEE APPLY FOR LEAVE
+    """
     employee_obj = Employee.objects.get(user=request.user.id)
 
     leave_data = (
@@ -42,11 +44,12 @@ def employee_apply_leave(request):
     return render(request, "managements/employee_template/employee_apply_leave.html", context)
 
 
-""" 
-SAVE EMPLOYEE LEAVE TO DB   
-"""
-
 def is_ajax(request):
+    
+    """ 
+    SAVE EMPLOYEE LEAVE TO DB   
+    """
+
     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
 

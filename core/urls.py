@@ -7,6 +7,9 @@ from django.conf.urls.static import static
 
 # from contacts.admin import *
 # from accounts.admin import profile_site,otpcodes_site
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView, TokenRefreshView
+)
 
 
 urlpatterns = [
@@ -36,8 +39,12 @@ urlpatterns = [
 
     # API 's
     path('api/',include('api.urls')),
-
+    path('api/accounts/',include('accounts.api_urls')),
+    path('api-auth/',include('rest_framework.urls'), name='rest_framework'),
+    path('api/token/',TokenObtainPairView.as_view(),name='token_obtain_pair'),
+    path('api/token/refresh/',TokenRefreshView.as_view(), name='token_refresh'),
     # path('todo/',include('todo.urls')),
+    # path('api/auth/tokens/',include('rest_auth.urls')),
     # path to django packages 
     # path('summernote/',include('django_summernote.urls')),
     

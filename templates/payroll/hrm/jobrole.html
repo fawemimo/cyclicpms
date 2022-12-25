@@ -1,0 +1,163 @@
+{% extends "shared/hrm.html" %} {% load static %} {% block title %} Add Job Role {% endblock title %}
+
+{% block extrastyle %}
+<!-- custom style  -->
+<link rel="stylesheet" href="{% static 'css/_dashboard.css' %}">
+<link rel="stylesheet" href="{% static 'css/_styles_leave.css' %}">
+<link rel="stylesheet" href="{% static 'css/add_employee.css' %}">
+<link rel="stylesheet" href="{% static 'css/hrm/add_job_role.css' %}">
+{% endblock extrastyle %}
+
+{% block body %}
+{% include "partials/hrm/_sidebar.html" %}
+
+<form action="{% url 'job_role_save' %}" method="post">
+    {% csrf_token %}
+
+    {% if user.is_authenticated %}
+    <div class="form-group">
+        <input type="hidden" class="form-control" name="director" id="id_director" autocomplete="off"
+            value="{{ user.id }}">
+    </div>
+    {% endif %}
+    <div class="form-group">
+        <label >
+            Job Role Name:
+        </label>
+        <input type="text">
+    </div>
+
+    <div class="form-group">
+        <div class="btn-group">
+            <button type="button"  class="btn btn-display">Add</button>
+        </div>
+    </div>
+</form>
+
+
+<!-- TABLE TO MANAGE ALL JOB ROLES -->
+<div class="table table-job-role">
+    <table class="table overflow">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Date Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% if job_role %}
+            {% for role in job_role %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>
+                    <a href="">
+                        {{ role.name | capfirst }}
+                    </a>
+                </td>
+                <td>{{ role.created_at | date:"F y" }}</td>
+
+                <td><a href="\">
+                        <img src="/static/admin/img/icon-changelink.svg" alt="Change">
+                    </a>
+
+                    <a href="\" id="myBtn">
+                        <img src="/static/admin/img/icon-deletelink.svg" alt="Delete">
+                    </a>
+                </td>
+                <td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <td>
+                No job role's added...
+            </td>
+            {% endif %}
+        </tbody>
+
+    </table>
+</div>
+
+{% endblock body %}
+
+{% block script %}
+
+
+<script src="{% static 'js/add_employee.js' %}"></script>
+<script src="{% static 'js/employee/_leave.js' %}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#id_email").keyup(function () {
+            var email = $(this).val();
+
+            if (email != "") {
+                $.ajax({
+                    url: "{% url 'check_email_exist' %}",
+                    type: 'POST',
+                    data: {
+                        email: email
+                    }
+                })
+                    .done(function (response) {
+
+                        if (response == "True") {
+                            $(".email_error").remove();
+                            $("<span class='email_error' style='padding: 5px;color: red;font-weight: bold;'>Email already taken</span>")
+                                .insertAfter("#id_email");
+                        } else {
+                            $(".email_error").remove();
+                            $("<span class='email_error' style='padding: 5px;color: green;font-weight: bold;'>Email Available</span>")
+                                .insertAfter("#id_email");
+                        }
+                    })
+                    .fail(function () {
+
+                    })
+            } else {
+                $(".email_error").remove();
+            }
+
+        });
+
+        $("#id_username").keyup(function () {
+            var username = $(this).val();
+
+            if (username != "") {
+                $.ajax({
+                    url: `{% url 'check_username_exist' %}`,
+                    type: 'POST',
+                    data: {
+                        username: username
+                    }
+                })
+                    .done(function (response) {
+
+                        if (response == "True") {
+                            $(".username_error").remove();
+                            $("<span class='username_error' style='padding: 5px;color: red;font-weight: bold;'>Username Not Available</span>")
+                                .insertAfter("#id_username");
+                        } else {
+                            $(".username_error").remove();
+                            $("<span class='username_error' style='padding: 5px;color: green;font-weight: bold;'>Username Available</span>")
+                                .insertAfter("#id_username");
+                        }
+                    })
+                    .fail(function () {
+
+                    })
+            } else {
+                $(".username_error").remove();
+            }
+
+        });
+
+    });
+</script>
+
+
+{% endblock script %}

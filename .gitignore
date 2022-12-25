@@ -138,6 +138,11 @@ ENV/
 env.bak/
 venv.bak/
 pythonenv*
+.coverage
+js.txt
+kite-installer
+logs
+logs16-03-2022
 
 # Spyder project settings
 .spyderproject
